@@ -1,0 +1,69 @@
+package com.techlabs.game;
+import java.util.* ;
+
+public class GameTest {
+    public static void main(String[] args)
+    {
+        int guess, answer, count = 0;
+        String restart;
+
+        Random generator = new Random();
+        Scanner scan = new Scanner(System.in);
+        
+        System.out.println("Instructions : \n Enter 'y' or 'Y' to Restart Game anyTime	\n Enter '0' to Quit Game Anytime");
+
+        answer = generator.nextInt(10) ; 
+        System.out.println("Random Number is : " + answer);
+        
+        System.out.print("Guess Number : ");
+        guess = scan.nextInt();
+
+       
+
+        do 
+        {
+            count++;
+
+            if (guess == 0) // if user enters 0 to quit game, this message is displayed
+            {
+                System.out.println("\nQuitting game");
+                System.out.println("\nWould you like to play again?");
+                restart = scan.next();
+                if (restart.equalsIgnoreCase("Y"))
+                {
+                    System.out.print("Enter a number to start playing");
+                    guess = scan.nextInt();
+                }
+                else
+                    break;
+            }
+            if (guess == answer)
+            {
+                System.out.println("Congratulations ! Number of guesses is " + count + ".");
+                System.out.println("Would you like to play again?");
+                restart = scan.next();
+                if (restart.equalsIgnoreCase("Y"))
+                {
+                    System.out.print("Enter a number to start playing");
+                    guess = scan.nextInt();
+                }
+                else
+                    break;
+            }
+            if (guess < answer)
+            {
+                System.out.print("Your guess is too low, try again.");
+                guess = scan.nextInt();
+            }
+            if (guess > answer)
+            {
+                System.out.print("Your guess is too high, try again.");
+                guess = scan.nextInt();
+            }
+
+        }
+        while (guess != 0);
+
+        System.out.print("Thanks for playing!");
+    }
+}
