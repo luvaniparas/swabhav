@@ -1,0 +1,55 @@
+package com.techlabs.game;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class GameTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		// double a = Math.random()*10 ;
+		Random r = new Random();
+		int random = r.nextInt(10);
+		System.out.println("Random number is : " + random);
+
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("Choose 1)Start Game \n 2)Restart Game \n 3)Exit");
+		int ch = sc.nextInt();
+		
+		switch(ch) {
+		
+		case 1 :
+		  while (true) {
+			System.out.print("Guess a number : ");
+			int g = sc.nextInt();
+			System.out.println("User input is : " + g);
+
+			if (random > g) {
+				System.out.println("Guess is low");
+				continue;
+			}
+
+			else if (random < g) {
+				System.out.println("Guess is High");
+				continue;
+			}
+
+			else if (random == g) {
+				System.out.println("Congratualtions you have guessed right number :" + g);
+				break;
+			    }
+		   }
+		case 2 :
+			System.out.flush();
+		case 3 :	
+			break ;
+			
+		default :  
+			System.out.println("Invalid Option");
+	}
+		
+	}
+
+}

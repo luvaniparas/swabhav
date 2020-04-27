@@ -1,0 +1,17 @@
+package Commandlinepackage;
+
+public class CommandLineTest {
+
+	public static void main(String args[]) {
+		// TODO Auto-generated method stub
+		//int s =0;
+		
+		for(int i = 0 ; i < args.length ; i++)
+		{
+		  System.out.println(i + " Argument is : " +args[i]);
+	     }
+		
+		
+	}
+
+}

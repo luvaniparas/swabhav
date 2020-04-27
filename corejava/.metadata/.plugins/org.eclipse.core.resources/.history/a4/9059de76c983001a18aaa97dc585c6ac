@@ -1,0 +1,11 @@
+package com.techlabs.game;
+
+public class GameTest {
+
+	public static void main(String[] args) {
+		 double a = Math.random()*10 ;
+		 System.out.println("Random number is : " +a);
+
+	}
+
+}

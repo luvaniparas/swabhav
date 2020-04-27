@@ -1,0 +1,17 @@
+package com.techlabs.game;
+import java.util.* ;
+public class GameTest {
+
+	public static void main(String[] args) {
+		 double a = Math.random()*10 ;
+		 System.out.println("Random number is : " +a);
+		 
+		 Scanner sc= new Scanner(System.in); 
+		 		 
+		 System.out.println("Guess a number");
+		 double g = sc.nextDouble();
+		 System.out.println("User input"+g);
+
+	}
+
+}

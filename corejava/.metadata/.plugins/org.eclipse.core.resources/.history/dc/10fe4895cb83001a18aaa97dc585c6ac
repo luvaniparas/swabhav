@@ -1,0 +1,35 @@
+package com.techlabs.game;
+import java.util.* ;
+public class GameTest {
+
+	public static void main(String[] args) {
+		 double a = Math.random()*10 ;
+		 System.out.println("Random number is : " +a);
+		 
+		 Scanner sc= new Scanner(System.in); 
+		 		 
+		 System.out.println("Guess a number");
+		 double g = sc.nextDouble();
+		 System.out.println("User input"+g);
+		 int i=0;
+		 while(i > 9)
+		 {
+		 if(a>g) {
+			 System.out.println("Guess is low");
+		 }
+		 
+		 else if(a<g) {
+			 System.out.println("Guess is High");
+		 }
+		 
+		 else if(a == g)
+		 {
+			System.out.println("Congratualtions you have guessed right number :" + g); 
+			break ;
+		    }
+		 i++ ;
+	     } 
+	}
+		 
+
+}
