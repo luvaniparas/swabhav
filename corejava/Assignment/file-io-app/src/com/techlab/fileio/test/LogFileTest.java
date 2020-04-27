@@ -43,8 +43,9 @@ public class LogFileTest {
 		}
 		System.out.println(str);
 		while (sc.hasNext()) {
-			if (isfound == sc.next().contains(str)) {
-				System.out.println(sc.nextLine());
+			String line = sc.nextLine();
+			if (isfound == line.contains(str)) {
+				System.out.println(line);
 			} else
 				continue;
 		}
