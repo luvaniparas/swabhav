@@ -14,8 +14,7 @@ public class FileReadingTest {
 		FileReadingTest cobj = new FileReadingTest();
 		File fobj = new File(
 				"C:\\swabhav\\corejava\\Assignment\\file-io-app\\src\\com\\techlab\\fileio\\test\\logTest_app.csv");
-		// FileWriter myWriter = new
-		// FileWriter("C:\\swabhav\\corejava\\Assignment\\file-io-app\\src\\com\\techlab\\fileio\\test\\logTest_app.csv");
+
 		try {
 			sc = new Scanner(fobj);
 			cobj.printLog(fobj);
@@ -32,24 +31,33 @@ public class FileReadingTest {
 			System.out.println("Can not Open file");
 			e.printStackTrace();
 		}
-		String str = "null" ;
-		Boolean blr = true ;
-		String replaceString ;
-		
+		String str = "null";
+		Boolean blr = true;
+		String replaceString;
+
 		while (sc.hasNext()) {
-			/*if (sc.nextLine().length() != 1) {
-				System.out.println(sc.next());
-			}*/
 			String line = sc.nextLine();
-			 if(line.contains(str) == blr ) {
-				replaceString=line.replace(str,"Unspecified");  
-				System.out.println(replaceString); 
+			
+			if (line.length() != 1) {
+				System.out.println(sc.next());
 			}
-			 else
-			 {
-				 System.out.println(line);	 
-			 }
+          
+			/*
+			
+			  if(line.contains(str) == blr ) {
+			  replaceString=line.replace(str,"Unspecified");
+			  System.out.println(replaceString); } else { System.out.println(line); }
+			 */
 		}
 		sc.close();
 	}
 }
+
+/*
+ * if (line.length() != 1) { System.out.println(sc.next()); }
+ */
+/*
+ * if(line.contains(str) == blr ) {
+ * replaceString=line.replace(str,"Unspecified");
+ * System.out.println(replaceString); } else { System.out.println(line); }
+ */
