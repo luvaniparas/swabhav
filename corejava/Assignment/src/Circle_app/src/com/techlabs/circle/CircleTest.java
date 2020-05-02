@@ -1,13 +1,13 @@
 package com.techlabs.circle;
 
-public class CircleAppTest {
+public class CircleTest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		CircleApp co = new CircleApp();
+		Circle co = new Circle();
 		co.getRadius();
 		co.getColor();
-		co.setRadius(0.0f);
+		co.setRadius(10.0f);
 		co.setColor("rEd");
 		co.calculateArea();
 		co.calculateParameter();

@@ -2,13 +2,14 @@ package com.techlabs;
 
 import java.util.Scanner;
 
-public class RangeEvenTest {
-
+public class CheckRangeInEvenTest {
+//CheckRangeInEvenTest
+//pass start & last number as input from commandline argument
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int s, l;
 		Scanner sc = new Scanner(System.in);
-		RangeEvenTest co = new RangeEvenTest();
+		CheckRangeInEvenTest co = new CheckRangeInEvenTest();
 		System.out.println("Enter Starting Number :");
 		s = sc.nextInt();
 		System.out.println("Enter last Number :");

@@ -1,6 +1,6 @@
 package com.techlabs.circle;
 
-public class CircleApp {
+public class Circle {
 
 	private float radius;
 	private String color;
@@ -9,7 +9,6 @@ public class CircleApp {
 	private String gstr = "gray";
 	private String prstr = "purple";
 	private String pnstr = "pink";
-	private boolean b = true;
 
 	public float getRadius() {
 		return radius;
@@ -18,6 +17,8 @@ public class CircleApp {
 	public void setRadius(float radius) {
 		if (radius <= 0.0f) {
 			this.radius = 1.0f;
+		} else {
+			this.radius = radius;
 		}
 	}
 
@@ -26,32 +27,33 @@ public class CircleApp {
 	}
 
 	public void setColor(String color) {
-		if (b == rstr.equalsIgnoreCase(color)) {
+		if (rstr.equalsIgnoreCase(color)) {
 			this.color = color;
-		} else if (b == gstr.equalsIgnoreCase(color)) {
+		} else if (gstr.equalsIgnoreCase(color)) {
 			this.color = color;
-		} else if (b == prstr.equalsIgnoreCase(color)) {
+		} else if (prstr.equalsIgnoreCase(color)) {
 			this.color = color;
 		}
 
-		else if (b == pnstr.equalsIgnoreCase(color)) {
+		else if (pnstr.equalsIgnoreCase(color)) {
 			this.color = color;
 		} else {
 			this.color = pnstr;
 		}
 
 	}
-
+//single if-else to perform logic mentioned in setcolor
+//	also try ternary operator :?  
 	public double calculateArea() {
-		float area = pi * radius * radius;
-		System.out.println("Area :" + area);
+		double area = pi * radius * radius;
+		//System.out.println("Area :" + area);
 		return area;
 
 	}
 
 	public double calculateParameter() {
-		float cf = 2 * pi * radius;
-		System.out.println("Parameter :" + cf);
+		double cf = 2 * pi * radius;
+		//System.out.println("Parameter :" + cf);
 		return cf;
 	}
 
