@@ -27,33 +27,25 @@ public class Circle {
 	}
 
 	public void setColor(String color) {
-		if (rstr.equalsIgnoreCase(color)) {
-			this.color = color;
-		} else if (gstr.equalsIgnoreCase(color)) {
-			this.color = color;
-		} else if (prstr.equalsIgnoreCase(color)) {
-			this.color = color;
-		}
-
-		else if (pnstr.equalsIgnoreCase(color)) {
+		if (rstr.equalsIgnoreCase(color) || gstr.equalsIgnoreCase(color) || prstr.equalsIgnoreCase(color)
+				|| pnstr.equalsIgnoreCase(color)) {
 			this.color = color;
 		} else {
 			this.color = pnstr;
 		}
 
 	}
-//single if-else to perform logic mentioned in setcolor
-//	also try ternary operator :?  
+  
 	public double calculateArea() {
 		double area = pi * radius * radius;
-		//System.out.println("Area :" + area);
+		// System.out.println("Area :" + area);
 		return area;
 
 	}
 
 	public double calculateParameter() {
 		double cf = 2 * pi * radius;
-		//System.out.println("Parameter :" + cf);
+		// System.out.println("Parameter :" + cf);
 		return cf;
 	}
 

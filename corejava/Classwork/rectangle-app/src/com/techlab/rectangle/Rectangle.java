@@ -4,7 +4,7 @@ public class Rectangle {
 
 		private float length ;
 		private float breadth ;
-		private String color ;
+		private String color  ;
 		private String rstr = "red";
 		private String gstr = "green";
 		private String bstr = "black";

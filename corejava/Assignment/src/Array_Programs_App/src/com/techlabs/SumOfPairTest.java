@@ -7,10 +7,10 @@ public class SumOfPairTest {
 		int arr[] = { 4, 6, 5, -10, 8, 5, 20 };
 		int add = 10;
 		SumOfPairTest co = new SumOfPairTest();
-		co.findPair(arr, add);
+		findPair(arr, add);
 	}
 
-	public void findPair(int arr[], int add) {
+	public static void findPair(int arr[], int add) {
 		int i, j;
 		int len = arr.length;
 		for (i = 0; i < (len / 2) + 1; i++) {
