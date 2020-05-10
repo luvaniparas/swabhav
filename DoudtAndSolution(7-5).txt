@@ -1,0 +1,11 @@
+CircleReferenceTest.java
+Advantage :Saves Heap memory  
+DrawBack :since every obj & reference variable pointing to same memory location changeing in one reflect other  
+
+CircleAnonymousObjectTest.java
+Advantage : Used only when obj is used for reading 	 
+DrawBack : no reference variable 
+
+CircleArrayOfObjectTest.java 
+Advantage : Saves Stack memory solves drawbacks of reference & anonymous obj  	
+DrawBack : we have to define the size of array (fixed length) so there is chance of memory wastage

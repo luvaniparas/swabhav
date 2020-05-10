@@ -5,6 +5,7 @@ public class Circle {
 	private float radius;
 	private String color;
 	final float pi = 3.14f;
+	private double area ;
 	private String rstr = "red";
 	private String gstr = "gray";
 	private String prstr = "purple";
@@ -37,7 +38,7 @@ public class Circle {
 	}
   
 	public double calculateArea() {
-		double area = pi * radius * radius;
+		 area = pi * radius * radius;
 		// System.out.println("Area :" + area);
 		return area;
 
