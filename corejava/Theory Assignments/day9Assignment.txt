@@ -1,0 +1,10 @@
+1)learn concept reflection & try eg
+->used to examine or modify the behavior of methods, classes, interfaces at runtime
+->Java Reflection makes it possible to inspect classes, interfaces, fields and methods at runtime, without knowing the names of the classes, methods etc. at compile time. It is also possible to instantiate new objects, invoke methods and get/set field values using reflection.
+->API -  application programming interface
+
+2)learn concept of wrapper classes try eg
+-> Creating Primitive data types to Objects 
+
+3) learn concept of boxing & unboxing & try one eg
+->

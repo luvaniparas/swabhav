@@ -24,11 +24,17 @@ public class CircleArrayOfObjectTest {
 		c[1] = c1;
 		c[2] = c2;
 		printInfo(c);
-		float smallArea = findSmallCirclearea(c);
-		System.out.println("Smallets Area is :" + smallArea);
-		float BigPerimeter = findBigPerimeter(c);
-		System.out.println("Biggest Perimeter is :" + BigPerimeter);
-		Circle findSmallArea();
+		/*
+		 * float smallArea = findSmallCirclearea(c);
+		 * System.out.println("Smallets Area is :" + smallArea); float BigPerimeter =
+		 * findBigPerimeter(c); System.out.println("Biggest Perimeter is :" +
+		 * BigPerimeter);
+		 */
+		Circle objSmallArea = findSmallCircleArea(c);
+		System.out.println("Smallest Circle area is :" + objSmallArea.calculateArea());
+	
+		Circle objBiggestPerimeter = biggestCirclePerimeter(c);
+		System.out.println("Biggest Circle Perimeter is :" +objBiggestPerimeter.calculateParameter());
 	}
 
 	public static void printInfo(Circle ci[]) {
@@ -42,45 +48,39 @@ public class CircleArrayOfObjectTest {
 
 	}
 
-	public static float findSmallCirclearea(Circle ci[]) {
+	/*
+	 * public static float findSmallCirclearea(Circle ci[]) { float result = (float)
+	 * ci[0].calculateArea(); for (int i = 0; i < ci.length; i++) { if
+	 * (ci[i].calculateArea() < result) { result = (float) ci[i].calculateArea(); }
+	 * } return result; }
+	 * 
+	 * public static float findBigPerimeter(Circle ci[]) { float result = (float)
+	 * ci[0].calculateParameter(); for (int i = 0; i < ci.length; i++) { if
+	 * (ci[i].calculateParameter() > result) { result = (float)
+	 * ci[i].calculateParameter(); } } return result; }
+	 */
+
+	public static Circle findSmallCircleArea(Circle ci[]) {
+		Circle obj = ci[0];
 		float result = (float) ci[0].calculateArea();
-		for (int i = 0; i < ci.length; i++) {
-			if (ci[i].calculateArea() < result) {
+		for (int i = 1; i < ci.length; i++) {
+			if (result > ci[i].calculateArea()) {
 				result = (float) ci[i].calculateArea();
+				obj = ci[i];
 			}
 		}
-		return result;
-	}
-	public static Circle findSmallArea(Circle data[]) {
-		Circle r = new Circle();
-		r.setRadius(data[0].getRadius());
-		for(int i=0;i<data.length;i++) {
-			if(data[i].calculateArea()<r.calculateArea())
-			{
-				r.setRadius(data[i].getRadius());
-			}
-		}
-		return r;
-	}
-	public static float findBigPerimeter(Circle ci[]) {
-		float result = (float) ci[0].calculateParameter();
-		for (int i = 0; i < ci.length; i++) {
-			if (ci[i].calculateParameter() > result) {
-				result = (float) ci[i].calculateParameter();
-			}
-		}
-		return result;
+		return obj;
 	}
 
-	public static Circle findSmallPerimeter(Circle data[]) {
-		Circle r = new Circle();
-		r.setRadius(data[0].getRadius());
-		for(int i=0;i<data.length;i++) {
-			if(data[i].calculateArea()<r.calculateArea())
-			{
-				r.setRadius(data[i].getRadius());
+	public static Circle biggestCirclePerimeter(Circle ci[]) {
+		Circle obj = ci[0];
+		float result = (float) ci[0].calculateParameter();
+		for (int i = 1; i < ci.length; i++) {
+			if (result < ci[i].calculateParameter()) {
+				result = (float) ci[i].calculateParameter();
+				obj = ci[i];
 			}
 		}
-		return r;
+		return obj;
 	}
 }

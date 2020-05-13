@@ -1,0 +1,42 @@
+1. What is this keyword in java ? What is the purpose of using it?
+->This is a reference keyword , referes to the current object 
+
+2. Is it possible to use this keyword inside constructor for assigning local variables to instance variables?
+->public class Point {
+    public int x = 0;
+    public int y = 0;
+        
+    //constructor
+    public Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+}
+	
+3. Learn about concept of constructor overloading & try 1 example on it.
+->Eclipse Program (Demo_>theoryProgram->Rectangle.java)
+
+4. What is constructor chaining ? How to use it in a program?
+->Eclipse Program (Demo_>theoryProgram->ConstructorChanningDemo.java)
+
+5. Find out difference between for loop and for-each loop.
+->does not allow to modify the list. ...
+->you don't know the index of the element. ...
+->efficient in all cases because uses Iterator specific for the collection. ...
+->works not only with every Collection , but with every Iterable since Iterable#iterator() is used. ...
+->more robust (less code, fewer special characters)
+
+6. How to check that encapsulation concept property has been violated in our program ? 
+->(I)No Global variables are accepted
+
+7. What are static keyword used with main method ?
+-> public static void
+
+8. How memory has been assigned if you are dealing with static keyword ?
+->Static methods (in fact all methods) as well as static variables are stored in the PermGen section of the heap, since they are part of the reflection data (class related data, not instance related). ... Those objects (unless they are internal objects like classes etc.) are not stored in PermGen space.
+
+9. What are static blocks and static methods in java ?
+->static blocks are executed only one time, as soon as the class is loaded into memory. static blocks are executed before the main() method by JavaClass loader. A class can have multiple Static blocks, which will execute in the same sequence in which they have been written into the program
+
+10.Learn about concept of Enumerator in java and try 1 example of it.
+->

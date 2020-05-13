@@ -5,4 +5,10 @@
 <fullyQualifiedTypeName name="com.techlabs.circle.Circle"/>
 <fullyQualifiedTypeName name="java.util.Arrays"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="com.techlabs.Account.Account"/>
+<fullyQualifiedTypeName name="java.util.Random"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="java.lang.reflect.Constructor"/>
+<fullyQualifiedTypeName name="java.lang.reflect.Method"/>
+<fullyQualifiedTypeName name="com.techlabs.player.test.PlayerTest"/>
 </qualifiedTypeNameHistroy>

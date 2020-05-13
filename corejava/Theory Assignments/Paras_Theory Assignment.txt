@@ -1,0 +1,31 @@
+1)Difference between object and reference
+->The objects are created in the heap area and, the reference obj just points out to the object of the  class in the heap, i.e. it just holds the memory address of the object (in the heap)
+
+2)What is an anonymous object 
+->object which has no reference is known as an anonymous object
+eg. new car();
+
+3)How it is different from normal object 
+-> anonymous object is used only when object is used once 
+    automatically cleared by garbage collection  
+
+4)Is it possible to reassign value to an reference variable
+->
+
+5)Learn about array of object 
+
+6)When data gets stored in stack 
+->Primitive data types, methods 
+
+7)How heap is different from stack 
+->Stack is used for static memory allocation and Heap for dynamic memory allocation
+
+8)How memory management has been performed in java 
+-> Java uses an automatic memory management system called a garbage collector.
+
+9)How garbage collector does memory allocation?
+->Garbage collector deletes garbage(unreacheable objects) & free up spaces for objects to allocate  
+
+10)Is it possible to reallocate or deallocate memory manually in java 
+->
+11)Learn about the concept of reflection
