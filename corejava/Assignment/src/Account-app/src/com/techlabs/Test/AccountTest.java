@@ -17,7 +17,7 @@ public class AccountTest {
 		System.out.println("Balance : " + a.getBalance());
 
 		if (a.withdraw_Flag == true) {
-			System.out.println("Warning : Below 500 can not withdraw : " + a.getBalance());
+			System.out.println("Warning : " + a.getBalance());
 		}
 		if (a.transitionFlag == true) {
 			System.out.println("Transistion Performend : " + a.getBalance());

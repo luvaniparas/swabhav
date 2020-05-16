@@ -1,6 +1,5 @@
 package com.techlabs.Account;
 
-import java.util.Random;
 
 public class Account {
 	final static int MIN_BALANCE = 500;
@@ -21,8 +20,10 @@ public class Account {
 	}
 
 	public static String setAccno() {
-		Random r = new Random();
-		return String.format("%04d", r.nextInt(10000));
+		double num = Math.random()*10000 ;
+		int i = (int) num;
+		return  String.valueOf(i);
+		
 	}
 
 	public String getAccno() {
