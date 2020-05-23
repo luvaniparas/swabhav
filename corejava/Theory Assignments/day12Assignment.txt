@@ -1,0 +1,21 @@
+1)when to use overiding concepts...only a class can get override??
+->override : when we want to perform diff. tasks for diff. models
+->Only methods can get override 
+
+2)can we override one method multiple types(inside child)
+->No, that does not work. You cannot change the method signature when overriding methods (except narrowing the return type and exceptions)
+
+3)what is the need of hascode() 
+->HashMap and HashSet use the hashcode value of an object to find out how the object would be stored in the collection, and subsequently hashcode is used to help locate the object in the collection.
+
+4)difference between hashcode() and equals()?
+->hashCode() returns a hash of the object in an arbitrary manner. The value returned will always be unique as long as the method is not overridden in some way. If . equals() returns true, the hash code should be the same
+
+5)wat will happen when we override hashcode() without overriding equals()
+->You must override hashCode() in every class that overrides equals(). Failure to do so will result in a violation of the general contract for Object. hashCode(), which will prevent your class from functioning properly in conjunction with all hash-based collections, including HashMap, HashSet, and Hashtable.
+
+6)when we override equals() without overriding hashcode() ...wat will happen?
+->
+
+7)if we want to maintain unique value of object
+->
