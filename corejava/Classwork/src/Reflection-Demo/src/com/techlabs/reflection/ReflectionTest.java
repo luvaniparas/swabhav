@@ -26,7 +26,7 @@ public class ReflectionTest {
 	}
 
 	public static void printPrivateMember(Class c) {
-		Field [] field= Class<Person>c.getClass().getDeclaredFields();
+		Field [] field= c.getClass().getDeclaredFields();
 		
 		for(Field f : field) {
 			if(Modifier.isPrivate(f.getModifiers())) {

@@ -19,7 +19,7 @@ public class AnnotationTest {
 
 	public static void countCase(Foo at)
 			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-		int pass = 0, fail = 0, count = 0;
+		int pass = 0, fail = 0;
 		;
 		Method[] methods = at.getClass().getMethods();
 		for (Method m : methods) {
@@ -27,14 +27,14 @@ public class AnnotationTest {
 				boolean result = (boolean) m.invoke(at, null);
 				if (result == true) {
 					pass++;
-					count++;
+
 				} else {
 					fail++;
-					count++;
+
 				}
 			}
 		}
-		System.out.println("Annotation count : " + count);
+		System.out.println("Annotation count : " + (pass + fail));
 		System.out.println("Passing : " + pass);
 		System.out.println("Failing : " + fail);
 	}

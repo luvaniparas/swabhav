@@ -1,4 +1,4 @@
-package com.techlabs.Account;
+package com.techlab.Account;
 
 
 public class Account {

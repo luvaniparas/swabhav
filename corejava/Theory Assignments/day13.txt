@@ -1,0 +1,39 @@
+1)what are interfaces
+->An interface is a reference type 
+->collection of abstract methods
+ 
+2)where can be use them,
+->It is used to achieve total abstraction.
+->To achieve multiple inheritance 
+
+3)why it is important to use intefaced
+
+
+4)difference between interface and abstract class
+->Abstract class	Interface
+-> abstract and non-abstract methods / abstract methods & static methods 
+-> doesn't support multiple inheritance / supports multiple inheritance.
+->have final, non-final, static and non-static variables / has only static and final variables.
+-> can provide the implementation of interface / can't provide the implementation of abstract class.
+
+5)interfaces have IS-A or has-A relation
+->Java Interface also represents the IS-A relationship.
+
+6)can one interface extends other ?
+->Yes 
+->Example
+public interface Football extends Sports {
+   public void homeTeamScored(int points);
+   public void visitingTeamScored(int points);
+   public void endOfQuarter(int quarter);
+}
+
+7)diff between IS-A and HAS-A relation
+->An IS-A relationship is inheritances / HAS - A relationship is composition
+
+8)wat is loosely coupled and tightly couple methodology
+->Loose coupling means reducing the dependencies of a class that uses the different classes directly. 
+->Tight coupling means classes and objects are dependent on one another
+
+9)intefaces are falling under which category (loosely-coupled and tightly couple)
+-> loosely coupled 

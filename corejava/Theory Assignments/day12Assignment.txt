@@ -19,3 +19,5 @@
 
 7)if we want to maintain unique value of object
 ->
+
+Note: Equal objects must produce the same hash code as long as they are equal, however unequal objects need not produce distinct hash codes.

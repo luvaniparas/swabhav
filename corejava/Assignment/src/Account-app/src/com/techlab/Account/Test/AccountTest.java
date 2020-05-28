@@ -1,6 +1,5 @@
-package com.techlabs.Test;
-
-import com.techlabs.Account.Account;
+package com.techlab.Account.Test;
+import com.techlab.Account.Account;
 
 public class AccountTest {
 
