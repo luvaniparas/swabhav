@@ -6,6 +6,7 @@ public abstract class Employee {
 	private double grossSalary;
 	protected float basicPay;
 	protected double salary;
+	protected double gsalary ;
 	
 	public Employee(int id, String name, float basicPay) {
 		this.id = id;

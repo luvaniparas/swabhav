@@ -9,7 +9,7 @@ import com.techlab.organization.Manager;
 
 public class OrganizationTest {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IllegalArgumentException, IllegalAccessException {
 		double salary;
 		Employee dObj = new Developer(101, "Developer", 10000f);
 		Employee aObj = new Analayst(102, "Analayst", 10000f);
@@ -41,13 +41,12 @@ public class OrganizationTest {
 		System.out.println("BasicSalary : " + obj.getBasicPay());
 	}
 
-	public static void getPrivateField(Employee obj) {
+	public static void getPrivateField(Employee obj) throws IllegalArgumentException, IllegalAccessException {
 		Field fields[] = obj.getClass().getDeclaredFields();
 
 		for (Field f : fields) {
-			if (Modifier.isPrivate(f.getModifiers())) {
-				System.out.println(f.getName() + " : "/*+f.getDouble(obj) +f.getDouble(f)*/);
-			}
+			f.setAccessible(true);
+			System.out.println(f.getName() + " : "+f.getDouble(obj));
 		}
 	}
 }

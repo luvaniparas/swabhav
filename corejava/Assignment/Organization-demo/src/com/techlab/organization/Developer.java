@@ -1,8 +1,8 @@
 package com.techlab.organization;
 
 public class Developer extends Employee {
-	private double bonus = 30 ;
-	double gsalary ;
+	private double bonus = 30.0 ;
+	
 	
 	public Developer(int id, String name, float basicPay) {
 		super(id, name,basicPay);

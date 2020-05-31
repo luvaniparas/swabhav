@@ -7,7 +7,7 @@
 ->To achieve multiple inheritance 
 
 3)why it is important to use intefaced
-
+->so that we can inherit/implement multiple classes
 
 4)difference between interface and abstract class
 ->Abstract class	Interface
