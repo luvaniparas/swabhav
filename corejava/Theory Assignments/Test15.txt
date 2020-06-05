@@ -1,0 +1,84 @@
+1.what is difference between inheritance and polymorphism
+->Inheritance is creating class that derives the features from an existing class (Parent class to Child Class) 
+->Polymorphism is an interface that can defined multiple form (Taking more than one form)
+
+2. how will you decide for which kind of application you will use inheritance or polymorphism
+->Use inheritance when u want to extend the properties of parent class
+->use polymorphism when  same function needs to perform diff. tasks
+
+3. wat do you understand by abstraction how it can be used in program
+->Data Abstraction is the property by which only the essential details are displayed to the user.
+
+4. how can be implement abstraction in our program
+->abstract classes and interfaces 
+
+5. why its important to use abstraction...wat will hapeen if we dont use it in our program
+->to hide the program complexity from the user & increment the efficiency of program 
+
+6. how you re going to decide whether you have to use abstract class or inteface
+->Use abstract class when there is abstract methods as well as non-abstract methods
+->Use Interface to share method signature 
+
+7. list down any 4 diff between abstract class and interface
+->Abstarct / Interface 
+-> abstract and non-abstract methods / only abstract methods
+->doesn't support multiple inheritance / support multiple inheritance
+->can have final, non-final, static and non-static variables / static & final keyword
+-> can provide the implementation of interface / can't provide the implementation of abstract class
+
+8. why its important to learn about 4 pillars of oop ..list down any 4 benefit of each
+->encapsulation, abstraction, inheritance, and polymorphism
+->Encapsulation for binding data members & methods into single unit 
+->Abstraction to hide program complexity from user
+->Inheritance to extend properties of parent class to child class 
+->Ploymorphism to take more than one form
+
+
+9. diff between this,static,ffinal and super keyword
+-> this is used to call Instance Variable 
+-> static is used to define data member 
+->final is used to define constant 
+->super is used to call super class data members & functions
+
+10. diff between method overloading and overriding 
+->Method Overloading : same method name with same parameters
+->Method Overriding : same method name with diff. paramters 
+
+11. diff between static block and constructor
+->Constructor : implict call / runtime / executes everytime at object creation
+->Static block : loads before main / compile time / executes only once
+
+12. why to use static block if we can directly define static var
+->Static block is used for initializing the static variables
+
+13. difference between reflection and annotations
+->reflection is runtime modification
+->annotations instructs the compiler at compile time
+
+14. why should be use custom annotation in our application
+->so that programmer remembers unimplemented methods
+
+15. list down any  3use of this keyword
+-> this to call IV
+->Constructor Chainning
+->to call current object 
+
+16.  how can we access methods of granparent in child class ?
+->reference
+->super.methodName();
+
+17. diff between file handling and serialization
+->only primitive data types can be written into file IO
+-> serialization writes data into byte stream /Write Object 
+
+18. difference between boxing and typecasting
+->boxing : Primitive data type to object 
+->Typecasting : one primitive data type to another eg.(int to long)
+
+19 use of instanceof operator and why we say java is pass by value
+->instanceof operator to check the instance is of the class or not 
+->Java passes the copy of data (Pass By Value)
+
+20 .why string is called immutable and how memory is allocated in case of string and array
+-> Immutable means data can not modified 
+->String array memory is allocated in Heap

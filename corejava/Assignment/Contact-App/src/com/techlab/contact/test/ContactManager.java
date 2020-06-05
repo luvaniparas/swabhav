@@ -13,6 +13,7 @@ public class ContactManager extends Contact {
 	static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) throws ClassNotFoundException, IOException {
+
 		Contact obj[] = new Contact[5];
 
 		Contact obj1 = new Contact("user", "1", 1, "user1@gmail.com");
@@ -83,7 +84,7 @@ public class ContactManager extends Contact {
 				Contact modified = printInfo();
 				obj[4] = modified;
 				SerializingContacts(obj);
-			} 
+			}
 
 		}
 		in.close();
@@ -133,7 +134,7 @@ public class ContactManager extends Contact {
 			}
 		}
 		in.close();
-		
+
 		SerializingContacts(obj);
 	}
 

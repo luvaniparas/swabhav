@@ -32,22 +32,6 @@ public class Contact implements Serializable {
 		return emailId;
 	}
 
-	public void setfName(String fName) {
-		this.fName = fName;
-	}
-
-	public void setlName(String lName) {
-		this.lName = lName;
-	}
-
-	public void setPhoneNo(long phoneNo) {
-		this.phoneNo = phoneNo;
-	}
-
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
-	}
-
 	@Override
 	public String toString() {
 		return "Contact [fName=" + fName + ", lName=" + lName + ", phoneNo=" + phoneNo + ", emailId=" + emailId + "]";
