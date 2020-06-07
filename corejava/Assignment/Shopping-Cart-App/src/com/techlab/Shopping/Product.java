@@ -1,19 +1,22 @@
 package com.techlab.Shopping;
 
-public class Product {
-	private int id, prodid, discount, unitprice;
-	private String prodname;
+import java.io.Serializable;
+import java.util.ArrayList;
 
-	public Product(int id, int prodid, int discount, int unitprice, String prodname) {
-		this.id = id;
+public class Product implements Serializable {
+	private int prodid, discount, unitPrice;
+	private String prodName;
+	static private int totalCost = 0 ;
+	
+	//No parameter Constructor for Object Creation
+	public Product() {}
+	
+	public Product(int prodid, int discount, int unitPrice, String prodName) {
 		this.prodid = prodid;
 		this.discount = discount;
-		this.unitprice = unitprice;
-		this.prodname = prodname;
-	}
-
-	public int getId() {
-		return id;
+		this.unitPrice = unitPrice;
+		this.prodName = prodName;
+		totalCost += unitPrice -(discount % 100) ;
 	}
 
 	public int getProdid() {
@@ -25,17 +28,21 @@ public class Product {
 	}
 
 	public int getUnitprice() {
-		return unitprice;
+		return unitPrice;
 	}
 
+	public int getTotalCost() {
+		return totalCost;
+	}
+	
 	public String getProdname() {
-		return prodname;
+		return prodName;
 	}
 
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", prodid=" + prodid + ", discount=" + discount + ", unitprice=" + unitprice
-				+ ", prodname=" + prodname + "]";
+		return "Product [ prodid=" + prodid + ", discount=" + discount + ", unitprice=" + unitPrice + ", prodname="
+				+ prodName + "]";
 	}
 
 }
