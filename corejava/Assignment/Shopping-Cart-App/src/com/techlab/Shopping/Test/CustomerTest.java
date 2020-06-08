@@ -12,55 +12,52 @@ public class CustomerTest extends Customer {
 		super(custName, address);
 	}
 
-	public CustomerTest() {
-		super();
-	}
-
-	// Scanner
 	static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		boolean exit = false;
 
 		// Create Customer
-		System.out.println("Enter Customer Details : ");
+		System.out.println("Enter Customer Details -> ");
 		Customer c = getCustomerInfo();
 
 		do {
 			System.out.println(
-					"\nEnter 1.AddIntoCart\t\n2.SearchFromCart\t\n3.DeleteFromCart\t\n4.TotalCartCost\t\n5.Display\t\n6.Exit");
+					"\nEnter 1.AddIntoCart\t\n2.TotalCartCost\t\n3.SearchFromCart\t\n4.DeleteFromCart\t\n5.Display\t\n6.Exit");
 			int ch = sc.nextInt();
 
 			switch (ch) {
-			case 1:  
+			case 1:
 				addIntoCart(prdList);
 				map.put(c, prdList);
 				writeData(map);
-				System.out.println("Product Added -> "+prdList);
+				System.out.println("Product Added -> " + prdList);
 				break;
 
 			case 2:
-				int sId = getSid();
-				int index = searchFromCart(prdList,sId);
-				try {
-				if(index != -1) {
-					System.out.println(prdList.get(index));
-				}
-				}catch(Exception e) {
-					System.out.println("No data found");
-				}
-				
+				int total = totalCartCost(prdList);
+				System.out.println("Total Cart Cost = " + total + "₹");
 				break;
 
 			case 3:
-				int sid= getSid();
-				deleteFromCart(prdList,sid);
-				writeData(map);
+				int sId = getId();
+				int index = searchFromCart(prdList, sId);
+				try {
+					if (index != -1) {
+						System.out.println(prdList.get(index));
+					} else {
+						throw new NotFoundException("No data found ):");
+					}
+				} catch (NotFoundException e) {
+					System.out.println(e.getMessage());
+				}
 				break;
 
 			case 4:
-				int total = totalCartCost();
-				System.out.println("Total Cart Cost = " + total + "₹");
+				int sid = getId();
+				deleteFromCart(prdList, sid);
+				writeData(map);
+				readData(map);
 				break;
 
 			case 5:
@@ -79,44 +76,52 @@ public class CustomerTest extends Customer {
 
 	}
 
-	public static int getSid() {
-		System.out.println("Enter product-id to Search ");
-		int sId=sc.nextInt();
-		return sId ;
-	}
-	
-	public Product getProductInfo() {
-		System.out.println("Enter Product-Id");
-		int id = sc.nextInt();
-
-		System.out.println("Enter Product-Discount");
-		int discount = sc.nextInt();
-
-		System.out.println("Enter Product-unitPrice");
-		int unitPrice = sc.nextInt();
-
-		sc.nextLine();
-		System.out.println("Enter Product-Name");
+	public static String getName() {
+		System.out.println("Enter Name -> ");
 		String name = sc.nextLine();
+		return name;
+	}
+
+	public static int getId() {
+		sc.nextLine();
+		System.out.println("Enter Product-id -> ");
+		int Id = sc.nextInt();
+		return Id;
+	}
+
+	public Product getProductInfo() {
+		System.out.println("Enter Product Information -> ");
+
+		String name = getName();
+		name = validateString(name);
+		
+		int id = getId();
+		id =  validateInt(id) ;
+
+		System.out.println("Enter UnitPrice -> ");
+		int unitPrice = sc.nextInt();
+		unitPrice =  validateInt(unitPrice) ;
+
+		System.out.println("Enter Discount -> ");
+		int discount = sc.nextInt();
+		discount =  validateInt(discount) ;
+		discount = validateDiscount(discount) ;
 
 		return new Product(id, discount, unitPrice, name);
-		  
 	}
-	
+
 	public static Customer getCustomerInfo() {
-
-		System.out.println("Enter Name");
-		String custName = sc.nextLine();
-
-		System.out.println("Enter Address : ");
+		String custName = getName();
+		custName = validateString(custName);
+		
+		System.out.println("Enter Address -> ");
 		String custAddress = sc.nextLine();
-
+		custAddress = validateString(custName);
+		
 		Customer cObj = new Customer(custName, custAddress);
 		System.out.println(cObj);
 
 		return cObj;
 	}
-
-
 
 }

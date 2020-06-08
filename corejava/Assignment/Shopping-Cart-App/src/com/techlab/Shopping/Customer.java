@@ -8,13 +8,10 @@ import com.techlab.Shopping.Test.CustomerTest;
 
 public class Customer implements Serializable {
 	static Scanner sc = new Scanner(System.in);
-
 	private String custId, custName, address;
 	private LocalDate purchaseDate;
 	static String LID = "C-ID-";
 	static int RID = 1;
-
-	static CustomerTest cTestObj = new CustomerTest();
 
 	protected static ArrayList<Product> prdList = new ArrayList<Product>();
 	protected static HashMap<Customer, ArrayList<Product>> map = new HashMap();
@@ -26,16 +23,38 @@ public class Customer implements Serializable {
 		this.purchaseDate = LocalDate.now();
 	}
 
-	public Customer() {	}
-
 	public static String genrateCid() {
 		String id = LID + RID;
 		RID++;
 		return id;
 	}
 
+	public static String validateString(String s) {
+		String us = "UnSpecified";
+		if (s.isEmpty() == true) {
+			s = us;
+		}
+		return s;
+	}
+
+	public static int validateInt(int n) {
+		n = Math.abs(n);
+		return n;
+	}
+
+	public static int validateDiscount(int discount) {
+		int maxDiscount = 49;
+
+		if (discount > 49) {
+			discount = maxDiscount;
+		} else {
+			discount = discount;
+		}
+		return discount;
+	}
+
 	public static void addIntoCart(ArrayList<Product> prdList) throws IOException {
-		Product p = cTestObj.getProductInfo();
+		Product p = new CustomerTest(null, null).getProductInfo();
 		prdList.add(p);
 
 	}
@@ -58,12 +77,18 @@ public class Customer implements Serializable {
 		}
 	}
 
-	public static int totalCartCost() {
-		Product p = new Product();
-		int totalCost = p.getTotalCost();
-		return totalCost;
+	public static int totalCartCost(ArrayList<Product> prdList) {
+		int discount = 0, unitPrice = 0, totalCart = 0;
+		for (int i = 0; i < prdList.size(); i++) {
+			discount = prdList.get(i).getDiscount();
+			unitPrice = prdList.get(i).getUnitprice();
+			totalCart += unitPrice - (discount % 100);
+		}
+		return totalCart;
+
 	}
 
+	// Serialization
 	public static void writeData(HashMap<Customer, ArrayList<Product>> map) throws IOException {
 		File prd = new File("ProductData.txt");
 		FileOutputStream fos = new FileOutputStream(prd);
@@ -73,6 +98,7 @@ public class Customer implements Serializable {
 		fos.close();
 	}
 
+	// DeSerialization
 	public static void readData(HashMap<Customer, ArrayList<Product>> map) throws IOException, ClassNotFoundException {
 		File prd = new File("ProductData.txt");
 		FileInputStream fis = new FileInputStream(prd);
