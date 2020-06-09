@@ -49,7 +49,7 @@ public class CustomerTest extends Customer {
 						throw new NotFoundException("No data found ):");
 					}
 				} catch (NotFoundException e) {
-					System.out.println(e.getMessage());
+					System.err.println(e.getMessage());
 				}
 				break;
 

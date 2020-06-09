@@ -13,6 +13,7 @@ public class ContactTest extends MyContactManager {
 	public static void main(String[] args) throws ClassNotFoundException, IOException {
 		boolean exit = false;
 		String lName;
+		int index;
 
 		MyContact[] contactArray = new MyContact[2];
 
@@ -33,8 +34,16 @@ public class ContactTest extends MyContactManager {
 
 			case 3:
 				lName = getLname();
-				int index = searchContact(contactArray, lName);
-				System.out.println(contactArray[index]);
+				index = searchContact(contactArray, lName);
+				try {
+					if (index >= 0) {
+						System.out.println(contactArray[index]);
+					} else {
+						throw new NotFoundException("No data found ):");
+					}
+				} catch (NotFoundException e) {
+					System.err.println(e.getMessage());
+				}
 				break;
 
 			case 4:
@@ -67,14 +76,17 @@ public class ContactTest extends MyContactManager {
 
 	public static MyContact getContactInfo() {
 		System.out.println("Enter Contact Infromation -> ");
-		
+
 		String lName = getLname();
-		
+		lName = validateString(lName);
+
 		System.out.println("Enter First-Name -> ");
 		String fName = sc.nextLine();
+		fName = validateString(fName);
 
 		System.out.println("Enter Email-ID -> ");
 		String emailId = sc.nextLine();
+		emailId = validateString(emailId);
 
 		System.out.println("Enter PhoneNumber -> ");
 		long phNumber = sc.nextLong();

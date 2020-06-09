@@ -13,12 +13,27 @@ public class MyContactManager {
 	static int i = 0;
 	static ContactTest ctObj = new ContactTest();
 
+	public static String validateString(String s) {
+		String us = "UnSpecified";
+		if (s.isEmpty() == true) {
+			s = us;
+		}
+		return s;
+	}
+
 	// case1
 	public static void addContact(MyContact[] contactArray) throws IOException {
 		while (i < contactArray.length) {
 			contactArray[i] = ctObj.getContactInfo();
 			i++;
 		}
+		SerializingContacts(contactArray);
+	}
+
+	// case2
+	public static void modifyContact(MyContact[] contactArray, String lName) throws IOException {
+		int index = searchContact(contactArray, lName);
+		contactArray[index] = ctObj.getContactInfo();
 		SerializingContacts(contactArray);
 	}
 
@@ -33,13 +48,7 @@ public class MyContactManager {
 		return index;
 	}
 
-	public static void modifyContact(MyContact[] contactArray, String lName) throws IOException {
-		int index = searchContact(contactArray, lName);
-		contactArray[index] = ctObj.getContactInfo() ;
-		SerializingContacts(contactArray);
-	}
-	
-	//case4
+	// case4
 	public static int deleteContact(MyContact[] contactArray, String lName) throws IOException {
 		int index = searchContact(contactArray, lName);
 		contactArray[index] = null;
@@ -52,6 +61,7 @@ public class MyContactManager {
 		deSerializingContacts(contactArray);
 	}
 
+	//Serialization
 	public static void SerializingContacts(MyContact contactArray[]) throws IOException {
 
 		File f = new File("MyContact.txt");
@@ -66,7 +76,8 @@ public class MyContactManager {
 		out.close();
 
 	}
-
+	
+	//DeSerialization
 	public static void deSerializingContacts(MyContact contactArray[]) throws IOException, ClassNotFoundException {
 
 		File f = new File("MyContact.txt");
