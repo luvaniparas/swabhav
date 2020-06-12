@@ -11,6 +11,7 @@ import com.techlab.accountSerializable.Account;
 public class AccountTest {
 
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
+
 		Account arr[] = new Account[5];
 
 		Account a1 = new Account("user1");
