@@ -23,6 +23,18 @@ public class Customer implements Serializable {
 		this.purchaseDate = LocalDate.now();
 	}
 
+	public String getCustName() {
+		return custName;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public ArrayList<Product> getPrdList() {
+		return prdList;
+	}
+
 	public static String genrateCid() {
 		String id = LID + RID;
 		RID++;
@@ -56,7 +68,6 @@ public class Customer implements Serializable {
 	public static void addIntoCart(ArrayList<Product> prdList) throws IOException {
 		Product p = new CustomerTest(null, null).getProductInfo();
 		prdList.add(p);
-
 	}
 
 	public static int searchFromCart(ArrayList<Product> prdList, int sId) throws ClassNotFoundException, IOException {
@@ -113,6 +124,31 @@ public class Customer implements Serializable {
 	public String toString() {
 		return "Customer [custId=" + custId + ", custName=" + custName + ", address=" + address + ", purchaseDate="
 				+ purchaseDate + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((custName == null) ? 0 : custName.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Customer other = (Customer) obj;
+		if (custName == null) {
+			if (other.custName != null)
+				return false;
+		} else if (!custName.equals(other.custName))
+			return false;
+		return true;
 	}
 
 }

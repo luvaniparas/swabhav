@@ -92,32 +92,33 @@ public class CustomerTest extends Customer {
 	public Product getProductInfo() {
 		System.out.println("Enter Product Information -> ");
 
-		String name = getName();
-		name = validateString(name);
-		
 		int id = getId();
-		id =  validateInt(id) ;
+		id = validateInt(id);
+
+		sc.nextLine();
+		String prdName = getName();
+		prdName = validateString(prdName);
 
 		System.out.println("Enter UnitPrice -> ");
 		int unitPrice = sc.nextInt();
-		unitPrice =  validateInt(unitPrice) ;
+		unitPrice = validateInt(unitPrice);
 
 		System.out.println("Enter Discount -> ");
 		int discount = sc.nextInt();
-		discount =  validateInt(discount) ;
-		discount = validateDiscount(discount) ;
+		discount = validateInt(discount);
+		discount = validateDiscount(discount);
 
-		return new Product(id, discount, unitPrice, name);
+		return new Product(id, discount, unitPrice, prdName);
 	}
 
 	public static Customer getCustomerInfo() {
 		String custName = getName();
 		custName = validateString(custName);
-		
+
 		System.out.println("Enter Address -> ");
 		String custAddress = sc.nextLine();
-		custAddress = validateString(custName);
-		
+		custAddress = validateString(custAddress);
+
 		Customer cObj = new Customer(custName, custAddress);
 		System.out.println(cObj);
 

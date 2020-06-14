@@ -15,8 +15,6 @@ public class ContactTest extends MyContactManager {
 		String lName;
 		int index;
 
-		MyContact[] contactArray = new MyContact[2];
-
 		do {
 			System.out.println(
 					"Enter -> \n1.AddContact \n2.ModifyContact \n3.SearchContact \n4.DeleteContact \n5.DisplayContact \n6.Exit");

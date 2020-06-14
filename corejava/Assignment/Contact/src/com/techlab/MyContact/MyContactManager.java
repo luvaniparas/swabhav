@@ -13,6 +13,16 @@ public class MyContactManager {
 	static int i = 0;
 	static ContactTest ctObj = new ContactTest();
 
+	protected static MyContact[] contactArray = new MyContact[2];
+
+	public static MyContact[] getContactArray() {
+		return contactArray;
+	}
+
+	public static void setContactArray(MyContact[] contactArray) {
+		MyContactManager.contactArray = contactArray;
+	}
+
 	public static String validateString(String s) {
 		String us = "UnSpecified";
 		if (s.isEmpty() == true) {
@@ -61,7 +71,7 @@ public class MyContactManager {
 		deSerializingContacts(contactArray);
 	}
 
-	//Serialization
+	// Serialization
 	public static void SerializingContacts(MyContact contactArray[]) throws IOException {
 
 		File f = new File("MyContact.txt");
@@ -76,8 +86,8 @@ public class MyContactManager {
 		out.close();
 
 	}
-	
-	//DeSerialization
+
+	// DeSerialization
 	public static void deSerializingContacts(MyContact contactArray[]) throws IOException, ClassNotFoundException {
 
 		File f = new File("MyContact.txt");
@@ -91,4 +101,5 @@ public class MyContactManager {
 		in.close();
 
 	}
+
 }
