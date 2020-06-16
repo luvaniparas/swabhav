@@ -1,16 +1,14 @@
+package com.techlab.product.test;
 
-package com.techlab.Shopping.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
-import com.techlab.Shopping.Customer;
-import com.techlab.Shopping.Product;
+import com.techlab.product.Customer;
+import com.techlab.product.Product;
 
 class CustomerJUnitTest {
 
@@ -75,3 +73,4 @@ class CustomerJUnitTest {
 	}
 
 }
+
