@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import com.techlab.shopping.LineItem;
 import com.techlab.shopping.Product;
 
-class LineItemJUnit {
+class liJUnit {
 
 	LineItem li = new LineItem(101);
 
@@ -25,13 +25,13 @@ class LineItemJUnit {
 		p1.setProductQuantity(1);
 		p2.setProductQuantity(5);
 
-		LineItem.pList.add(p1);
+		li.pList.add(p1);
 
 		expectedpList.add(p2);
 
-		LineItem.addIntoCart(p2, 5);
+		li.addIntoCart(p2, 5);
 
-		assertEquals(expectedpList, li.getpList());
+		assertEquals(expectedpList, li.pList);
 
 	}
 
@@ -40,12 +40,12 @@ class LineItemJUnit {
 		p1.setProductQuantity(2);
 		p3.setProductQuantity(1);
 
-		LineItem.pList.add(p1);
-		LineItem.pList.add(p3);
+		li.pList.add(p1);
+		li.pList.add(p3);
 
 		int expectedTotalCart = 270;
 
-		int totalCart = LineItem.totalCartCost(LineItem.pList);
+		int totalCart = li.totalCartCost();
 
 		assertEquals(expectedTotalCart, totalCart);
 
@@ -56,12 +56,12 @@ class LineItemJUnit {
 		p1.setProductQuantity(2);
 		p3.setProductQuantity(1);
 
-		LineItem.pList.add(p1);
-		LineItem.pList.add(p3);
+		li.pList.add(p1);
+		li.pList.add(p3);
 
 		int expectedIndex = 1;
 
-		int index = LineItem.searchFromCart(103);
+		int index = li.searchFromCart(103);
 
 		assertEquals(expectedIndex, index);
 
@@ -72,14 +72,14 @@ class LineItemJUnit {
 		p1.setProductQuantity(2);
 		p3.setProductQuantity(1);
 
-		LineItem.pList.add(p1);
-		LineItem.pList.add(p3);
+		li.pList.add(p1);
+		li.pList.add(p3);
 
 		expectedpList.add(p2);
 
-		LineItem.deleteFromCart(103);
+		li.deleteFromCart(103);
 
-		assertEquals(expectedpList, li.getpList());
+		assertEquals(expectedpList, li.pList);
 
 	}
 
@@ -88,12 +88,12 @@ class LineItemJUnit {
 		p1.setProductQuantity(2);
 		p3.setProductQuantity(1);
 
-		LineItem.pList.add(p1);
-		LineItem.pList.add(p3);
+		li.pList.add(p1);
+		li.pList.add(p3);
 
 		int expectedCount = 2;
 
-		int count = LineItem.countProduct();
+		int count = li.countProduct();
 
 		assertEquals(expectedCount, count);
 	}

@@ -9,14 +9,11 @@ public class Order implements Serializable {
 	private int orderId;
 	private LocalDate orderDate;
 	private LineItem li;
-	private int totalCart = 0, productCount = 0;
 
 	public Order(int orderId, LineItem li) throws ParseException {
 		this.orderId = orderId;
 		this.orderDate = java.time.LocalDate.now();
 		this.li = li;
-		this.totalCart = LineItem.totalCartCost(LineItem.pList);
-		this.productCount = LineItem.countProduct();
 	}
 
 	public int getOrderId() {
@@ -55,8 +52,15 @@ public class Order implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Order => OrderId = " + orderId + ", OrderDate = " + orderDate + ", ProductsCount = " + productCount
-				+ ", TotalCart = " + totalCart + "\n" + li;
+		String result = "";
+		result += "Order => OrderId = " + orderId + ", OrderDate = " + orderDate + "\n";
+
+		if (li == null) {
+			result += "No LineItem ): ";
+		} else {
+			result += li.toString();
+		}
+		return result;
 	}
 
 }

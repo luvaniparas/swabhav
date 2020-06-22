@@ -7,11 +7,10 @@ import java.util.LinkedList;
 public class LineItem implements Serializable {
 
 	private int cartId;
-	public static LinkedList<Product> pList;
+	public LinkedList<Product> pList;
 
 	public LineItem(int cartId) {
 		this.cartId = cartId;
-		// LinkedList<Product> pList = new LinkedList<Product>();
 		this.pList = new LinkedList<Product>();
 	}
 
@@ -19,11 +18,7 @@ public class LineItem implements Serializable {
 		return cartId;
 	}
 
-	public static LinkedList<Product> getpList() {
-		return pList;
-	}
-
-	public static void addIntoCart(Product p, int productQuantity) {
+	public void addIntoCart(Product p, int productQuantity) {
 		boolean productAdded = false;
 
 		for (int i = 0; i < pList.size(); i++) {
@@ -40,7 +35,7 @@ public class LineItem implements Serializable {
 
 	}
 
-	public static int totalCartCost(LinkedList<Product> pList) {
+	public int totalCartCost() {
 		int discount = 0, unitPrice = 0, totalCart = 0, quantity = 0;
 		for (int i = 0; i < pList.size(); i++) {
 			discount = pList.get(i).getProductDiscount();
@@ -52,31 +47,30 @@ public class LineItem implements Serializable {
 
 	}
 
-	public static int searchFromCart(int sId) throws ClassNotFoundException, IOException {
+	public int searchFromCart(int sId) throws ClassNotFoundException, IOException {
 		int x = -1;
-		for (int i = 0; i < getpList().size(); i++) {
-			int iId = getpList().get(i).getProductId();
-			if (iId == sId) {
+		for (int i = 0; i < pList.size(); i++) {
+			if (pList.get(i).getProductId() == sId) {
 				x = i;
 			}
 		}
 		return x;
 	}
 
-	public static void deleteFromCart(int sId) throws ClassNotFoundException, IOException {
+	public void deleteFromCart(int sId) throws ClassNotFoundException, IOException {
 		int index = searchFromCart(sId);
 		if (index != -1) {
 			pList.remove(index);
 		}
 	}
 
-	public static void displayCart() {
+	public void displayCart() {
 		for (Object o : pList) {
 			System.out.println(o);
 		}
 	}
 
-	public static int countProduct() {
+	public int countProduct() {
 		return pList.size();
 	}
 
@@ -86,8 +80,14 @@ public class LineItem implements Serializable {
 
 		result += "LineItem => CartId = " + cartId + "\nProductList =>";
 
-		for (Product p : pList) {
-			result +="\n"+ p.toString();
+		if (pList.isEmpty()) {
+			result += "Empty Product List ): ";
+		} else {
+			for (Product p : pList) {
+				result += "\n" + p.toString();
+			}
+			result += "\nTotal Cart Cost = " + this.totalCartCost();
+			result += "\nProducts Quantity = " + this.countProduct();
 		}
 
 		return result;
