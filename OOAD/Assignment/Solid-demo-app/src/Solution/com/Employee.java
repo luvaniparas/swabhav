@@ -21,6 +21,10 @@ public class Employee {
 		return eSalary;
 	}
 
+	public void seteSalary(int eSalary) {
+		this.eSalary = eSalary;
+	}
+
 	public String geteName() {
 		return eName;
 	}
@@ -37,20 +41,10 @@ public class Employee {
 		return presentDays;
 	}
 
-	public void calculateSalary() {
-		eSalary = DAILYWAGE * presentDays;
-	}
-
 	@Override
 	public String toString() {
 		return "Employee [EmployeeID = " + eId + ", EmployeeName=" + eName + ", EmployeeSalary=" + eSalary
 				+ ", EmployeeBonus" + eBonus + "]";
 	}
 
-}
-
-class EmployeeBonus {
-	public void employeeBonus(Employee e) {
-		e.seteBonus((int) (e.geteSalary() + (0.1 * e.geteSalary())));
-	}
 }

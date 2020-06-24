@@ -18,7 +18,7 @@ public class ShoppingCartTest {
 		li1.addIntoCart(new Product(101, "T-Shirt", 100, 10), 1);
 		li1.addIntoCart(new Product(102, "Mobile", 100, 10), 1);
 		li1.addIntoCart(new Product(103, "Earphone", 100, 10), 1);
-		li1.addIntoCart(new Product(103, "Earphone", 100, 10), 1);
+		li1.addIntoCart(new Product(103, "Earphone", 100, 10), 2);
 
 		Order o1 = new Order(01, li1);
 

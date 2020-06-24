@@ -41,13 +41,7 @@ public class Employee {
 	public void employeeBonus() {
 		eBonus = (int) (eSalary + (0.1 * eSalary));
 	}
-	
-	//Violates Open-Closed principle
-	
-	public void employeePayment() {
-		
-	}
-	
+
 	@Override
 	public String toString() {
 		return "Employee [EmployeeID = " + eId + ", EmployeeName=" + eName + ", EmployeeSalary=" + eSalary
