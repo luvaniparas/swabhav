@@ -2,13 +2,13 @@ package DIP.Solution;
 
 public class TaxCalculation {
 
-	private LogType log;
+	private ILogType log;
 
-	public TaxCalculation(LogType log) {
+	public TaxCalculation(ILogType log) {
 		this.log = log;
 	}
 
-	public LogType getLog() {
+	public ILogType getLog() {
 		return log;
 	}
 
@@ -18,13 +18,7 @@ public class TaxCalculation {
 			int r = amount / rate;
 			return r;
 		} catch (Exception e) {
-			if (this.getLog() == ILogType.txtlog) {
-				TxtLogger txtF = new TxtLogger();
-				txtF.log(e.getMessage());
-				return -1;
-			}
-			XmlLogger xm = new XmlLogger();
-			xm.log(e.getMessage());
+			this.log(e.getMessage()); 
 			return -1;
 		}
 
