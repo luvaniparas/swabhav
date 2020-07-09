@@ -18,7 +18,7 @@ public class TaxCalculation {
 			int r = amount / rate;
 			return r;
 		} catch (Exception e) {
-			this.log(e.getMessage()); 
+			this.log.log(e.getMessage());
 			return -1;
 		}
 

@@ -5,8 +5,9 @@ public class Player {
 	private String playerName;
 	private Mark mark;
 
-	public Player(String playerName) {
+	public Player(String playerName, Mark mark) {
 		this.playerName = playerName;
+		this.mark = mark;
 	}
 
 	public String getPlayerName() {
@@ -15,10 +16,6 @@ public class Player {
 
 	public Mark getMark() {
 		return mark;
-	}
-
-	public void setMark(Mark mark) {
-		this.mark = mark;
 	}
 
 }

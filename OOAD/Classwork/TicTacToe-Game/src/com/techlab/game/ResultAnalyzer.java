@@ -3,72 +3,111 @@ package com.techlab.game;
 public class ResultAnalyzer {
 
 	private Board board;
-
-	static Result result = Result.INPROGRESS;
-
-	public ResultAnalyzer() {
-
-	}
+	private Result result = Result.INPROGRESS;
 
 	public ResultAnalyzer(Board board) {
 		this.board = board;
 	}
 
-	public Result checkWinner() {
+	public String checkWinner() {
 
-		if (checkRow().equals(Result.WON)) {
-			return result;
-		}
+		if (board.isBoardFull())
+			return Result.DRAW.toString();
+		if (checkRow().equals(Result.WON))
+			return Result.WON.toString();
+		if (checkColumn().equals(Result.WON))
+			return Result.WON.toString();
+		if (checkDiagonal().equals(Result.WON))
+			return Result.WON.toString();
 
-		if (checkColumn().equals(Result.WON)) {
-			return result;
-		}
-		if (checkDiagonal().equals(Result.WON)) {
-			return result;
-		}
-
-		return result;
+		return result.toString();
 	}
 
 	public Result checkRow() {
 
-		for (int i = 0; i < Board.getBoard().length; i += 3) {
-			if (!Board.getBoard()[i].equals("-") && Board.getBoard()[i].equals(Board.getBoard()[i + 1])
-					&& Board.getBoard()[i].equals(Board.getBoard()[i + 2])) {
-				result = Result.WON;
-				break;
+		int j = 0, resultCount = 1;
+		Result result = Result.INPROGRESS;
+
+		for (int i = 1; i < board.getBoard().length; i++) {
+
+			if (!board.getBoard()[j].equals("-") && board.getBoard()[j].equals(board.getBoard()[i])) {
+
+				if (++resultCount == board.getSize()) {
+					result = Result.WON;
+					break;
+				}
 			} else {
-				return result;
+				i = j + board.getSize();
+				j = j + board.getSize();
+				result = Result.INPROGRESS;
 			}
 		}
-		return result;
 
+		return result;
 	}
 
 	public Result checkColumn() {
 
-		for (int i = 0; i < Board.getBoard().length; i++) {
-			if (!Board.getBoard()[i].equals("-") && Board.getBoard()[i].equals(Board.getBoard()[i + 3])
-					&& Board.getBoard()[i].equals(Board.getBoard()[i + 6])) {
-				result = Result.WON;
-				break;
+		int j = 0, resultCount = 1;
+		Result result = Result.INPROGRESS;
+
+		for (int i = board.getSize(); j < (board.getBoard().length / board.getSize()); i += board.getSize()) {
+
+			if (!board.getBoard()[j].equals("-") && board.getBoard()[j].equals(board.getBoard()[i])) {
+
+				if (++resultCount == board.getSize()) {
+					result = Result.WON;
+					break;
+				}
+
 			} else {
-				return result;
+
+				j++;
+				i = j;
+				result = Result.INPROGRESS;
+
 			}
 		}
+
 		return result;
 	}
 
 	public Result checkDiagonal() {
 
-		if (!Board.getBoard()[0].equals("-") && Board.getBoard()[0].equals(Board.getBoard()[4])
-				&& Board.getBoard()[0].equals(Board.getBoard()[8]))
-			result = Result.WON;
-		if (!Board.getBoard()[2].equals("-") && Board.getBoard()[2].equals(Board.getBoard()[4])
-				&& Board.getBoard()[2].equals(Board.getBoard()[6]))
-			result = Result.WON;
-		return Result.WON;
+		int j = 0, resultCount = 1;
+		boolean resultFound = false;
+		Result result = Result.INPROGRESS;
 
+		for (int i = (board.getSize() + 1); i < board.getBoard().length; i += (board.getSize() + 1)) {
+
+			if (!board.getBoard()[j].equals("-") && board.getBoard()[j].equals(board.getBoard()[i])) {
+				if (++resultCount == board.getSize()) {
+					result = Result.WON;
+					resultFound = true;
+					break;
+				}
+			} else {
+				resultCount = 1;
+				break;
+			}
+		}
+
+		j = board.getSize() - 1;
+
+		for (int i = board.getSize() + (board.getSize() / 2); i < board.getBoard().length - j; i += j) {
+
+			if (resultFound) {
+				break;
+			}
+			if (!board.getBoard()[j].equals("-") && board.getBoard()[j].equals(board.getBoard()[i])) {
+				if (++resultCount == board.getSize()) {
+					result = Result.WON;
+					break;
+				}
+			}
+		}
+
+		return result;
 	}
 
 }
