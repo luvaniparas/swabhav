@@ -8,7 +8,7 @@ public class GUITest {
 
 	public static void main(String[] args) {
 		Board board = new Board();
-		Game game = new Game(board, new ResultAnalyzer(board));
+		new Game(board, new ResultAnalyzer(board));
 	}
 
 }
