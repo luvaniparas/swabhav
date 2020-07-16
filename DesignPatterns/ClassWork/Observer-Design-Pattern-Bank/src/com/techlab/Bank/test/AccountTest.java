@@ -13,6 +13,7 @@ public class AccountTest {
 		a1.addListner(new EmailListner(a1));
 
 		a1.deposite(500);
+		a1.withdraw(100);
 	}
 
 }

@@ -8,6 +8,7 @@ public class Account {
 	private int accountNumber;
 	private String name;
 	private double balance;
+	private double amount;
 	private List<IListner> listners;
 	private boolean credited = false;
 	private boolean debited = false;
@@ -43,15 +44,21 @@ public class Account {
 		return debited;
 	}
 
-	public void deposite(double amt) {
-		balance += amt;
+	public void deposite(double amount) {
+		this.amount = amount;
+		balance += amount;
 		this.debited = true;
 		notifyListner();
 		this.debited = false;
 	}
 
-	public void withdraw(double amt) {
-		balance -= amt;
+	public double getAmount() {
+		return amount;
+	}
+
+	public void withdraw(double amount) {
+		this.amount = amount;
+		balance -= amount;
 		this.credited = true;
 		notifyListner();
 		this.credited = false;
