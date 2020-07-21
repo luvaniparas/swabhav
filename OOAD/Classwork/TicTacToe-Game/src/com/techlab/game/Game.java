@@ -2,12 +2,14 @@ package com.techlab.game;
 
 import java.util.ArrayList;
 
+import com.techlab.game.test.ConsoleGameTest;
+
 public class Game {
 
 	private ArrayList<Player> players = new ArrayList<Player>();
 	private Board board;
 	private ResultAnalyzer analyzeResult;
-	private int CURRENT_PLAYER = 0, NEXT_PLAYER = 1;
+	private int current_player = 0, next_player = 1;
 	private int flag = 0;
 
 	public Game(ArrayList<Player> players, Board board, ResultAnalyzer analyzeResult) {
@@ -21,37 +23,29 @@ public class Game {
 	}
 
 	public boolean play(int location) throws CellAlreadyOccupiedException, OutOfCellException {
-
-		try {
-
-			if (board.addMarkToCell(getCurrentPlayer().getMark(), location)) {
-				board.printBoard();
-				if (flag == 0) {
-					CURRENT_PLAYER++;
-					NEXT_PLAYER--;
-					flag++;
-				} else {
-					CURRENT_PLAYER--;
-					NEXT_PLAYER++;
-					flag--;
-				}
-				return true;
+		if (board.addMarkToCell(getCurrentPlayer().getMark(), location)) {
+			ConsoleGameTest.printBoard();
+			if (flag == 0) {
+				current_player++;
+				next_player--;
+				flag++;
+			} else {
+				current_player--;
+				next_player++;
+				flag--;
 			}
-		} catch (CellAlreadyOccupiedException e) {
-			System.out.println(e.getMessage());
-		} catch (OutOfCellException e) {
-			System.out.println(e.getMessage());
+			return true;
 		}
 		return false;
 
 	}
 
 	public Player getCurrentPlayer() {
-		return players.get(CURRENT_PLAYER);
+		return players.get(current_player);
 	}
 
 	public Player getNextPlayer() {
-		return players.get(NEXT_PLAYER);
+		return players.get(next_player);
 	}
 
 	public String getStatus() {

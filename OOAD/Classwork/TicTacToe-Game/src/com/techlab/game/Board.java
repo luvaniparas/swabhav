@@ -2,16 +2,16 @@ package com.techlab.game;
 
 public class Board {
 
-	private String[] board;
+	private static String[] board;
 	private Cell cell;
-	private int size;
+	private static int size;
 
 	public Board(int size) {
-		this.size = size;
+		Board.size = size;
 		cell = new Cell();
 	}
 
-	public String[] getBoard() {
+	public static String[] getBoard() {
 		return board;
 	}
 
@@ -19,7 +19,7 @@ public class Board {
 		return cell;
 	}
 
-	public int getSize() {
+	public static int getSize() {
 		return size;
 	}
 
@@ -40,29 +40,7 @@ public class Board {
 		return true;
 	}
 
-	public void printBoard() {
-		int j = 1;
-
-		System.out.println("-----------------------------------------------");
-		for (int i = 0; i < board.length; i++) {
-			if (j <= size) {
-				System.out.print("|" + board[i] + "|");
-				j++;
-			} else {
-				j = 2;
-				System.out.println();
-				System.out.print("|" + board[i] + "|");
-			}
-		}
-		System.out.println("\n-----------------------------------------------");
-	}
-
 	public boolean addMarkToCell(Mark mark, int location) throws CellAlreadyOccupiedException, OutOfCellException {
-
-		if (location > board.length - 1) {
-			throw new OutOfCellException();
-		}
-
 		if (!isBoardFull()) {
 			cell.setMark(mark);
 			board = cell.isCellEmpty(board, location);

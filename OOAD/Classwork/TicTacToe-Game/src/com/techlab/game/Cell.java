@@ -8,7 +8,11 @@ public class Cell {
 		this.mark = mark;
 	}
 
-	public String[] isCellEmpty(String[] board, int location) throws CellAlreadyOccupiedException {
+	public String[] isCellEmpty(String[] board, int location) throws CellAlreadyOccupiedException, OutOfCellException {
+
+		if (location > board.length - 1) {
+			throw new OutOfCellException();
+		}
 
 		if (!board[location].equals("-")) {
 			throw new CellAlreadyOccupiedException();
