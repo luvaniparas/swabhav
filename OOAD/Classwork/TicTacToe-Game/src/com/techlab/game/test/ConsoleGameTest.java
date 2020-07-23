@@ -45,7 +45,6 @@ public class ConsoleGameTest {
 			game.play(location);
 
 		}
-
 		if (game.getStatus().equals("WON")) {
 			System.out.println(game.getNextPlayer().getPlayerName() + " is WINNER!!");
 		} else if (game.getStatus().equals("DRAW")) {
