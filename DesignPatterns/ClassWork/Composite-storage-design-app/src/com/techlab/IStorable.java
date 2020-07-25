@@ -1,5 +1,5 @@
 package com.techlab;
 
 public interface IStorable {
-	void display();
+	void display(StringBuilder dashes);
 }

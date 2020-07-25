@@ -6,8 +6,7 @@ import java.util.List;
 public class Folder implements IStorable {
 
 	private String name;
-	private List<IStorable> children = new ArrayList<IStorable>();;
-	String dashes = "--";
+	private List<IStorable> children = new ArrayList<IStorable>();
 
 	public Folder(String name) {
 		this.name = name;
@@ -22,15 +21,17 @@ public class Folder implements IStorable {
 	}
 
 	@Override
-	public void display() {
-
+	public void display(StringBuilder dashes) {
+		
 		System.out.println(dashes + " " + getName());
 
+		dashes.insert(0, " ");
 		for (IStorable s : children) {
-			System.out.println();
-			System.out.print("    ");
-			s.display();
+			System.out.print(" ");
+			s.display(dashes);
 		}
+		dashes.setLength(0);
+		dashes.append("--");
 	}
 
 }

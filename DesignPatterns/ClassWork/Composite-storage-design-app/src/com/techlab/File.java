@@ -5,7 +5,6 @@ public class File implements IStorable {
 	private String name;
 	private double size;
 	private String extension;
-	String dashes = "-";
 
 	public File(String name, double size, String extension) {
 		this.name = name;
@@ -26,8 +25,9 @@ public class File implements IStorable {
 	}
 
 	@Override
-	public void display() {
-		System.out.print("    ");
+	public void display(StringBuilder dashes) {
+		dashes.delete(dashes.indexOf("-"), dashes.length());
+		dashes.append("-");
 		System.out.print("   " + dashes + " " + " " + name + " " + size + " " + extension);
 		System.out.println();
 	}
