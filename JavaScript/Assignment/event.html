@@ -1,0 +1,40 @@
+ <!DOCTYPE html>
+<html>
+    <head>
+    <title>Event</title>
+     <style> 
+    
+      html{
+        margin :0;
+        padding : 0;
+        height : 100%;
+        width : 100%;
+        }
+
+    body{
+        margin : 0;
+        padding : 0;
+        height : 100%;
+        width : 100%;
+        background-color:grey;
+        overflow : hidden;
+    }
+    </style>  
+
+ <script>
+     function setColorRed() {
+        document.getElementsByTagName("BODY")[0].style.backgroundColor = "red";
+        }
+        function setColorBlue() {
+        document.getElementsByTagName("BODY")[0].style.backgroundColor = "blue";
+        }
+ </script> 
+</head>
+
+<body>
+    <div id:"101"> 
+        <button type="button"  id="101" onclick="setColorRed()" >Red</button> 
+        <button type="button"  id="102" onclick="setColorBlue()">Blue</button>
+    </div>  
+</body>
+</html> 

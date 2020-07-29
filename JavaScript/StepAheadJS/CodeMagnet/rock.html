@@ -1,0 +1,23 @@
+ <!DOCTYPE html>
+<html>
+<head>
+    <title>Rock</title>
+    <script type = "text/javascipt">
+        function touchRock(){
+            var userName = prompt("What is your name ? " , "Enter your Name ");
+    
+            if(userName){
+                alert("It is good to meet you , "+userName+".");
+                document.getElementById("rockImg").src = "rock_happy.png";  
+                        }
+                            }	
+    </script>
+</head>
+<body onload = "alert ('Hello,i am your pet rock');" >
+<div>
+<img id ="rockImg" src="Desert.jpg" alt="iRock" onclick = "touchRock();">
+</div>
+</body>
+</html> 
+
+
