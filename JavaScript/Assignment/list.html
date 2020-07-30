@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>List</title>
+</head>
+
+<body>
+    <p id= 1></p>
+
+    <script>
+    var txt = "";
+    var person = {fname:"John", lname:"Doe", age:25}; 
+    var x;
+    for (x in person) {
+      txt += person[x] + " ";
+    }
+    document.write(txt);
+
+    var car = ["BMW","VOlVO"];
+    for(x of car){
+        document.write("<br>" + x + " ");
+    }
+    </script>
+    
+</body>
+</html> 

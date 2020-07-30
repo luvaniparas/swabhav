@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Array CRUD</title>
+</head>
+
+<body>
+    <h2> Array </h2>
+    <script>
+        var x , element ="" , index =-1;;
+        var cars =[
+            "BMW" ,"VOLVO" ,"TATA"
+        ];
+
+        readElement();
+        addElement("elementAdded");
+        insertElement("CarAdded");
+        deleteElement();
+        updateElement(0,"MyCarUpdated");
+
+        function readElement(){
+            document.writeln("<br>" +"Reading Element => ");
+            for(x of cars){
+                document.write(x + " "); 
+              }
+        }
+
+        function addElement(element){
+            document.writeln("<br>" +"Add Element => ");
+            var length = cars.length;
+            cars[length] = element ;
+            document.write(cars);
+        }
+
+        function insertElement(element){
+            document.writeln("<br>" +"Insert Element =>");
+            cars.push(element);
+            document.write(cars);
+        }
+
+        function deleteElement(element){
+            document.writeln("<br>" +"Delete Element =>");
+            cars.pop();
+            document.write(cars);
+        }
+
+        function updateElement(index,element){
+            document.writeln("<br>" +"Update Element =>");
+            cars[index] = element;
+            document.write(cars);
+        }
+    </script>
+</body>
+    
+</html> 

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Slider</title>
+</head>
+
+<body>
+
+    <label >Choose(between 0 and 50):</label>
+    <input type="range" id="vol" name="vol" min="0" max="50">
+    <input type="submit" onclick="display()">
+
+    <p id ="1"> </p>
+    <script>
+        function display(){
+            var txt ;
+            var value = document.getElementById("vol").value;
+            document.getElementById("1").innerHTML  = "You have Selected : " + value ;
+            
+            for(var i =0 ; i < value ; i++){
+                txt = '<button type="button">' + i + '</button>';
+                //document.getElementById("1").innerHTML = txt ;
+                document.write(txt);
+            }
+
+         }
+    </script>
+
+</body>
+</html> 

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CheckBox</title>
+    <script>
+        function PNGImage() {
+            var element = document.getElementById('1');
+            console.log();
+            if (element.checked) {
+            var image = document.createElement("img");
+            image.setAttribute('id', 'spinnerImage')
+            image.src =" loader.png";
+            document.body.appendChild(image); 
+            } else {
+                var removeImage = document.getElementById('spinnerImage');
+                removeImage.parentNode.removeChild(removeImage);
+            }
+        }
+
+        function GIFImage() {
+            var element = document.getElementById('2');
+            console.log();
+            if (element.checked) {
+            var image = document.createElement("img");
+            image.setAttribute('id', 'spinnerImage')
+            image.src = "https://media.tenor.com/images/f864cbf3ea7916572605edd3b3fe637f/tenor.gif";
+            document.body.appendChild(image); 
+            } else {
+                var removeImage = document.getElementById('spinnerImage');
+                removeImage.parentNode.removeChild(removeImage);
+            }
+        }
+
+    </script>
+
+</head>
+<body>
+    <label for="PNG">1.PNG </label>
+    <input type="checkbox" name="checkbox" id="1" onclick="PNGImage()">
+    <label for="GIF">2.GIF </label>
+    <input type="checkbox" name="checkbox" id="2" onclick="GIFImage()">
+    
+</body>
+</html>

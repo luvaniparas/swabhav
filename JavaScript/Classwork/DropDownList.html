@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DropDown List</title>>
+   
+</head>   
+
+<body>
+    <p id = "demo"></p>
+
+    <label for="colors">Choose a color:</label>
+
+    <select id="clr" onchange="changeBackgroundColor()">
+      <option value="#ff4d4d">Red</option>
+      <option value=" #66a3ff">Blue</option>
+      <option value="#66ff66">Green</option>
+      <option value="#ffff66">Yellow</option>
+    </select> 
+
+    <script>
+        function changeBackgroundColor(){
+            var clr = document.getElementById("clr").value;
+            document.getElementById("demo").innerHTML = "You selected: " + clr;
+            document.getElementsByTagName("BODY")[0].style.backgroundColor = clr ;
+        }
+    </script>
+
+</body>
+</html>
