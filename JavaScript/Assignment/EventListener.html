@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Event Listener</title>
+</head>
+
+<body>
+    <button id = "1" type = "button">PrintMessgae</button>
+    <p id = "p1"></p>
+    <p id = "p2"></p>
+
+    <script>
+        document.getElementById("1").addEventListener("click", displayHi);
+        document.getElementById("1").addEventListener("click", displayBye);
+
+        function displayHi() {
+          document.getElementById("p1").innerHTML = "Hello";
+        }
+
+        function displayBye() {
+          document.getElementById("p2").innerHTML = "Bye";
+        }
+        </script>
+</body>
+</html> 

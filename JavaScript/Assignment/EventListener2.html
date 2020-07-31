@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>EventListener</title>
+</head>
+
+<body>
+    <button id ="1" type = "button">Red</button>
+    <button id ="2" type = "button">Blue</button>   
+   
+   <script>
+       document.getElementById("1").addEventListener("click",setBgColorRed);
+       document.getElementById("2").addEventListener("click",setBgColorBlue);
+
+       function setBgColorRed(){
+        document.body.style.backgroundColor = "#ff6666" ;
+       }
+
+       function setBgColorBlue(){
+        document.body.style.backgroundColor = "#66a3ff" ;
+       }
+    </script>
+</body>
+</html> 
