@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>ECMA 5</title>
+</head>
+
+<body>
+    
+    <script>
+	"use strict";
+    
+    StringTrim();
+    Array_isArray();
+    forEach();
+    Array_Map();
+    Array_Filter();
+    Array_Reduce();
+    Array_reduce_right();
+    Array_Every();
+
+    function StringTrim(){
+        var str = "     String     ";
+        document.write("StringTrim() => ");
+        document.write("<br>String with White Spaces : "+str);
+        document.write("<br>String withOut White Spaces : "+str.trim());
+    }
+
+    function Array_isArray(){
+        var cars = ["BMW","MarutiSuzuki"];
+        var a = "a" ;
+
+        document.write("<br><br>Array_isArray() => ");
+        document.write("<br>Array : "+Array.isArray(cars));
+        document.write("<br>String : "+Array.isArray(a));
+    }
+
+    function forEach(){
+        var numbers = [2,3,4,5];
+        
+        document.write("<br><br>Array_ForEach() => ");
+        numbers.forEach(square);
+
+        function square(value){
+            document.write("<br> Array Elements : "+value+ " Square "+value*value);
+        }
+    }
+
+    function Array_Map(){
+        var squares = [4,9,16,25]; 
+        var squareRoot = squares.map(sqrt);
+
+        function sqrt(value){
+            return Math.sqrt(value);
+        }
+
+        document.write("<br><br>Array_Map() => ");
+        document.write("<br> squares : "+squares);
+        document.write("<br> squareRoot : "+squareRoot);
+    }
+
+    function Array_Filter(){
+        var age =[7,10,16,18,21,25,40,50];
+        var adult = age.filter(adults);
+
+        function adults(value){
+            return value > 18 ;
+        }
+
+        document.write("<br><br>Array_Filter() => ");
+        document.write("<br> Age : "+age);
+        document.write("<br> Adults : "+adult);
+    }
+
+    function Array_Reduce(){
+        var numbers =[10,20,30,40,50];
+        var addition = numbers.reduce(add);
+        var subtraction = numbers.reduce(sub);
+
+        function add(total,value){
+            return total+value;
+        }
+
+        function sub(total,value){
+            return total-value;
+        }
+
+        document.write("<br><br>Array_Reduce() => ");
+        document.write("<br> numbers : "+numbers);
+        document.write("<br> Add : "+addition);
+        document.write("<br> Sub : "+subtraction);
+    }
+
+    function Array_reduce_right(){
+
+        var numbers =[20,30,40,100];
+        var subtraction = numbers.reduceRight(sub);
+
+        function sub(total,value){
+            return total-value;
+        }
+
+        document.write("<br><br>Array_Reduce-Right() => ");
+        document.write("<br> numbers : "+numbers);
+        document.write("<br> Sub : "+subtraction);
+    }
+
+    function Array_Every(){
+        var numbers =[2,3,4,10];
+        var negativeNumbers =[2,3,4,10,-1,-2];
+        var positive = numbers.every(findPositive);
+        var positiveNumbers = negativeNumbers.every(findPositive);
+
+        function findPositive(number){
+            return  number > 0 ;
+        }
+
+        document.write("<br><br>Array_Every() => ");
+        document.write("<br> numbers : "+numbers);
+        document.write("<br> PositiveNumbers : "+positive);
+        document.write("<br> PositiveNumbers : "+positiveNumbers);
+    }
+
+    /*
+    function (){
+
+    }
+    */
+    </script>	
+</body>
+</html> 

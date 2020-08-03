@@ -6,13 +6,18 @@
 </head>
 
 <body>
-	<button type="button" onClick = "hideFunction()">Hide</button>
+	<button type="button" onClick = "hideFunction(hide)">Hide</button>
 	<p id = "1">Paragraph</p>
+	<p id = "2"></p>
 	
 	<script>
-		function hideFunction(){
-			document.getElementById("1").style.visibility="hidden";
+		function hideFunction(callback){
+			document.getElementById("2").innerHTML ="Paragraph Hidden";
+			callback();
 		}	
+		function hide(){
+			document.getElementById("1").style.visibility="hidden";
+		}
 	</script>
 </body>
 
