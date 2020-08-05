@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Sync - Async</title>
+</head>
+
+<body>
+    <script>
+	   function getData () {
+        var d = Math.floor(Math.random()*10);
+        if(d>5){
+            return {data:d}
+        }
+        else{
+            return {msg:"Error! No. is less than 5"}
+        }
+    }
+    var result = getData();
+    setTimeout(function(){console.log("SetTimeOut Async : "+result);},0);
+    console.log("Sync : "+result);
+    console.log("End of Script!");
+    </script>	
+</body>
+</html> 

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Page Title</title>
+</head>
+
+<body>
+    <script>
+	let a= 10 , b=20;
+
+    let a1 = () => 10 ;
+    let b1 = () => 20 ;
+
+    console.log(a1());
+    console.log(b1());
+
+    let a2 = (n) => 5*n ;
+    let b2 = () => 50 ;
+
+    console.log(a2(b2()));
+
+    let a3 =100;
+    setTimeout(function() {a3++; console.log("Inside Function"+a3()),1});
+    console.log(a3());
+    </script>	
+</body>
+</html> 

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Prototype</title>
+</head>
+
+<body>
+    <script>
+    function Person(first, last) {
+     this.firstName = first;
+     this.lastName = last;
+}
+
+Person.prototype.age ;
+Person.prototype.setAge = function(newAge){
+    age = newAge ;
+}
+Person.prototype.getAge = function(){
+    return age ;
+}
+
+var p1 = new Person("paras","luvani");
+console.log("Object without prototype : "+p1.firstName + " "+p1.lastName);
+p1.setAge(21);
+console.log("Object with prototype age : "+p1.firstName + " "+p1.lastName+" "+p1.getAge());
+
+var p2 = new Person("fName","lName");
+p2.setAge(30);
+console.log("Object with prototype age : "+p2.firstName + " "+p2.lastName+" "+p2.getAge());
+    </script>	
+</body>
+</html> 

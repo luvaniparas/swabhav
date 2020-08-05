@@ -1,0 +1,21 @@
+<html>
+  <body>
+    
+    <button onclick="createPara()">Paragraph</button>
+    <button onclick="createImage()">Image</button>
+
+    <script>
+      function createPara(){
+          var para = document.createElement('p');
+          para.textContent ="New Paragraph" ; 
+          para.setAttribute('id','p1');
+          document.body.appendChild(para);
+      }
+      function createImage(){
+        var img = document.createElement('img');
+        img.src = "https://www.w3schools.com/images/w3schools_green.jpg";
+        document.body.appendChild(img);
+      }
+    </script>
+  </body>
+</html>
