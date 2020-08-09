@@ -1,0 +1,55 @@
+function createNode(){
+    var task = document.getElementById("t1").value ;
+    
+    if(task == 0 ){
+        document.getElementById("t1").style.borderColor = "red";
+        document.getElementById("s1").innerHTML = "Task must be filled out";
+        document.getElementById("s1").style.color = "red";
+    }else{
+    //list Element tag 
+    var node = document.createElement("LI");
+    node.setAttribute('id',task)
+
+    //ChechBox Element
+    var chk = document.createElement('input');  
+    chk.setAttribute('type', 'checkbox'); 
+    
+    //ChechBoc Label Element
+    var lbl = document.createElement('label');
+    lbl.innerHTML = task;
+
+    //Date label
+    var date = document.createElement('label');
+    date.innerHTML =  new Date() ;
+    
+    //Remove Button 
+    var rm = document.createElement("input");
+    rm.type = "button";
+    rm.value = "Remove";
+
+    //Add all task thing into one
+    node.appendChild(chk);
+    node.appendChild(lbl);
+    node.appendChild(date);
+    node.appendChild(rm);
+
+    //add Node
+    document.getElementById("uList").appendChild(node);
+    
+    //CheckBox EventListener
+    chk.addEventListener( 'change', function() {
+        if(chk.checked == true) {
+            var nodeId = document.getElementById(node.id);
+            node.parentNode.removeChild(nodeId);
+        
+            var list = document.getElementById("cList");
+            list.appendChild(nodeId);
+        }
+    });
+
+    rm.addEventListener("click",function(){
+        var nodeId = document.getElementById(node.id);
+        node.parentNode.removeChild(nodeId);
+    });
+}
+}

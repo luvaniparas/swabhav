@@ -25,7 +25,7 @@ function play(cnt,clickedID){
         if(blueBall === cID ){
             document.getElementById(clickedID).style.backgroundColor="#0000ff";
             document.getElementById("p1").innerHTML = "Chance => "+ cnt;
-            document.getElementById("h1").innerHTML = "WON";
+            document.getElementById("h1").innerHTML = "Congratulations you won (:";
         }
         else if(blueBall > cID){           
             document.getElementById(clickedID).style.backgroundColor="#ff0000";
@@ -36,7 +36,16 @@ function play(cnt,clickedID){
             document.getElementById("p1").innerHTML = "Chance => "+ cnt;
         }
     }else{
-        document.getElementById("p1").innerHTML = "BlueBall is => "+ blueBall;
-        document.getElementById("h1").innerHTML = "Game Over ):";
+        document.getElementById(blueBall).style.backgroundColor="#0000ff";
+        document.getElementById("h1").innerHTML = "Sorry ,Try again !";
+
+        var btn = document.createElement("BUTTON");
+        btn.innerHTML = "Restart";
+        document.body.appendChild(btn);
+
+        btn.addEventListener('click',function(){
+            location.reload();
+        });
+
     }   
 }

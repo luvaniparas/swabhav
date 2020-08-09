@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Binding</title>
+</head>
+
+<body>
+    
+    <form>
+        <label>Your Text : </label>
+        <input type="text" id="name">
+        <br><br>
+
+        <label>Font-Size : </label>
+        <input type="number" id="size" min="1" max="200" value="100">
+        <br><br>
+        
+        <label>Background-Color : </label>
+        <input type="text" id="bgColor">
+        <br><br>
+        
+        <label>Foreground-Color : </label>
+        <input type="text" id="fgColor">
+        <br><br>
+
+        <button type="button" id = "myBtn" onclick="updateData()">submit</button> 
+    </form>
+    <p id = "p1"> </p>
+    
+    <script>
+        const name = document.getElementById('name');
+        var size = document.getElementById('size');
+        const bgColor = document.getElementById('bgColor');
+        const fgColor = document.getElementById('fgColor');
+
+        const para = document.createElement('p');
+        document.body.appendChild(para);
+        const spanResult = document.createElement('span');
+        spanResult.setAttribute('id', 'result');
+        para.appendChild(spanResult);
+
+        function updateData() {
+            spanResult.innerHTML = name.value;
+            spanResult.style.fontSize = size.value + "px";
+            spanResult.style.backgroundColor = bgColor.value;
+            spanResult.style.color = fgColor.value;
+            console.log(size.value);
+        }
+    </script>	
+</body>
+</html> 

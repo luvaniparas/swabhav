@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>To-Do</title>
+    <link rel="stylesheet" href="todo.css">
+    <script src="todo.js"></script>
+</head>
+
+<body>
+    
+    <div class ="todo" id = "d1">
+        <div class = "header">
+            <h2> <span style="color : #70db70">  TO-DO List </span> </h2>
+        </div>
+
+        <div class="desc">
+            <input type="text" id ="t1" placeholder="Enter Your task Here..." size = 35> 
+            <span id="s1"></span>
+            <button type="button" id ="b1" onclick="createNode()" >Add</button> 
+            <hr>
+
+            <div id="undone">
+                <h3><span style="color : #ff3333"> Undone Task : </span></h3>
+                <ul id="uList">   </ul>
+                <hr>
+            </div>
+            <div id="done">
+                <h3><span style="color : #ffff4d">Completed Task : </span></h3>
+                <ul id="cList">   </ul>
+                <hr>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html> 
