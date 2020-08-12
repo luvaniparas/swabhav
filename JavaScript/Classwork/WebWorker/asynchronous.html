@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>A-sync</title>
+    </head>
+
+<body>
+   <button id ="hello" onclick="printHello()">Hello</button>
+   <button id ="time" onclick="printTime()">Time</button>
+    
+<script>
+   function printHello(){
+    alert("Hello");
+    }
+
+    var w;
+    function printTime() {
+        if(typeof(Worker) !== "undefined") {
+            if(typeof(w) == "undefined") {
+                w = new Worker("workers.js");
+            }
+            
+        w.onmessage = function(event) {
+            console.log(event.data()); 
+        };
+     }else {
+        console.log("Sorry, your browser does not support Web Workers...");
+      }      
+ } 
+</script>
+</body>
+</html> 

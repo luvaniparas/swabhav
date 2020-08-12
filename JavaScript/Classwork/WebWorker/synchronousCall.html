@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Sync</title>
+</head>
+
+<body>
+   <button id ="hello" onclick="printHello()">Hello</button>
+   <button id ="time" onclick="printTime()">Time</button>
+
+    <script>
+        function printHello(){
+            alert("Hello");
+        }
+
+        function printTime(){    
+            var today , time ;
+            while(true){
+                today = new Date();
+                time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+                console.log(time);
+            }
+        }
+    </script>
+</body>
+</html> 

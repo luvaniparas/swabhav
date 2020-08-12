@@ -20,6 +20,12 @@ h2 {
     background: #ff6680;
 }
 
+#rbtn{
+    margin-left: 300px;
+    padding: 8px 15px;
+    background: #ff6680;
+}
+
 #container{
     width : 500px;
     height: 625px;     

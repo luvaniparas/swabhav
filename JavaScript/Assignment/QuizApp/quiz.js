@@ -1,8 +1,44 @@
+var questions=[{
+    "qu":"Inside which HTML element do we put the JavaScript?",
+    "o1" :"<javascript>",
+    "o2" :"<scripted>",
+    "o3" :"<script>",
+    "o4" :"<js>",
+    "answer":"3"
+},{
+    "qu":"Which of the following is the correct syntax to display “SwabhavTechlabs” in an alert box using JavaScript?",
+    "o1" :"alertbox(“SwabhavTechlabs”);",
+    "o2" :"msg(“SwabhavTechlabs”);",
+    "o3" :"msgbox(“SwabhavTechlabs”);",
+    "o4" :"alert(“SwabhavTechlabs”);",
+    "answer":"4"
+},{
+    "qu":"What is the correct syntax for referring to an external script called “quiz.js”?",
+    "o1" :"<script src=”quiz.js”>",
+    "o2" :"<script href=”quiz.js”>",
+    "o3" :"<script ref=”quiz.js”>",
+    "o4" :"<script name=”quiz.js”>",
+    "answer":"1"
+},{
+    "qu":"Which of the following is not a reserved word in JavaScript?",
+    "o1" :"interface",
+    "o2" :"throws",
+    "o3" :"program",
+    "o4" :"short",
+    "answer":"3"
+},{
+    "qu":"How is the function called in JavaScript?",
+    "o1" :"call swfunc();",
+    "o2" :"call function swFunc();",
+    "o3" :"swfunc();",
+    "o4" :"function swfunc();",
+    "answer":"3"
+}
+]
+
 var currentQuestion = 0 ;
 var correct = 0 , incorrect = 0 ,leaved = 0;
 var totalQuestions = questions.length;
-
-console.log("totalQuestions : "+totalQuestions);
 
 var container = document.getElementById("container");
 var questionElement = document.getElementById("p1");
@@ -28,7 +64,6 @@ function getOption(){
     var ops = document.getElementsByName("option");
     for(var i = 0 ; i <ops.length ; i++){
         if (ops[i].checked) {
-            console.log("GetOption IF : "+ops[i].value); 
             return ops[i].value ;
         }
     }
@@ -38,28 +73,20 @@ function loadNextQuestions(){
     //get User Answer
     var userAnswer = getOption();
     
-    console.log("userAnswer : "+userAnswer);
-
     //Coorect
     if(questions[currentQuestion].answer == userAnswer ){
         correct += 1 ; 
-        console.log(" Correct : "+correct);
     }
     else if(userAnswer === undefined){
         leaved += 1 ;
-        console.log(" leaved : "+leaved);
     }
     //Incorrect
     else{
         incorrect += 1 ;
-        console.log("InCorrect : "+incorrect);
     }
    
-
     if( currentQuestion == totalQuestions-2 ){
         nextButton.textContent = "Finish";
-        console.log("Finish Button");
-        console.log("Correct : "+correct + " InCorrect : "+incorrect + " Leaved : "+leaved );
     }
 
     if( currentQuestion == totalQuestions-1 ){
@@ -67,11 +94,26 @@ function loadNextQuestions(){
         resultPieChart();  
     }
 
+    questions[userAnswer].checked = false ;
     currentQuestion++ ;
     loadQuestions(currentQuestion);
 }
 
+function loadPreviousQuestions(){
+    currentQuestion-- ;
+    loadQuestions(currentQuestion);  
+}
+
 function resultPieChart(){
+    var reload = document.createElement('input');
+    reload.setAttribute('id','rbtn');
+    reload.setAttribute('type', 'button');
+    reload.setAttribute('value', 'Play Again');
+
+    reload.addEventListener('click',function(){
+        location.reload();
+    });
+
     // Load google charts
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
@@ -85,17 +127,13 @@ function resultPieChart(){
             ['Leaved', leaved]
           ]);
     
-    
     // Optional; add a title and set the width and height of the chart
-    var options = {'title':'Quiz Result', 'width':550, 'height':400};
+    var options = {'title':'Quiz Result', 'width':500, 'height':400};
   
     // Display the chart inside the <div> element with id="piechart"
     var chart = new google.visualization.PieChart(document.getElementById("pieChart"));
     chart.draw(data, options);
-    }
-}
 
-function loadPreviousQuestions(){
-    currentQuestion-- ;
-    loadQuestions(currentQuestion);  
+    document.getElementById("pieChart").appendChild(reload);
+    }
 }

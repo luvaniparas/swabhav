@@ -7,7 +7,7 @@
     <script src="todo.js"></script>
 </head>
 
-<body>
+<body onload="loadData()">
     
     <div class ="todo" id = "d1">
         <div class = "header">
@@ -17,9 +17,9 @@
         <div class="desc">
             <input type="text" id ="t1" placeholder="Enter Your task Here..." size = 35> 
             <span id="s1"></span>
-            <button type="button" id ="b1" onclick="createNode()" >Add</button> 
+            <button type="button" id ="addBtn"onclick="getTaskData()" >Add</button> 
             <hr>
-
+            
             <div id="undone">
                 <h3><span style="color : #ff3333"> Undone Task : </span></h3>
                 <ul id="uList">   </ul>
@@ -30,9 +30,8 @@
                 <ul id="cList">   </ul>
                 <hr>
             </div>
-
         </div>
     </div>
-
 </body>
 </html> 
+
