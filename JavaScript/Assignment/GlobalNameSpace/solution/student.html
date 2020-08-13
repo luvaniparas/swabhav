@@ -1,12 +1,36 @@
 <html>
-<head>
-<script type = "javascript" src = "TeamA1.js"></script>
-<script type = "javascript" src = "TeamA2.js"></script>
-</head>
+   <head>
+   </head>
+
 <body>
-<script>
-   document.write(window.Tutorix.TeamA1.student("Rajendra", "prasad").getFullName());
-   document.write(window.Tutorix.TeamA2.student("Babu","Rajendra","prasad").getFullName());
-</script>
+   <p id="p1"> </p>
+
+   <script>
+     (function test1() {
+   function student(fname, lname){
+   this.fname = fname;
+   this.lname = lname;
+   this.getFullName = function (){
+       return this.fname + " " + this.lname
+   }
+   }
+   console.log(new student("Rajendra", "prasad").getFullName());
+
+})();
+   
+(function test2() {
+   function student(fname, mname, lname){
+   this.fname = fname;
+   this.mname = mname;
+   this.lname = lname;
+   this.getFullName = function (){
+       return this.fname + " " + this.mname + " " + this.lname;
+   }
+}
+console.log(new student("Rajendra", "Prasad", "Patil").getFullName());
+})();
+
+   </script>  
+
 </body>
 </html>

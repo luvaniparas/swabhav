@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS</title>
+</head>
+
+<body>
+    <script>
+
+        console.log("Object Literals => ");
+        var person = {
+            firstName:"John",
+            lastName:"Doe", 
+            age:50, 
+            eyeColor:"blue"
+        };
+        console.log("Read : name"+person.firstName+" "+person.lastName+" "+person.age+" "+person.eyeColor);        
+        person.age = 60 ;
+        console.log("update Properties : " +person.firstName+" "+person.lastName+" "+person.age+" "+person.eyeColor);
+
+        console.log("Array of function =>");
+        function firstFun(str) { 
+                console.log( str ) ;
+            } 
+        function secondFun(str) { 
+            console.log( str ) ; 
+            } 
+        function thirdFun(str) { 
+            console.log( str ) ; 
+            }     
+        // Declare array of functions 
+        var arrayOfFunction = [ 
+                firstFun, 
+                secondFun, 
+                thirdFun      
+         ]  
+        arrayOfFunction[0]("This is first function"); 
+
+        console.log("Arrow Function => ");
+        hello = () => {
+             return "Hello World!";
+        }
+        console.log(hello());
+    </script>	
+</body>
+</html> 
