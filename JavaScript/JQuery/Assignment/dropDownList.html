@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DropDown</title>
+    <script src = "C:\swabhav\JavaScript\jquery.min.js"> </script>
+</head>
+<body>
+
+<label>Colors</label>
+
+<select id="colors">
+    <option value="#ff8080">Red</option>
+    <option value="#80b3ff">Blue</option>
+    <option value="#ffff80">Yellow</option>
+    <option value="#99e699">Green</option>
+</select>
+<hr>
+
+    <script>
+        $(document).ready(function(){
+            $("#colors").change(function(){
+                var clr = $("#colors").val() ;
+                $("body").css("background-color", clr);
+            });
+    });
+    </script>
+</body>
+</html> 

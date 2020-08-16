@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Button</title>
+    <script src = "C:\swabhav\JavaScript\jquery.min.js"> </script>
+</head>
+<body>
+    <div class = "banner"> 
+        <button id = "red">Red</button>
+        <button id = "blue">Blue</button> 
+        <hr>
+    </div>
+    
+    <script>
+        $(document).ready(function(){
+            //Button Background Color
+            $("#red").css("background-color", "red");
+            $("#blue").css("background-color","Blue");
+
+            //Onclick Background Color
+            $("#red").click(function(){
+                $("body").css("background-color", "#ff8080");
+            });
+
+            $("#blue").click(function(){
+                $("body").css("background-color", "#80b3ff");
+            });
+
+    });
+    </script>
+</body>
+</html> 
