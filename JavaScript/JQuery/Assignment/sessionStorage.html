@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Session Storage</title>
+	<script src = "C:\swabhav\JavaScript\jquery.min.js"> </script>
+</head>
+
+<body>  
+    <h1>Session storage =></h1>
+
+    <label> Create  : </label>
+    <input type="text" id ="t1" placeholder="Enter key here">
+    <input type="text" id ="t6" placeholder="Enter data here">
+    <button id = "add">create</button>
+    <hr>
+
+    <label> Read  : </label>
+    <input type="text" id ="t5" placeholder="Enter key here">
+    <button id = "read">Read</button>
+    <hr>
+
+    <label> Update  : </label>
+    <input type="text" id ="t2" placeholder="Enter key here">
+    <input type="text" id ="t3" placeholder="Enter data here">
+    <button id = "update">Update</button>
+    <hr>
+
+    <label> Remove  : </label>
+    <input type="text" id ="t4"  placeholder="Enter key here">
+    <button id = "remove">Remove</button>
+    <hr>
+
+    <script>
+	$(document).ready(function(){
+        $("#add").on("click",function(){
+            var key = $("#t1").val();
+            var value = $("#t6").val();
+            sessionStorage.setItem(key,value);
+            $("#t1").val("");
+            $("#t6").val("");
+        });
+        
+        $("#read").on("click",function(){
+            var key = $("#t5").val();
+            var get = sessionStorage.getItem(key);
+            $("#t5").val(get);
+        });
+
+
+        $("#update").on("click",function(){
+            var key = $("#t2").val();
+            var value = $("#t3").val();
+            sessionStorage.setItem(key,value);
+            $("#t2").val("");
+            $("#t3").val("");
+        });
+
+        $("#remove").on("click",function(){
+            var value = $("#t4").val();
+            sessionStorage.removeItem(value);
+            $("#t4").val("");
+        });
+
+
+	});
+    </script>	
+</body>
+</html> 

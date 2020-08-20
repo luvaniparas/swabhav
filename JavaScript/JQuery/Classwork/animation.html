@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Page Title</title>
+    <script src = "C:\swabhav\JavaScript\jquery.min.js"> </script>
+    <style>
+        body{
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <div style="height:300px;width:300px;position:absolute;">
+    <h1 id ="p1"> </h1>
+    <button>Start Animation</button>
+    </div>
+    
+    <script>
+        $(document).ready(function(){
+            
+            $("button").click(function(){
+                $("#p1").text("hello i am learning jquery");
+                $("#p1").css("background-color","red");
+                $("div").animate({left: '250px'});
+            });
+        });
+    </script>	
+</body>
+</html> 

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>validate</title>
+	<script src = "C:\swabhav\JavaScript\jquery.min.js"> </script>
+</head>
+<body>
+    <form name="myForm">
+        <label>User Name : </label>
+        <input type="text" id="uName" >
+        <span id="s1"></span>
+        <br><br>
+
+        <label>Password : </label>
+        <input type="password"  id="pswd" >
+        <span id="s2"></span>
+        <br><br>
+
+        <button type="button" id = "submit" >submit</button> 
+    </form>
+
+    <script>
+        $(document).ready(function(){
+            
+            $("#submit").click(function(){
+                var x  = $("#uName").val() ;
+                 var y = $("#pswd").val() ; 
+
+                if (x == "") {
+                    $("#uName").css("background-color","red");
+                    $("#uName").css("color","red");
+                    $("#s1").text("Name must be filled out");
+                    $("#s1").css("background-color","red");
+                }
+            
+                if(y == ""){
+                    $("#pswd").css("background-color","red");
+                    $("#pswd").css("color","red");
+                    $("#s2").text("password must be filled out");
+                    $("#s2").css("background-color","red"); 
+                }
+            });
+        });
+    </script>	
+</body>
+</html> 

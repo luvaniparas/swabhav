@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Loader</title>
+    <script src = "C:\swabhav\JavaScript\jquery.min.js"> </script>
+</head>
+<body>
+    <input type="checkbox" name="loader" id="loader">
+
+    <script>
+        $(document).ready(function() {
+            $('body').append('<img src="loader.png">');
+            $('img').hide();
+            $(':checkbox').on('click', function() {
+                if($("#loader").prop("checked") == true) {
+                    $('img').show();
+                } else {
+                    $('img').hide();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

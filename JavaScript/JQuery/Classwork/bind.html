@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bind</title>
+	<script src = "C:\swabhav\JavaScript\jquery.min.js"> </script>
+</head>
+<body>
+    <form>
+        <label>Your Name : </label>
+        <input type="text" id="name">
+        <br><br>
+
+        <label>Font-Size : </label>
+        <input type="number" id="size" min="1" max="200" value="100">
+        <br><br>
+        
+        <label>Background-Color : </label>
+        <input type="text" id="bgColor">
+        <br><br>
+        
+        <label>Foreground-Color : </label>
+        <input type="text" id="fgColor">
+        <br><br>
+
+        <button type="button" id = "myBtn">submit</button> 
+    </form>
+
+    <p id ="p1"> </p>
+
+    <script>
+        $(document).ready(function(){
+         $("#myBtn").click( function() {
+            var name = $("#name").val() ;
+            var fSize = $("#size").val() ;
+            var bgclr = $("#bgColor").val() ;
+            var fgclr = $("#fgColor").val() ;
+
+            $("#p1").text(name);
+            $("#p1").css("background-color",bgclr);
+            $("#p1").css("foreground-color",fgclr);
+            $('#p1').css('font-size',parseInt(fSize));
+           }
+         );
+        });
+    </script>	
+</body>
+</html> 
