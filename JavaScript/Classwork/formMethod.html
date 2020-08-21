@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Form methods</title>
+</head>
+
+<body>
+    <form action="auth.php" method="POST" name="myForm">
+        <label>User Name : </label>
+        <input type="text" id="uName" >
+        <span id="s1"></span>
+        <br><br>
+
+        <label>Password : </label>
+        <input type="password"  id="pswd" >
+        <span id="s2"></span>
+        <br><br>
+
+        <button type="button" id = "myBtn" onclick="validateForm()">submit</button> 
+    </form>
+
+    <script>
+        function validateForm() {
+            var x = document.forms["myForm"]["uName"].value;
+            var y = document.forms["myForm"]["pswd"].value;
+            if (x == "") {
+                document.getElementById("uName").style.borderColor = "red";
+                document.getElementById("s1").innerHTML = "Name must be filled out";
+                document.getElementById("s1").style.color = "red";
+            }
+            if(y == ""){
+                document.getElementById("pswd").style.borderColor = "red";
+                document.getElementById("s2").innerHTML = "Password must be filled out";
+                document.getElementById("s2").style.color = "red";
+            }
+        } 
+    </script>	
+</body>
+</html> 

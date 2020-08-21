@@ -1,6 +1,6 @@
 $(document).ready(function(){
     var i = 1 ;
-    var task ;
+    var task , selected = " ";
 
     //On Body Load
     $("body").on("load",loadData());
@@ -18,7 +18,6 @@ $(document).ready(function(){
     //Add Button Onclick Event
     $("#addBtn").on("click",function(){
         task = $("#t1").val();
-        $("#t1").text("Clear Text");
         createNode(task);
     });
 
@@ -35,32 +34,30 @@ $(document).ready(function(){
             //list Element tag 
             $("#uList").append("<li id ="+taskId+">"+"</li>");
 
-            //ChechBox Element
-            var chkBoxid = "C"+(i);
-            $("<input type='checkbox' id ='"+chkBoxid+"'>").appendTo("#"+taskId);
-
             //ChechBoc Label Element
             $("<label>"+task+"</label>").appendTo("#"+taskId);
 
-            //Date label
-            $("<label>"+new Date()+"</label>").appendTo("#"+taskId);
-               
+            //Date label 
+            $("<label>"+moment().startOf('hour').fromNow()+"</label>").appendTo("#"+taskId);
+            
+           //Priority radio Buttons
+            $('#myForm input').on('change', function() {
+                selected = $('input[name=priority]:checked', '#myForm').val(); 
+            });
+            //Priority
+            $("<label id='radio'>"+selected+"</label>").appendTo("#"+taskId);
+        
             //Remove Button 
             var rmid = "R"+(i);
             $("<input type='button' value = 'remove' id ='"+rmid+"'>").appendTo("#"+taskId);
-                
-            //CheckBox EventListener
-            if($("#"+chkBoxid).is(":checked")){    
-                console.log("CheckBox");
-                $("#cList").append("<li id ="+taskId+">"+"</li>");
-                $("#"+taskId).remove();
-                localStorage.removeItem(taskId);
-            }
             
             //Remove Button
             $("#"+rmid).on("click",function(){
-                $("#"+taskId).remove();
-                 localStorage.removeItem(taskId);
+                var c = confirm("Are you sure!");
+                if(c == true){
+                    $("#"+taskId).remove();
+                    localStorage.removeItem(taskId);
+                }
                 });
             }
         }

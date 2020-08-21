@@ -5,6 +5,7 @@
     <title>To-Do</title>
     <link rel="stylesheet" href="todo.css">
     <script src = "C:\swabhav\JavaScript\jquery.min.js"> </script>
+    <script src="C:\swabhav\JavaScript\moment.js"></script>
     <script src="todo.js"></script>
 </head>
 
@@ -15,19 +16,23 @@
         </div>
 
         <div class="desc">
+            <form id ="myForm">
+
             <input type="text" id ="t1" placeholder="Enter Your task Here..." size = 35> 
             <span id="s1"></span>
+           
+            <input type="radio" id="male" name="priority" value="High Priority">
+            <label>High Priority</label>
+            <input type="radio" id="female" name="priority" value="Low Priority">
+            <label>Low Priority</label>
+            
+           
             <button type="button" id ="addBtn">Add</button> 
             <hr>
-            
+            </form> 
             <div id="undone">
-                <h3><span style="color : #ff3333"> Undone Task : </span></h3>
+                <h3><span style="color : #ff3333">Task : </span></h3>
                 <ul id="uList">   </ul>
-                <hr>
-            </div>
-            <div id="done">
-                <h3><span style="color : #ffff4d">Completed Task : </span></h3>
-                <ul id="cList">   </ul>
                 <hr>
             </div>
         </div>

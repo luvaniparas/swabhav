@@ -9,13 +9,17 @@ input[type=text] {
   }
 
 .todo{
-    width :700px ;
+    width :750px ;
     height : 498px ;
     margin: 75px;
     margin-left: 475px;   
 }
 
 label{
-    padding-right: 25px;
+    padding-right: 15px;
     color: #33ccff;
+}
+
+#radio{
+    color: red;
 }
