@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Timer</title>
+</head>
+
+<body>
+
+    <button type="button" onclick="startTimeOut()">StartTimeOut</button>
+    <button type="button" onclick="stopTimeOut()">StopTimeOut</button>
+    <hr>
+    <button type="button" onclick ="startInterval()">StratInterval</button>
+    <button type="button" onclick ="stopInterval()">StopInterval</button>
+    <hr>
+    <p id ="p1"></p>
+
+    <script>
+        var myVar ;
+        function startTimeOut() {
+            myVar = setTimeout(function(){ alert("Hello StartTimeOut()") }, 3000);
+        }
+
+        function stopTimeOut() {
+            clearTimeout(myVar);
+        }
+
+        function startInterval(){
+            myVar = setInterval(function(){alert("Hello startInterval()")}, 3000);
+        }
+
+        function stopInterval(){
+            clearInterval(myVar);
+        }
+    </script>	
+</body>
+</html> 

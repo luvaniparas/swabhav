@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Storage</title>
+</head>
+<body>
+    <button id="incr">Increment</button>
+
+    <script>
+    let counter = 0;
+
+    document.getElementById('incr').addEventListener('click', function(e) {
+        counter++;
+        localStorage.setItem('counter', counter);
+        sessionStorage.setItem('counter', counter);
+    });
+
+    </script>
+</body>
+</html>

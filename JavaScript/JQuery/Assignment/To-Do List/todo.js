@@ -40,9 +40,9 @@ $(document).ready(function(){
             let timeDifference = calculateTimeDifference(time);
             let key = task ;
             //list Element tag 
-            $("#uList").append("<li class="+task+" id ="+taskId+">"+"</li>");
+            $("#uList").append("<li id ="+taskId+">"+"</li>");
 
-            //ChechBoc Label Element
+            //ChechBox Label Element
             $("<label>"+task+"</label>").appendTo("#"+taskId);
 
             //Date label 
@@ -51,7 +51,7 @@ $(document).ready(function(){
             //Remove Button 
             var rmid = taskId;
             //console.log('<input type="button" value="remove" onclick="removeTask(this.id,'+t+')" id='+rmid+' class='+task+'>');
-            $('<input type="button" value="remove" onclick="removeTask(this.id,'+key+')" id='+rmid+' class='+task+'>').appendTo("#"+taskId);
+            $('<input type="button" value="remove" onclick="removeTask(this.id,"'+key+'")" id='+rmid+' class='+task+'>').appendTo("#"+taskId);
         }
     }    
 
@@ -63,17 +63,17 @@ $(document).ready(function(){
     }
     
       //Remove Button
-      removeTask = function(clickedId){
-        console.log("Inside Remove");
+      removeTask = function(clickedId,task){
+        console.log("Inside Remove"+task);
+        
         var c = confirm("Are you sure!");
         if(c == true){
             $("#"+clickedId).remove();
             localStorage.removeItem(task);
         }
-    }
-
+        }  
+    });
     /*  
         //Priority
             $("<label id='radio'>"+taskinfo[1]+"</label>").appendTo("#"+taskId);
-    */   
-});
+    */ 
