@@ -13,7 +13,6 @@ function loadData(){
     for(j= 1 ; j < length+1 ; j++){
         taskId = "T"+(i); 
         value = localStorage.getItem(taskId);
-        console.log("Iteration : "+j+" taskId : "+taskId+" Value : "+value);
         createNode(value);
     }
 }

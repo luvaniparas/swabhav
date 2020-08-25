@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LocalStorage Array</title>
+    <script src = "C:\swabhav\JavaScript\jquery.min.js"> </script>
+    <script src="C:\swabhav\JavaScript\moment.js"></script>
+</head>
+<body>
+    <div> 
+        
+    </div>
+    
+    <script>
+        $(document).ready(function(){
+            var array1 = [ ];
+            array1[0] = "Task-1";
+            array1[1] = "High priority";
+            array1[2] = moment().format('MMMM Do YYYY, h:mm:ss a'); 
+
+            var array2 = [ ];
+            array2[0] = "Task-2";
+            array2[1] = "Low priority";
+            const date = moment().format('MMMM Do YYYY, h:mm:ss a');
+            console.log(typeof(date));
+            array2[2] = date;
+
+            localStorage.setItem("1",array1);
+            localStorage.setItem("2",array2);
+
+            var a = localStorage.getItem("1");
+            var s1 = a.split(",");
+            var b = localStorage.getItem("2");
+            var s2 = b.split(",");
+            
+            console.log(array1);
+            console.log(array2);
+            console.log("Split Array : "+s1+" typeOf "+typeof(s1));
+            console.log("Split Array : "+s1[0]);
+            console.log("Split Array : "+s2);
+
+            var i = 0;
+            var arrayname ;
+            for(var j = 1 ; j < 5 ; j++){
+                arrayname = "array"+(i++);
+                var arrayname= new Array();
+                console.log(arrayname);
+            }  
+        });
+    </script>
+</body>
+</html> 

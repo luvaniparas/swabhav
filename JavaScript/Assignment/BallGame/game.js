@@ -19,7 +19,6 @@ function countClicks(clickedID){
 
 function play(cnt,clickedID){
     var cID = parseInt(clickedID);  
-    console.log("Blue Ball => "+blueBall);
 
     if(cnt < 5){
         if(blueBall === cID ){
