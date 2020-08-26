@@ -1,0 +1,16 @@
+body {
+    background-color: #404040;
+}
+
+#d1{
+    width :500px ;
+    height : 498px ;
+    margin: 75px;
+    margin-left: 500px;
+    margin-top: 200px;   
+}
+
+label{
+    padding-right: 10px;
+    color: #33ccff;
+}
