@@ -36,13 +36,18 @@ $(document).ready(function(){
             let timeDifference = calculateTimeDifference(time);
 
             //Dynamic Creation
-            $.get('http://numbersapi.com/'+number+'/trivia', function(data) {
-                $("#nList").append("<p id ="+rowId+">"+"</p>");
-                $("<label>"+data+"</label>").appendTo("#"+rowId);
-                $("<label id='td'>"+timeDifference+"</label>").appendTo("#"+rowId);    
-                $("<br>").appendTo("#"+rowId);
-            });
-            }
+            $.ajax({
+                type:"GET",
+                url:"http://numbersapi.com/"+(number),
+                dataType:"text",
+                success: function (data){
+                    $("#nList").append("<p id ="+rowId+">"+"</p>");
+                    $("<label>"+data+"</label>").appendTo("#"+rowId);
+                    $("<label id='td'>"+timeDifference+"</label>").appendTo("#"+rowId);    
+                    $("<br>").appendTo("#"+rowId);
+                }
+            })
+        }
     } 
     
     //TimeDifference

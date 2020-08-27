@@ -1,0 +1,42 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ajax $</title>
+	<script src = "C:\swabhav\JavaScript\jquery.min.js"> </script>
+</head>
+<body>
+    
+    <div id ="d1">
+        <label>Enter a number : </label>
+        <input type="text" id="t1" size="25" placeholder="Enter number for facts..." >
+        <span id="s1"></span>
+        <button id ="b1" onclick="fetchData"> Get Facts </button>
+        <hr>
+    
+        <div id ="nList">
+            <p id = "p1"> </p>
+        </div> 
+        <hr> 
+    </div> 
+
+    <script>
+        $(document).ready(function(){
+            
+            function fetchData(){
+                var number = $("#t1").val();
+
+                $.ajax({
+                    type:"GET",
+                    url:"http://numbersapi.com/"+(number),
+                    dataType:"text",
+                    success: function (data){
+                        $("#p1").text(data);
+                    }
+                });
+            }
+        });
+    </script>	
+</body>
+</html> 
