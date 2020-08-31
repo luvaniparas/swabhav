@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Table</title>
+    <script src = "C:\swabhav\JavaScript\jquery.min.js"> </script>
+    
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        </style>
+</head>
+
+<body>
+    <div> 
+        
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>id</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Address</th>
+                <th>Delete</th>
+            </tr>
+            
+
+            <tr id ="s1">
+                <td>Student1</td>
+                <td>s1</td>
+                <td>16</td>
+                <td>Male</td>
+                <td>Mumbai</td>
+                <td><button id="rbtn" value="s1" onclick="removeStudent(this.value)">Remove</button></td>
+            </tr>
+
+            <tr id ="s2">
+                <td>Student2</td>
+                <td>s2</td>
+                <td>16</td>
+                <td>Female</td>
+                <td>Mumbai</td>
+                <td><button id="rbtn" value="s2" onclick="removeStudent(this.value)">Remove</button></td>
+            </tr>
+
+            <tr id ="s3">
+                <td>Student3</td>
+                <td>s3</td>
+                <td>16</td>
+                <td>Male</td>
+                <td>Mumbai</td>
+                <td><button id="rbtn" value="s3" onclick="removeStudent(this.value)">Remove</button></td>
+            </tr>
+
+            <tr id ="s4">
+                <td>Student4</td>
+                <td>s4</td>
+                <td>16</td>
+                <td>Female</td>
+                <td>Mumbai</td>
+                <td><button id="rbtn" value="s4" onclick="removeStudent(this.value)">Remove</button></td>
+            </tr>
+          </table>
+    </div>
+    
+    <script>
+
+        function removeStudent(student){
+            $("#"+student).remove();
+        }
+
+    </script>
+</body>
+</html> 

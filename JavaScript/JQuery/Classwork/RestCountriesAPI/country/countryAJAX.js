@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    var i = 1 , COUNTRYINDEX = 0;
+    var i = 1 , countryindex = 0;
 
     $("#b1").on("click",createNode);
     function createNode(){ 
@@ -18,11 +18,11 @@ $(document).ready(function(){
                 dataType: "json",
                 success: function(countryDetails) {
                     $("#nList").append("<p id ="+rowId+">"+"</p>");
-                    $("<label>"+countryDetails[COUNTRYINDEX].name+"</label>").appendTo("#"+rowId);
+                    $("<label>"+countryDetails[countryindex].name+"</label>").appendTo("#"+rowId);
                     $("<br>").appendTo("#"+rowId);
-                    $("<label>"+countryDetails[COUNTRYINDEX].capital+"</label>").appendTo("#"+rowId);
+                    $("<label>"+countryDetails[countryindex].capital+"</label>").appendTo("#"+rowId);
                     $("<br>").appendTo("#"+rowId);
-                    let countryFlag = countryDetails[COUNTRYINDEX].flag;
+                    let countryFlag = countryDetails[countryindex].flag;
                     $(`<p>Country Flag:</p><img width="15%" height="15%" src=${countryFlag}></img>`).appendTo("#"+rowId);
                     $("<br>").appendTo("#"+rowId);
                 },
