@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Chapter3</title>
+</head>
+
+<body>
+    <script>
+
+        function showDistance(speed,time){
+            var distance = speed*time ;
+            return distance ;
+
+            //will not execute 
+            if(speed < 0){
+                distance *= -1;
+            }
+        }
+
+        var result ;
+
+        result = showDistance(10,5);
+        console.log(result);
+        
+        result = showDistance(85,1.5);
+        console.log(result);
+        
+        result = showDistance(12,9);
+        console.log(result);
+        
+        result = showDistance(42,21);
+        console.log(result);
+    </script>	
+</body>
+</html> 

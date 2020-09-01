@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Chpapter-8</title>
+</head>
+<body>
+    <script>
+        function stopWatch() {
+            var startTime = Date.now();
+            
+            function getDelay() {
+                var elapsedTime = Date.now() - startTime;
+                alert(elapsedTime);
+            }  
+            return getDelay;
+        }
+
+        var something = stopWatch();
+        setTimeout(something, 1000);
+    </script>
+</body>
+</html>
