@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Table-AjaxCall</title>
+	<link rel="stylesheet" href="table.css">
+	<script src = "C:\swabhav\JavaScript\jquery.min.js"> </script>
+	<script src="TableAjaxCall.js"> </script>
+</head>
+
+<body>
+	<button id="get">Get</button>
+	<button id="post">Post</button>
+	<hr>
+
+	<fieldset id ="form" hidden>
+		<label>Roll Number : </label>
+		<input type="text" id="rollNumber"><br>
+		
+		<label>Name : </label>
+		<input type="text" id="name"><br>
+
+		<label>Age : </label>
+		<input type="text" id="age"><br>
+		
+		<label>Email : </label>
+		<input type="text" id="email"><br>
+
+		<label>Date : </label>
+		<input type="text" id="date"><br>
+
+		<label>Gender : </label>
+		<input type="radio" name="gender" value="male"> Male
+		<input type="radio" name="gender" value="female"> Female<br>
+
+		<input id ="submit" type="submit">
+	</fieldset>
+	
+	<table id='Table' hidden> 
+		<tr>  
+			<th>Id</th>
+			<th>Roll Number</th>
+			<th>Name</th>
+			<th>Age</th>
+			<th>Email</th>
+			<th>Date</th>
+			<th>Gender</th>
+		</tr> 
+	</table>
+	
+</body>
+</html> 

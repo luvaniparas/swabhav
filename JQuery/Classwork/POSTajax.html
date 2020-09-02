@@ -1,0 +1,32 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Post Ajax</title>
+	<script src = "C:\swabhav\JavaScript\jquery.min.js"> </script>
+</head>
+<body>
+
+    <script>
+        $(document).ready(function(){  
+            
+            postData();
+
+            function postData(){
+                $.ajax({
+                    type:"POST",
+                    url:"http://localhost:3000/Students",
+                    data: { "name": "student6",
+                            "id": "s6",
+                            "age": "21",
+                            "gender": "female",
+                            "address": "mumbai" 
+                          },
+                    dataType:"json",
+                });
+            }
+        });
+    </script>	
+</body>
+</html> 
