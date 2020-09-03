@@ -42,7 +42,7 @@ function getRequest(){
 }
 
 function postRequest(){
-
+    
     $("#Table").hide();
     $("#form").show();
     var booleanGender = false ;

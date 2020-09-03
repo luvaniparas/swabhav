@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Chpapter-16</title>
+</head>
+<body>
+    
+    <script>
+
+        var person = {
+            getName: function () {
+                return "Name is " + this.firstName + " " + this.lastName;
+            }
+        };
+
+        var funnyGuy = Object.create(person);
+        funnyGuy.firstName = "Conan";
+        funnyGuy.lastName = "O'Brien";
+
+        var theDude = Object.create(person);
+        theDude.firstName = "Jeffrey";
+        theDude.lastName = "Lebowski";
+
+        var detective = Object.create(person);
+        detective.firstName = "Adrian";
+        detective.lastName = "Monk";
+
+
+        console.log(funnyGuy.getName());
+        console.log(theDude.getName());
+        console.log(detective.getName());
+
+    </script>
+</body>
+</html>
