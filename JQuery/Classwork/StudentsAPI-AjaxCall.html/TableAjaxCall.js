@@ -1,12 +1,13 @@
 $(document).ready(function(){
 
-    var rollNumber,name,age,email,date,gender;
+    $("#my_date_picker").datepicker({ dateFormat: "dd-m-yy" });  
 
+    var rollNumber,name,age,email,gender;
+    var date ;
     $("#get").on("click",getRequest);
     $("#post").on("click",fetchFormData);
 
     function getRequest(){
-    console.log("Get request");
     $("#Table").show();
 
     $.ajax({
@@ -57,7 +58,7 @@ function fetchFormData(){
         name = $("#name").val();
         age = $("#age").val();
         email = $("#email").val();
-        date = $("#date").val();
+        date = $("#my_date_picker").val();
         gender = $("input[name='gender']:checked").val();
 
         postRequest();
@@ -87,14 +88,15 @@ function postRequest(){
             "isMale": booleanGender 
             },
         dataType:"json",
+        success: function(){
+            alert("User Created");
+        }
         });
 }
 });
 
 function putRequest(id) {
-
     event.preventDefault();
-    console.log("PutRequest "+id);
     
     $("#form").show();
     
@@ -116,30 +118,64 @@ function putRequest(id) {
             "date": date,
             "isMale": booleanGender 
             },
-        dataType:"json",
+        success: function(){
+            alert("User Updated");
+            setTimeout(function(){
+                
+                location.reload();
+                getRequest();
+            
+            },2000);
+        }
     });
-
 }
 
 function deleteRequest(id) {
-
-    console.log("Delete "+id);
-
     $("#Table").hide();
 
     $.ajax({
         type:"DELETE",
         url:"http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students/"+id,
-        dataType:"json",
+        success: function(){
+            alert("User Deleted");
+            alert("User Updated");
+            setTimeout(function(){
+
+                location.reload();
+                getRequest();
+            
+            },2000);
+        }
     });
 
 }
 
 function updateRequest(id){
-
     event.preventDefault();
-
     $("#form").show();
+
+    $.ajax({
+        type:"GET",
+        url:"http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students/"+id,
+        dataType:"json",
+        success : function(studentsDetails){
+
+            for (let i = 0; i < studentsDetails.length; i++) {
+
+                $('#rollNumber').val(studentsDetails[i].rollNo);
+                $('#name').val(studentsDetails[i].name);
+                $('#age').val(studentsDetails[i].age);
+                $('#email').val(studentsDetails[i].email);
+                $('#my_date_picker').val(studentsDetails[i].date);
+                
+                if(studentsDetails[i].isMale){
+                    $("#male").prop("checked", true);
+                }else{
+                    $("#female").prop("checked", true);
+                }
+            }
+        } 
+});    
 
     $("#submit").on("click",function(){
 
@@ -147,7 +183,7 @@ function updateRequest(id){
         name = $("#name").val();
         age = $("#age").val();
         email = $("#email").val();
-        date = $("#date").val();
+        date = $("#my_date_picker").val();
         gender = $("input[name='gender']:checked").val();
 
         putRequest(id);

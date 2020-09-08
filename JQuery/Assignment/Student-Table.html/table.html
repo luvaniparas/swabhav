@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Table</title>
+    <link rel="stylesheet" href="table.css">
+    <script src = "C:\swabhav\JavaScript\jquery.min.js"> </script>
+    <script src="table.js">    </script>
+</head>
+
+<body>
+    <button id="create" onclick="fetchData()">Add Student</button>
+    
+    <fieldset id ="form" hidden>
+        
+            <label>Name : </label>
+            <input type="text" id="name"><br>
+            
+            <label>Id : </label>
+            <input type="text" id="Sid"><br>
+
+            <label>Age : </label>
+            <input type="text" id="age"><br>
+            
+            <label>Gender : </label>
+            <input type="text" id="gender"><br>
+    
+            <input id ="submit" type="submit">
+        
+    </fieldset>
+
+    <span id="notFound"> </span>
+
+    <div>   
+        <table id="Table">
+            <tr>
+                <th>Name</th>
+                <th>id</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </table>
+    </div>
+</body>
+</html> 

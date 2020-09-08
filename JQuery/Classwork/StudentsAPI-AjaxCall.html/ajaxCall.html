@@ -2,15 +2,17 @@
 <html>
 
 <head>
-	<title>Table-AjaxCall</title>
+	<title>StudentAPI-AjaxCall</title>
 	<link rel="stylesheet" href="table.css">
 	<script src = "C:\swabhav\JavaScript\jquery.min.js"> </script>
+	<link href= 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css' rel='stylesheet'>
+	<script src= "https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 	<script src="TableAjaxCall.js"> </script>
 </head>
 
 <body>
-	<button id="get">Get</button>
-	<button id="post">Post</button>
+	<button id="get">Display Student</button>
+	<button id="post">Add Student</button>
 	<hr>
 
 	<fieldset id ="idForm" hidden>
@@ -38,11 +40,11 @@
 		<input type="text" id="email"><br>
 
 		<label>Date : </label>
-		<input type="text" id="date"><br>
+		<input type="text" id="my_date_picker"><br>
 
 		<label>Gender : </label>
-		<input type="radio" name="gender" value="male"> Male
-		<input type="radio" name="gender" value="female"> Female<br>
+		<input type="radio" id="male" name="gender" value="male"> Male
+		<input type="radio" id="female" name="gender" value="female"> Female<br>
 
 		<input id ="submit" type="submit">
 	</form>
