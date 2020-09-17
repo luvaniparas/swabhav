@@ -7,6 +7,7 @@ $(document).ready(function(){
     $("#get").on("click",getRequest);
     $("#post").on("click",fetchFormData);
 
+    //GET Request
     function getRequest(){
     $("#Table").show();
 
@@ -45,8 +46,8 @@ $(document).ready(function(){
     });
 }
 
+//FetchData for Post Request
 function fetchFormData(){
-
     console.log("FetchData");
     event.preventDefault();
 
@@ -61,12 +62,13 @@ function fetchFormData(){
         date = $("#my_date_picker").val();
         gender = $("input[name='gender']:checked").val();
 
+        //console.log("RollNumber : "+rollNumber+" Name : "+name+" age : "+age+" email : "+email+" date : "+date+" gender : "+gender);
         postRequest();
     });
 }
 
-function postRequest(){
-    
+//POST Request
+function postRequest(){ 
     console.log("PostRequest");
 
     let booleanGender = false ;
@@ -94,6 +96,27 @@ function postRequest(){
         });
 }
 });
+
+//Delete Request
+function deleteRequest(id) {
+    $("#Table").hide();
+
+    $.ajax({
+        type:"DELETE",
+        url:"http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students/"+id,
+        success: function(){
+            alert("User Deleted");
+            alert("User Updated");
+            setTimeout(function(){
+
+                location.reload();
+                getRequest();
+            
+            },1000);
+        }
+    });
+
+}
 
 function putRequest(id) {
     event.preventDefault();
@@ -125,29 +148,9 @@ function putRequest(id) {
                 location.reload();
                 getRequest();
             
-            },2000);
+            },1000);
         }
     });
-}
-
-function deleteRequest(id) {
-    $("#Table").hide();
-
-    $.ajax({
-        type:"DELETE",
-        url:"http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students/"+id,
-        success: function(){
-            alert("User Deleted");
-            alert("User Updated");
-            setTimeout(function(){
-
-                location.reload();
-                getRequest();
-            
-            },2000);
-        }
-    });
-
 }
 
 function updateRequest(id){

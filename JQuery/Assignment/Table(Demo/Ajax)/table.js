@@ -6,8 +6,6 @@ $(document).ready(function () {
         // ITERATING THROUGH OBJECTS 
         $.each(data, function (key, value) { 
 
-            //CONSTRUCTION OF ROWS HAVING 
-            // DATA FROM JSON OBJECT 
             student += '<tr>'; 
             student += '<td>' + value.name + '</td>'; 
 

@@ -1,0 +1,68 @@
+<html>
+
+<head>
+    <title>Student</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+
+<body ng-app="myapp" ng-controller="s-cntrl">
+
+<div>
+    <button ng-click ="display()">Load Student Data</button>
+    </br>
+    
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>RollNumber</th>
+            <th>Cgpa</th>
+            <th>Photo</th>
+        </tr>
+
+        <tbody ng-repeat="s in student"> 
+            <tr>
+                <td>{{s.Name}}</td>
+                <td>{{s.RollNumber}}</td>
+                <td>{{s.Cgpa}}</td>
+                <td><img ng-src="download.jpg"></td>
+            </tr>
+        </tbody>
+    </table>
+    <div id="s"></div>
+</div>
+
+<script>
+    let s = document.getElementById("s");
+    var app = angular.module("myapp",[]);
+    app.controller("s-cntrl",function($scope){
+        $scope.display = function(){
+            $scope.student = [
+            {
+                "Name" : "paras" , 
+                "RollNumber" : "31",
+                "Cgpa" : "7"
+            },
+            {
+                "Name" : "Shailesh" , 
+                "RollNumber" : "12",
+                "Cgpa" : "7" 
+            },
+            {
+                "Name" : "kaushik" , 
+                "RollNumber" : "21",
+                "Cgpa" : "7"  
+            },
+            {
+                "Name" : "jayant" , 
+                "RollNumber" : "1",
+                "Cgpa" : "7"  
+            }
+        ]
+        }
+    }
+    );
+</script>
+
+</body>
+</html>
+
