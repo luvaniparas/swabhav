@@ -1,5 +1,5 @@
 var i = 1 ;
-var task ;
+var task,taskId ;
 
 function getTaskData(){
     task = document.getElementById("t1").value ;
@@ -7,7 +7,7 @@ function getTaskData(){
 }
 
 function loadData(){
-    var j , key , taskId ;
+    var j ,taskId ;
     var length = localStorage.length ;
 
     for(j= 1 ; j < length+1 ; j++){
@@ -26,7 +26,7 @@ function createNode(task){
     }else{
 
     //localStorage 
-    var taskId = "T"+(i++); 
+    taskId = "T"+(i++); 
     localStorage.setItem(taskId,task);    
 
     //list Element tag 
@@ -73,8 +73,8 @@ function createNode(task){
 
     rm.addEventListener("click",function(){
         var nodeId = document.getElementById(node.id);
-        
         node.parentNode.removeChild(nodeId);
+        
         localStorage.removeItem(taskId);
     });
 }
