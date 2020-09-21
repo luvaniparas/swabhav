@@ -1,0 +1,39 @@
+body{
+    background-color: teal;
+}
+
+h1 {
+    padding-top: 20px;
+    text-align: center;
+  }
+
+.balls {
+      background-color:gray;
+      border: black;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 50%;
+  }
+
+  .startstop {
+    background-color: #f44336;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  p{
+    font-size: 20px;
+  }
