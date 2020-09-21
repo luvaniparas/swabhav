@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <title>validation</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src = "C:\swabhav\JavaScript\jquery.min.js"> </script>
+</head>
+
+<body ng-app="myapp" ng-controller="cntrl">
+
+    <form name="myForm">
+        <p>UserName:
+        <input name="myName" ng-model="myName" required>
+        <span style="color:red" ng-show="myForm.myName.$touched && myForm.myName.$invalid">The name is required.</span>
+        </p>
+        
+        <p>Password:
+            <input name="password" type="password" ng-model="myPassword" required>
+            <span style="color:red" type ="password" ng-show="myForm.password.$touched && myForm.password.$invalid">The password is required.</span>
+        </p>
+
+        <input type="submit" ng-disabled='myForm.myName.$untouched && myForm.myName.$invalid || 
+        myForm.password.$untouched && myForm.password.$invalid'>
+    </form>
+
+
+    <script>
+        var app = angular.module("myapp",[]);
+        app.controller("cntrl",function($scope){
+            //$scope. ;
+        
+        });
+    </script>
+
+</body>
+
+
+
