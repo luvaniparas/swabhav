@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <title>Slider</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src = "C:\swabhav\JavaScript\jquery.min.js"> </script>
+</head>
+
+<body ng-app="myapp" ng-controller="cntrl">
+
+    <label >Choose(between 0 and 50):</label>
+    <input type="range" min="0" max="50" ng-model="selectedValue">
+    <p>value => {{selectedValue}}</p>
+
+    <button ng-repeat="i in createButton(selectedValue)">
+        {{i}}
+    </button> 
+
+    <script>
+        var app = angular.module("myapp",[]);
+        app.controller("cntrl",function($scope){
+            $scope.selectedValue ;
+
+            $scope.createButton = function(selectedValue){
+                var btnArray = [] ;
+                 
+                for(var i = 1; i<selectedValue ; i++){
+                    btnArray.push(i);
+                }
+                return btnArray ;
+            };
+        });
+    </script>
+
+</body>
+
+
+

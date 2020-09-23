@@ -1,0 +1,53 @@
+<html>
+
+<head>
+    <title>Filter</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+
+<body ng-app="myApp">
+
+<div  ng-controller="myCtrl">
+   <h1>Filters </h1>
+    
+   <h2>Uppercase : </h2>
+    <input type="text" placeholder="Enter First Name " ng-model = "fName"> <br>
+   <input type="text" placeholder="Enter Middle Name " ng-model = "mName"> <br>
+   <input type="text" placeholder="Enter last Name " ng-model = "lName"> <br>
+   <br>
+   <button ng-click ="uCase()"> Submit </button>
+   <br>
+   <label>Full Name : {{fNameUC | uppercase}} {{mNameUC | uppercase}} {{lNameUC | uppercase}} </label>
+    <hr>
+
+    <h2>Currency : </h2>
+    <label> SmartPhone Price = {{ price | currency :'&#8377;' }} </label>
+    <hr>
+
+    <h2>Date : </h2>
+    <label> Today's Date = {{ today | date :  "dd.MM.yy" }} </label>
+    <hr>
+</div>
+
+    <script>
+        var app = angular.module('myApp', [])
+        app.controller("myCtrl",function($scope){
+            
+            $scope.price = 25000;
+            $scope.today = new Date();
+
+            $scope.uCase = function(){
+                console.log("Inside uCase");
+                $scope.fNameUC = $scope.fName ;
+                $scope.mNameUC = $scope.mName;
+                $scope.lNameUC = $scope.lName; 
+
+            };
+        })
+    </script>
+
+</body>
+</html>
+<!--
+<label>Ng-Model Full Name : <span> {{fName | uppercase}} {{mName | uppercase}} {{lName | uppercase}} </span>  </label>
+>

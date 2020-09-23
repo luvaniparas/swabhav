@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <title>Expression</title>
+    <script src="C:\swabhav\AngularJS\angular.min.js"> </script>
+</head>
+
+<body ng-app="myapp" ng-controller="cntrl" >
+
+    <label>Name : </label>
+    <input type="text" placeholder="Enter Name Here" ng-model = "name" ng-init="fName = 'Paras'">
+    
+    <p>NG-Bind : <span ng-bind ="name"></span> </p>
+    <p>Expression : {{name}}</p>
+
+    <p>The name is <span ng-bind="fName"></span></p>
+
+    <p>Full Name: {{fName+" "+mName + " " + lName}}</p>
+
+    <label>Change BackGround Color : </label>
+    <input type="text" placeholder="Enter Color Name" style="background-color: {{clr}} " ng-model="clr" ng-init clr = "powderblue">
+
+    <script>
+        var app = angular.module("myapp",[]);
+
+        app.controller("cntrl",function($scope){
+            $scope.mName = "Haresh" ;
+            $scope.lName = "Luvani" ;
+        })
+    </script>
+</body>
+</html>
+
