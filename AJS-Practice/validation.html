@@ -1,0 +1,31 @@
+<html>
+
+<head>
+    <title>Validation</title>
+    <script src="C:\swabhav\AngularJS\angular.min.js"> </script>
+</head>
+
+<body ng-app="myapp" ng-controller="cntrl" >
+    <form name ="login">
+        <label>Email   :</label>
+        <input type="email" placeholder="Email" name="email" ng-model="email">
+        <span style="color:red" ng-show="login.email.$error.email">Not a valid e-mail address</span>
+        <br>
+    
+        <label>Password : </label>
+        <input type="password" placeholder="password" ng-model = "password">
+        <br>
+
+        <button>Submit</button>
+    </form>
+    <script>
+        var app = angular.module("myapp",[]);
+
+        app.controller("cntrl",function($scope){
+            
+
+        })
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,59 @@
+<html>
+
+<head>
+    <title>Filters - OrderBy</title>
+    <script src="C:\swabhav\AngularJS\angular.min.js"> </script>
+</head>
+
+<body ng-app="myapp" ng-controller="cntrl" >
+
+    <table>
+        <tr>
+            <th><button ng-click="sortBy('name')">Name</button></th>
+            <th><button ng-click="sortBy('name')">RollNumber</button></th>
+            <th><button ng-click="sortBy('name')">Phone Number</button></th>
+        </tr>
+
+        <tbody ng-repeat="s in student"> 
+            <tr>
+                <td>{{s.Name}}</td>
+                <td>{{s.RollNumber}}</td>
+                <td>{{s.phNo}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        var app = angular.module("myapp",[]);
+
+        app.controller("cntrl",function($scope){
+            $scope.student = [
+            {
+                "Name" : "paras" , 
+                "RollNumber" : "31",
+                "phNo" : "9699-120771"
+            },
+            {
+                "Name" : "Shailesh" , 
+                "RollNumber" : "12",
+                "phNo" : "9699-120772"
+            },
+            {
+                "Name" : "kaushik" , 
+                "RollNumber" : "21",
+                "phNo" : "9699-120773"  
+            },
+            {
+                "Name" : "jayant" , 
+                "RollNumber" : "1",
+                "phNo" : "9699-120774" 
+            }
+            ]
+            $scope.sortBy = function("Name"){
+
+            }
+        })
+    </script>
+</body>
+</html>
+

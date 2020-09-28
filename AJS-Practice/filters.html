@@ -1,0 +1,89 @@
+<html>
+
+<head>
+    <title>Filters</title>
+    <script src="C:\swabhav\AngularJS\angular.min.js"> </script>
+</head>
+
+<body ng-app="myapp" ng-controller="cntrl">
+
+    <h1>Filters</h1>
+    <hr>
+
+    <h2>Uppercase</h2>
+    <input type="text" placeholder="Name" ng-model = "name">
+    <button ng-click="upperCase()">Submit</button>
+    <br>
+    <label>UpperCase Name : </label>
+    <span>{{txt | uppercase}}</span>
+    <hr>
+    <h2>Lowercase</h2>
+    <label>LowerCase Name : </label>
+    <span>{{txt | lowercase}}</span>
+    <hr>
+
+    <h2>Date</h2>
+    <span>{{today | date}}</span>
+    <hr>
+
+    <h2>Currency</h2>
+    <span>{{ price | currency :'&#8377;' }}</span>
+    <hr>
+
+    <h2>JSON</h2>
+    <span>{{ user | json : 20}}</span>
+    <hr>
+
+    <h2>LimitTo</h2>
+    <p>Numbers : {{numbers}}<br> Letters : {{letters}}<br> LongNumber : {{longNumber}}<br> </p>
+    <p> Limit numbers: {{ numbers | limitTo:3 }}<br> 
+     Limit letters: {{ letters | limitTo:3}}<br>
+     Limit LongNumber: {{ longNumber | limitTo:3}}</p>
+    <hr>
+    
+    <h2>Number</h2>
+    <p>{{price | number : 2}} </p>
+    <hr>
+
+    <h2>Filter</h2>
+    <p>{{names | filter :'a' }} </p>
+    <hr>
+
+    <script>
+        var app = angular.module("myapp", []);
+
+        app.controller("cntrl", function ($scope) {
+           
+            $scope.upperCase = function () {
+                $scope.txt = $scope.name ;
+            }
+            
+            $scope.today = new Date();
+            $scope.price = 25000;
+
+            $scope.user = {
+                "fName" : "paras",
+                "lName" : "Luvani",
+                "age" : "21"
+            }
+
+            $scope.numbers = [1,2,3,4,5,6,7,8,9];
+            $scope.letters = "abcdefghi";
+            $scope.longNumber = 2345432342;
+
+            $scope.names = [
+                'Jani',
+                'Carl',
+                'Margareth',
+                'Hege',
+                'Joe',
+                'Gustav',
+                'Birgit',
+                'Mary',
+                'Kai'
+            ];
+        })
+    </script>
+</body>
+
+</html>
