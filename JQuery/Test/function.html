@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Functions</title>
+    <script src = "C:\swabhav\JavaScript\jquery.min.js"> </script>
+</head>
+
+<body>
+    
+    <script>
+        $(document).ready(function(){
+            console.log("Functions => ");
+            
+            function func(x){
+                 console.log(typeof x, arguments.length);
+            }
+
+            func();                
+            func(1);               
+            func("1", "2", "3");   
+        });
+    </script>
+</body>
+</html> 

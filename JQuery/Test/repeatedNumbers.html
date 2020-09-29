@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Repeated Numbers</title>
+    <script src = "C:\swabhav\JavaScript\jquery.min.js"> </script>
+</head>
+
+<body>
+    
+    <script>
+        $(document).ready(function(){
+            
+            console.log("Find repeted Numbers in Array => ");
+            var numbers = [12,34,12,34,12];
+            var repeatedNumbers = [] ;
+            console.log("Numbers : "+numbers);
+
+            var j = 0 ;
+            for(var i = 1 ; i < numbers.length ; i++){
+
+                if(numbers[i] == numbers[j] ){
+                    console.log("repeated Number is : "+numbers[j]);
+                    //repeatedNumbers.push(numbers[j]);
+                    
+                    break ;
+                }
+            }
+        });
+    </script>
+</body>
+</html> 

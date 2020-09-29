@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Immutability</title>
+    <script src = "C:\swabhav\JavaScript\jquery.min.js"> </script>
+</head>
+
+<body>
+    
+    
+    <script>
+        $(document).ready(function(){
+           
+            console.log("String Immutable => ");
+            let astr = "1";
+            let bstr = astr;
+
+            astr = "1 Updated";
+
+            console.log("a : "+astr); 
+            console.log("b : "+bstr); 
+            console.log(" a === b" + astr === bstr); 
+
+            console.log("Number Immutable => ");
+            let aNumber = 1;
+            let bNumber = aNumber;
+            aNumber++;
+
+            console.log("a : "+aNumber); 
+            console.log("b : "+bNumber); 
+            console.log("a === b" + aNumber === bNumber);
+
+            var boo1 = true;
+            var boo2 = boo1;
+            boo1 = false;
+            
+            console.log("boolean 1 : " +boo1);
+            console.log("boolean 2 "+ boo2);
+            console.log(boo1 === boo2);
+
+        });
+    </script>
+</body>
+</html> 

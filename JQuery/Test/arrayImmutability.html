@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Array Mutability</title>
+    <script src = "C:\swabhav\JavaScript\jquery.min.js"> </script>
+</head>
+
+<body>
+    
+    <script>
+        $(document).ready(function(){
+            
+            console.log("Array Immutable => ");
+            var cars = ["BMW"];
+            var cars2 = cars ;
+            cars2.push("AUDI");
+
+            console.log("cars : "+cars); 
+            console.log("cars2 : "+cars2);
+            console.log(cars === cars2);
+
+        });
+    </script>
+</body>
+</html> 

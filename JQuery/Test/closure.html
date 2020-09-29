@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Functions</title>
+    <script src = "C:\swabhav\JavaScript\jquery.min.js"> </script>
+</head>
+
+<body>
+
+    <script>
+        $(document).ready(function(){
+            
+            var count = 0; 
+            
+            myfunction();
+
+            function myfunction(){
+
+                increment();
+                print();
+                decrement();
+                print();
+
+                function increment(){
+                    ++count ;
+                    console.log("Increment : " )  ;
+                }
+
+                function decrement(){
+                    --count ;
+                    console.log("Decrement : ") ;
+                }
+
+                function print(){
+                    console.log("Count : "+count);
+                }
+
+            } 
+
+        });
+    </script>
+</body>
+</html> 
