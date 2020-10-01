@@ -18,10 +18,7 @@ li{
   text-decoration: line-through;
 }
 
-span[contenteditable="true"]{
-  background-color: gray;
-  padding : 3 ;
-}
+
 
 table {
     border: 1px solid black;
