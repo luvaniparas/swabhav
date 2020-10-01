@@ -1,21 +1,28 @@
 var name,id,age,gender; 
+var sObj = {name:"s1", id:"001", age:"21",gender:"female"};
 
-/*
-$(document).ready(function(){
+function studentsData(){
 
-    $("#create").on("click",fetchData);
+    var student = ''; 
+    student += '<tr>'; 
+    student += '<td>' + sObj.name + '</td>'; 
+    student += '<td>' + sObj.id + '</td>'; 
+    student += '<td>' + sObj.age + '</td>'; 
+    student += '<td>' + sObj.gender + '</td>';
+    student += '<td>' + '<button onclick="updateRequest(this.id)" id="'+id+'">Update</button>' +'</td>';
+    student += '<td>' + '<button onclick="deleteRequest(this.id)" id="'+id+'">Delete</button>' +'</td>';
+    student += '</tr>'; 
 
-});
-*/
-function fetchData(){
+    $("#Table").append(student);
+}
+
+function fetchData(event){
     console.log("FetchData");
 
     $("#form").show();
     event.preventDefault();
     
     $("#submit").on("click",function(){
-        console.log("inside Submit");
-        
         name = $("#name").val();
         id = $("#Sid").val();
         age = $("#age").val();
@@ -27,7 +34,6 @@ function fetchData(){
 
 
 function addStudent(){
-    console.log("AddStudent");
 
         var student = '<tr id="'+id+'">'; 
         student += '<td>' + name + '</td>'; 

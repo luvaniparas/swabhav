@@ -7,7 +7,7 @@
     <script src="table.js">    </script>
 </head>
 
-<body>
+<body onload="studentsData()">
     <button id="create" onclick="fetchData()">Add Student</button>
     
     <fieldset id ="form" hidden>
@@ -24,8 +24,7 @@
             <label>Gender : </label>
             <input type="text" id="gender"><br>
     
-            <input id ="submit" type="submit">
-        
+            <input id ="submit" type="submit"> 
     </fieldset>
 
     <span id="notFound"> </span>

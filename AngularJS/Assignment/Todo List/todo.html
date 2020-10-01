@@ -31,7 +31,7 @@
                     <tr id = {{$index}}>
 
                         <td><input type ="checkbox" ng-model="Line" ng-click="cheakBox($index,t.status)"> </td>
-                        <td ng-class="{line : Line}">{{t.taskMessage}} {{ today | date : "dd.MM.y" }} </td>
+                        <td ng-class="{line : Line}"> <span contenteditable="false" ng-dblclick="update()"> {{t.taskMessage}} {{ today | date : "dd.MM.y" }}</span></span> </td>
                         <td><button ng-click="remove($index)"> Remove </button></td>
                         
                     </tr>
