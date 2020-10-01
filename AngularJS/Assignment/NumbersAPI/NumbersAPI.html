@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <title>Numbers API</title>
+    <link rel="stylesheet" href="numbers.css">
+    <script src="C:\swabhav\AngularJS\angular.min.js"> </script>
+    <script src="C:\swabhav\JavaScript\moment.js"> </script>
+    <script src = "numbers.js"> </script>
+</head>
+
+<body ng-app="myapp" ng-controller="cntrl" ng-init="load()">
+
+    <div id ="d1">
+        <label>Enter a number : </label>
+        <input type="text" id="t1" size="25" placeholder="Enter number for facts..." ng-model = "number">
+        <span id="s1"></span>
+        <button id ="b1" ng-click ="getUserData()"> Get Facts </button>
+        <hr>
+
+        <div>
+            <table id='numbersInfo'>
+                <tr>
+                    <th>Number</th>
+                    <th>Trivia</th>
+                    <th>Time</th>
+                </tr>
+                <tr ng-repeat="t in numbersTrivia">
+                    <td>{{t.number}}</td>
+                    <td>{{t.trivia}}</td>
+                    <td>{{t.MomentTime}}</td>
+                </tr>
+            </table>
+        </div> 
+        <hr> 
+    </div>  
+
+</body>
+</html>
+
