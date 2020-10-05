@@ -1,0 +1,106 @@
+<html>
+
+<head>
+    <title>Custom Filter</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <style>
+    
+        table, td, th {  
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 15px;
+        }
+
+        th
+        {
+            text-align:center;
+            padding: 15px;
+        }
+        </style>
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+
+<div  >
+   <h1>Custom Filters </h1>
+   <hr>
+
+   <table>
+    <tr> 
+        <th>Name</th>
+        <th>RollNumber</th>
+        <th>Cgpa</th>
+        <th>Cgpa to Grade </th>
+    </tr>
+
+    <tbody ng-repeat="s in student"> 
+        <tr>
+            <td>{{s.Name}}</td>
+            <td>{{s.RollNumber}}</td>
+            <td>{{s.cgpa}}</td>
+            <td>{{s.cgpa | grade}}</td>
+        </tr>
+    </tbody>
+    </table>
+   
+
+</div>
+
+    <script>
+        var app = angular.module('myApp', [])
+        
+        app.filter('grade', function() {
+            return function(cgpa) {
+                
+                switch(cgpa){
+                    case "10" : 
+                        console.log("case 10 ");
+                        return "A";
+                    case "9" : 
+                        console.log("case 9 ");
+                        return "B";
+                    case "8" : 
+                        console.log("case 8 ");
+                        return "C";
+                    case "7" : 
+                        console.log("case 7 ");
+                        return "D";
+                }
+            };
+        });
+
+        app.controller("myCtrl",function($scope){
+        $scope.student = [
+            {
+                "Name" : "Student1" , 
+                "RollNumber" : "01",
+                "cgpa" : "10"
+            },
+            {
+                "Name" : "Student2" , 
+                "RollNumber" : "02",
+                "cgpa" : "9" 
+            },
+            {
+                "Name" : "Student3" , 
+                "RollNumber" : "03",
+                "cgpa" : "8"  
+            },
+            {
+                "Name" : "Student4" , 
+                "RollNumber" : "04",
+                "cgpa" : "7"  
+            }
+            ]
+        });
+    </script>
+
+</body>
+</html>
