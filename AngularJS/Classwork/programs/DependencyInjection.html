@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+    
+<head>
+    <title>Dependency Injection</title>
+    <script src="C:\swabhav\AngularJS\angular.min.js"> </script>
+</head>
+
+<body ng-app="app1">
+
+<div ng-controller='contoller1'>
+<p>Controller 1 => </p>
+<p>{{name}}</p>
+<p>{{id}}</p>
+</div>
+
+<div ng-controller='contoller2'>
+<p>Controller 2 => </p>
+<p>{{name}}</p>
+<p>{{id}}</p>
+</div>
+
+<div ng-controller='contoller3'>
+<p>Controller 3 => </p>
+<p>{{name}}</p>
+<p>{{id}}</p>
+</div>
+
+<div ng-controller='contoller4'>
+    <p>Controller 4 => </p>
+    <p>{{name}}</p>
+    <p>{{id}}</p>
+</div>
+
+<script>
+
+var app1 = angular.module('app1', ['app2','app4'])
+.controller('contoller1', function($scope, $rootScope) {
+$scope.name = "student1";
+$rootScope.id = 101;
+});
+
+var app2 = angular.module('app2', ['app3'])
+.controller('contoller2', function($scope) {
+$scope.name = 'Student2';
+});
+
+var app3 = angular.module('app3', [])
+.controller('contoller3', function($scope) {
+$scope.name = 'Student3';
+});
+
+var app4 = angular.module('app4', [])
+.controller('contoller4', function($scope) {
+$scope.name = 'Student4';
+});
+
+</script>
+
+</body>
+</html>

@@ -20,14 +20,9 @@
 
     app.factory('getNumber', function(){ 
         var numObject = {};
-
         numObject.evenOdd = function(number){
-            if(number % 2 == 0 ){               
-                return "Even" ;
-            }        
-            else{ 
-                return "Odd"; 
-            }
+            if(number % 2 == 0 ){ return "Even" ; }        
+            else{ return "Odd"; }
         }
 
         numObject.prime = function(number){
@@ -42,12 +37,8 @@
                 }
             }
                   
-            if (flag == true){
-                return "Prime";
-            }
-            else{
-                return "not Prime";
-            }       
+            if (flag == true){ return "Prime";}
+            else{ return "not Prime";}       
         }
         return numObject ;
     });
@@ -59,14 +50,12 @@
         $rootScope.primeResult;
 
         $scope.testNumber = function(number){
-            console.log("Inside TNo");
             $scope.isVisible = true ;
             $rootScope.eoResult = getNumber.evenOdd(number) ;
             $rootScope.primeResult = getNumber.prime(number);
         }
     });
 </script>
-
 </body>
 </html>
 

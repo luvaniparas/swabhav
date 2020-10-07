@@ -31,7 +31,6 @@
 <div  >
    <h1>Custom Filters </h1>
    <hr>
-
    <table>
     <tr> 
         <th>Name</th>
@@ -49,16 +48,11 @@
         </tr>
     </tbody>
     </table>
-   
-
 </div>
-
     <script>
-        var app = angular.module('myApp', [])
-        
+        var app = angular.module('myApp', []) 
         app.filter('grade', function() {
-            return function(cgpa) {
-                
+            return function(cgpa) { 
                 switch(cgpa){
                     case "10" : 
                         console.log("case 10 ");
@@ -101,6 +95,5 @@
             ]
         });
     </script>
-
 </body>
 </html>

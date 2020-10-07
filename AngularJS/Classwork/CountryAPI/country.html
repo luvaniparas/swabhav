@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<head>
+    <title>AJAX Country API</title>
+    <link rel="stylesheet" href="tableCountry.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="country.js"></script> 
+</head>
+
+<body ng-app='countryApiApp'>
+    <div ng-controller='countryApiController'>
+        <p class="welcome-text">Country API</p>
+
+        <table id="countryTable">
+        <tr>
+            <th>Name</th>
+            <th>Capital</th>
+            <th>Flag</th>
+        </tr>
+
+        <tr ng-repeat="country in countries">
+            <td>{{country.name}}</td>
+            <td>{{country.capital}}</td>
+            <td><img ng-src={{country.flag}} ></td>
+        </tr>
+    </table>
+
+    </div>
+</body>
+</html>

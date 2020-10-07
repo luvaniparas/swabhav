@@ -3,7 +3,8 @@ var blueBall = Math.floor(Math.random() * 51);
 
 var app = angular.module("myapp",[]);
 app.controller("cntrl",function($scope){    
-    
+    $scope.isVisible = true ;
+
     $scope.range = function() {
         var input = []; 
             for (var i = startBall; i < endBall; i += 1) { 
@@ -13,7 +14,8 @@ app.controller("cntrl",function($scope){
     }
 
     $scope.start = function(){
-        console.log("Inside Start");
+        $scope.isVisible = false ;
+        
         $("#play").hide();
         $("#btnBalls").show();
         $("#bottom").show();

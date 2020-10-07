@@ -1,0 +1,49 @@
+<html>
+
+<head>
+    <title>Service</title>
+    <script src = "C:\swabhav\JavaScript\jquery.min.js"> </script>
+    <script src="C:\swabhav\AngularJS\angular.min.js"> </script>
+</head>
+
+<body ng-app="myapp">
+
+    <div >
+        <button ng-controller="add" ng-click="addition()"> Increment </button>
+        <button ng-controller="sub" ng-click="subtraction()"> Decrement </button>
+        <br>
+        <label> Count : {{cnt}} </label>
+    </div>
+
+<script>
+    var app = angular.module("myapp",[]);
+
+    app.service('getCount', function(){ 
+        var count = 0 ;
+
+        this.Decrement = function(){ 
+            return --count; 
+        }; 
+        
+        this.Increment = function(){ 
+            return ++count; 
+        };
+    });
+
+    app.controller("add",function($scope,$rootScope,getCount){
+        $scope.addition = function(){
+            $rootScope.cnt = getCount.Increment();
+        }
+    });
+
+    app.controller("sub",function($scope,$rootScope,getCount){
+        $scope.subtraction = function(){
+            $rootScope.cnt = getCount.Decrement();
+        }
+    });
+
+</script>
+
+</body>
+</html>
+
