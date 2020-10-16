@@ -10,7 +10,6 @@
                 if(window.localStorage.hasOwnProperty(key)){
                     let time =  localStorage.getItem(key);
                     key = key.split(',');
-                    console.log(key+" "+time);
                     $scope.createNode(key,time);
                 }           
             }
@@ -39,8 +38,6 @@
                     method : "GET",
                     url : 'http://numbersapi.com/'+number+'/trivia'
             }).then(function mySuccess(response) {
-                var myWelcome = response.data;
-                console.log("mySuccess : " + myWelcome);
 
                 $scope.numbersTrivia.push({
                     'number': number,

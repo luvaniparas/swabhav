@@ -1,0 +1,43 @@
+<html>
+
+<head>
+    <title>Modular</title>
+    <script src="C:\swabhav\AngularJS\angular.min.js"> </script>
+</head>
+
+<body>
+
+    <div ng-app="modA">
+        <h1>{{company}}</h1>
+
+        <section ng-controller="cntrlA">
+            <h1>{{msg}}</h1>
+            <h1>{{company}}</h1>
+        </section>
+    
+        <section ng-controller="cntrlB">
+            <h1>{{msg}}</h1>
+            <h1>{{company}}</h1>
+        </section>
+
+        <h1>{{company}}</h1>
+    </div>
+
+<script>
+    angular.module("modA",['modB'])
+        .controller("cntrlA",function($rootScope,$scope){
+            console.log("inside cntrl-A");
+            $scope.msg = "Controller-A says Hello";
+            $rootScope.company="NexSales";
+        });
+    
+    angular.module("modB",[])
+        .controller("cntrlB",function($rootScope,$scope){
+            console.log("inside cntrl-B");
+            $scope.msg = "Controller-B says Hello";
+        });
+</script>
+
+</body>
+</html>
+

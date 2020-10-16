@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>||</title>
+
+    <script src="../../angular.min.js"></script>
+
+</head>
+<body ng-app="">
+
+    <h2>{{(22/7) | number:2}}</h2>
+    <h2>{{std.name || 'sonam'}}</h2>
+</body>
+
+<script>
+    var std = {
+        name: 'paras',
+    };
+</script>
+</html>

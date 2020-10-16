@@ -1,0 +1,84 @@
+<html>
+
+<head>
+    <title>Custom Filter</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <style>
+        table, td, th {  
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 15px;
+        }
+
+        th
+        {
+            text-align:center;
+            padding: 15px;
+        }
+    </style>
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+
+<div  >
+   <h1>Custom Filters </h1>
+   <hr>
+   <table>
+    <tr> 
+        <th>Name</th>
+        <th>RollNumber</th>
+        <th>Cgpa</th>
+    </tr>
+
+    <tbody ng-repeat="s in student"> 
+        <tr>
+            <td>{{s.Name | uCase}}</td>
+            <td>{{s.RollNumber}}</td>
+            <td>{{s.cgpa}}</td>
+        </tr>
+    </tbody>
+    </table>
+</div>
+
+    <script>
+        var app = angular.module('myApp', []) 
+        app.filter('uCase', function() {
+            return function(name) { 
+                return angular.uppercase(name) ;
+            };
+        });
+
+        app.controller("myCtrl",function($scope){
+        $scope.student = [
+            {
+                "Name" : "Student1" , 
+                "RollNumber" : "01",
+                "cgpa" : "10"
+            },
+            {
+                "Name" : "Student2" , 
+                "RollNumber" : "02",
+                "cgpa" : "9" 
+            },
+            {
+                "Name" : "Student3" , 
+                "RollNumber" : "03",
+                "cgpa" : "8"  
+            },
+            {
+                "Name" : "Student4" , 
+                "RollNumber" : "04",
+                "cgpa" : "7"  
+            }
+            ]
+        });
+    </script>
+</body>
+</html>
