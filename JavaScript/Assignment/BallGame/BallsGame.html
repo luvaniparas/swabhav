@@ -3,12 +3,41 @@
 
 <head>
     <title>Game</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <link rel="stylesheet" type="text/css" href="game.css">
-    <script src ="game.js"></script>
 </head>
 
 <body>
-    <h1 id=h1> </h1>
-    <p id=p1></p>  	
+    
+    <div class="container p-3 text-success text-center"> 
+        <h1>BlueBall Game  
+            <i class='fas fa-baseball-ball' style='font-size:48px;color:green'></i>
+        </h1>
+    </div>
+
+    <div  class="jumbotron  text-center ">
+    
+    <h2> Rules -> </h2>
+    <p>
+        1) Pick a ball from the list. <br>
+        2) If selected ball turns red that means blue ball is after selected ball <br>
+        3) If selected ball turns green that means blue ball is before it <br>
+        4) Total attempts for this game is 4 <br>
+    </p>
+
+    <script src ="game.js"></script>
+
+    <div id="warnings" class="container">
+        <h1 id=h1> </h1>
+        <p id=p1></p>  	
+    </div>
+    </div>
 </body>
 </html> 

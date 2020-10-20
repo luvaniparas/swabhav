@@ -1,8 +1,8 @@
 body {
-  background-color:powderblue;
+  background-color :#003380;
 }
 
-.balls {
+.btn-secondary {
     background-color:gray;
     border: black;
     color: white;

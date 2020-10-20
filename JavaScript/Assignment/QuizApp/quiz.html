@@ -3,24 +3,32 @@
 
 <head>
     <title>Quiz</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     <link rel="stylesheet"  href = "quiz.css">
     
 </head>
 
 <body>
    <div id = "container">
-       <div id ="header">
-            <h2><span style="color:black"> JavaScript-Quiz </span></h2>
+       <div class="container p-3 my-3 bg-primary text-black" id ="header">
+            <h2> JavaScript-Quiz </h2>
        </div>
 
-       <div id ="desc">
+       <div class="jumbotron" id ="desc">
            <p id ="p1">  </p>
            <label class = "option"><input type = "radio" name ="option" value = 1><span id ="o1">    </span></label>
            <label class = "option"><input type = "radio" name ="option" value = 2><span id ="o2">    </span></label>
            <label class = "option"><input type = "radio" name ="option" value = 3><span id ="o3">    </span></label>
            <label class = "option"><input type = "radio" name ="option" value = 4><span id ="o4">    </span></label>
-           <button id = "pbtn" onclick="loadPreviousQuestions()">Previous</button>
-           <button id = "nbtn" onclick="loadNextQuestions()">Next</button>
+           <button id = "pbtn" class="btn btn-dark" onclick="loadPreviousQuestions()">Previous</button>
+           <button id = "nbtn" class="btn btn-success" onclick="loadNextQuestions()">Next</button>
         </div>
         <div id ="pieChart"> </div>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> 

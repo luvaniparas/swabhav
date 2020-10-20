@@ -7,7 +7,7 @@ function createBalls(){
     var txt = " ";
 
     for(var i =1 ; i < 51 ; i++){
-        txt = '<button type="button" onclick="countClicks(this.id)" class="balls" id =' + i + ">"+ i + '</button>';
+        txt = '<button type="button" onclick="countClicks(this.id)" class="btn btn-secondary btn-lg"  id =' + i + ">"+ i + '</button>';
         document.write(txt);
     }
 }

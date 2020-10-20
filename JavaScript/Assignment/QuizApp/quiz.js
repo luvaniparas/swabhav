@@ -107,6 +107,7 @@ function loadPreviousQuestions(){
 function resultPieChart(){
     var reload = document.createElement('input');
     reload.setAttribute('id','rbtn');
+    reload.setAttribute('class', 'class="btn btn-danger"');
     reload.setAttribute('type', 'button');
     reload.setAttribute('value', 'Play Again');
 
