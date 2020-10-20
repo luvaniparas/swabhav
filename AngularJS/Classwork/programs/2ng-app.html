@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<title>Multiple ngApp does not work</title>
+</head>
+
+<body >
+<div ng-app="firstApp" >
+<div ng-controller="FirstController">
+<p> 1# {{ name }} </p>
+</div>
+</div>
+
+<div ng-app="firstApp">
+<div ng-controller="FirstController">
+<p> 2# {{ name }} </p>
+</div>
+</div>
+
+<script src="angular.js"></script>
+<script type="text/javascript">
+
+var firstApp = angular.module('firstApp', []);
+firstApp.controller('FirstController', function($scope) {
+
+$scope.name = "I'm the first app.";
+});
+
+</script>
+</body>
+</html>
