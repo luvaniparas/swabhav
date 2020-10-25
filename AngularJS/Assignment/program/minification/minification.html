@@ -1,0 +1,30 @@
+<html>
+
+<head>
+    <title>Minification</title>
+    <script src="C:\swabhav\AngularJS\angular.min.js"> </script>
+    <script src = "minify.js"> </script>
+</head>
+
+<body ng-app="myapp" ng-controller="s-cntrl">
+
+    <div>
+        <h2>One Way Binding => </h2>
+        <p> Name : {{student.Name}} </p>
+        <p> Roll Number : {{student.RollNumber}} </p>
+        <p> Cgpa : {{student.Cgpa}} </p>
+    </div>
+    
+    <div>
+        <h2>Two Way Binding => </h2>
+        <input type="text" placeholder="Name" ng-model="name">
+        <input type="text" placeholder="Roll Number" ng-model="rNumber">
+        <input type="text" placeholder="Cgpa" ng-model="cgpa">
+        <p>{{name}}</p>
+        <p>{{rNumber}}</p>
+        <p>{{cgpa}}</p>
+    </div>
+        
+</body>
+</html>
+

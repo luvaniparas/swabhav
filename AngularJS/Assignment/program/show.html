@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+
+    <button ng-click="show()">Show </button>
+    
+    <div ng-show="myVar">
+        <h1>Welcome</h1>
+        <p>Welcome to my home.</p>
+    </div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+	
+    $scope.myVar = false ; 
+	$scope.show = function(){			
+        $scope.myVar = true ;
+	}	
+});
+</script>
+
+</body>
+</html>

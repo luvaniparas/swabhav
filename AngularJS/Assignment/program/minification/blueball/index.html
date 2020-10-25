@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <title>Angulae JS game</title>
+    <link rel="stylesheet" href="bbgame.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src = "C:\swabhav\JavaScript\jquery.min.js"> </script>
+    <script src = "blueball.js"> </script>
+</head>
+
+<body ng-app="myapp" ng-controller="cntrl">
+    <h1>Blue Ball game</h1>
+    <hr>
+    <h2>Rules => </h2>
+    <p id="rules" ng-show="isVisible">
+        1) Pick a ball from the list. <br>
+        2) If selected ball turns red that means blue ball is after selected ball <br>
+        3) If selected ball turns green that means blue ball is before it <br>
+        4) Total attempts for this game is 4 <br>
+        <p id="p1"> </p>
+        <button class="startstop" id="play" ng-click="start()"> play </button>
+    </p>
+
+    <div id="btnBalls" hidden>
+        <button ng-repeat="i in range(1, 51)" id="{{i}}" class="balls" ng-click="play($id)">
+            {{i}}
+        </button> 
+    </div>
+
+    <div id="bottom" hidden>
+        <h1 id="h1"> </h1>
+        <button class="startstop" id="restartGame" ng-click="reloadPage()" >Restart  </button>
+    </div>
+</body>
+</html>
+
+
+
+

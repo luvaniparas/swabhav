@@ -32,5 +32,4 @@ app.controller("cntrl",function($scope,$filter){
     $scope.update = function(event){
         event.target.contentEditable = event.target.contentEditable == "false" ? "true" : "false" ;
     }
-
 });

@@ -1,0 +1,48 @@
+<html>
+
+<head>
+    <title></title>
+    <link rel="stylesheet" href="todo.css">
+    <script src="C:\swabhav\AngularJS\angular.min.js"> </script>
+    <script src = "C:\swabhav\JavaScript\jquery.min.js"> </script>
+    <script src="todo.js"> </script>
+</head>
+
+<body ng-app="myapp" ng-controller="cntrl">
+
+    <div class="todo">
+        <div class = "header">
+            <h2> <span style="color : #70db70">  TO-DO List </span> </h2>
+        </div>
+
+        <div>
+            <input type="text" ng-model="taskTx" placeholder="Enter Your task Here..." size = 35> 
+            <button type="button" id ="addBtn" ng-click="addTask()" >Add</button> 
+            <hr>
+            
+            <table>
+                <tr>
+                    <th>Done</th>
+                    <th>Task</th>
+                    <th>Time</th>
+                    <th>Remove</th>
+                </tr>
+        
+                <tbody ng-repeat="t in tasks track by $index "> 
+                    <tr id = {{$index}}>
+
+                        <td><input type ="checkbox" ng-model="Line" ng-click="cheakBox($index,t.status)"> </td>
+                        <td ng-class="{line : Line}"  > <span contenteditable="false" ng-dblclick="update($event)">  {{t.taskMessage}} </span> </td>
+                        <td>{{ today | date : "dd.MM.y" }}</td>
+                        <td><button ng-click="remove($index)"> Remove </button></td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+ 
+
+

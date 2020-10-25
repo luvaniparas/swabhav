@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title></title>
+    <title>Css Binding</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   
@@ -11,19 +11,36 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   
     <script src="C:\swabhav\AngularJS\angular.min.js"> </script>
+
 </head>
 
 <body ng-app="myapp" ng-controller="cntrl">
 
+    <label>Name : </label>
+    <input type="text" ng-model="name">
+    <br><br>
+
+    <label>Font-Size : </label>
+    <input type="number" ng-model="nameCss.fontSize" min="10" max="50">
+    <br><br>
     
+    <label>Background-Color : </label>
+    <input type="text" ng-model="nameCss.backgroundColor">
+    <br><br>
+    
+    <label>Foreground-Color : </label>
+    <input type="text" ng-model="nameCss.color">
+    <br><br>
+
+    <h1  ng-style="nameCss"> {{name}} </h1>
+
 <script>
     var app = angular.module("myapp",[]);
     app.controller("cntrl",function($scope){
-        $scope. ;
-    
+        $scope.nameCss = {};
     });
 </script>
 
 </body>
-</html>
+</html>0
 
