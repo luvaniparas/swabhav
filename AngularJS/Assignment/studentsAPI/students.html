@@ -11,7 +11,7 @@
     <button ng-click="addData()">Add Students</button>
     <hr>
 
-	<form ng-show="form">
+	<form ng-show="addForm">
 		<label>Roll Number : </label>
 		<input type="text" ng-model="rollNumber"><br>
 		
@@ -33,6 +33,31 @@
 
         <input type="submit" id="submit" value="Submit" ng-click="addData()"/>
 	</form>
+
+
+	<form ng-show="updateForm">
+		<label>Roll Number : </label>
+		<input type="text" ng-model="updateRollNumber"><br>
+		
+		<label>Name : </label>
+		<input type="text" ng-model="updateName"><br>
+
+		<label>Age : </label>
+		<input type="text" ng-model="updateAge"><br>
+		
+		<label>Email : </label>
+		<input type="text" ng-model="updateEmail"><br>
+
+		<label>Date : </label>
+		<input type="text" ng-model="updateDate"><br>
+
+		<label>Gender : </label>
+		<input type="radio" ng-model="updateGender"  value="male"> Male
+		<input type="radio" ng-model="updateGender"  value="female"> Female<br>
+
+        <input type="submit" id="submit" value="Submit" ng-click="updateHttpRequest()"/>
+	</form>
+
 
     <table > 
 		<tr>  
