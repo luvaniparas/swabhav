@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <script src="C:\swabhav\AngularJS\angular.min.js"> </script>
+</head>
+
+<body>
+
+    <md-content ng-app="MyApp" ng-controller="AppCtrl as ctrl" layout-padding="" layout-margin="" class="datepickerdemoMoment">
+        <md-datepicker ng-model="ctrl.myDate" ng-change="ctrl.onDateChanged()" md-placeholder="Enter date"></md-datepicker>
+        Date: {{ctrl.myDate | date:shortDate}}
+    </md-content>
+    
+<script>
+    (function () {
+  'use strict';
+
+  angular.module('MyApp', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache']).config(function($mdDateLocaleProvider) {
+   
+    $mdDateLocaleProvider.formatDate = function(date) {
+      return date ? moment(date).format('L') : '';
+    };
+
+    $mdDateLocaleProvider.parseDate = function(dateString) {
+      var m = moment(dateString, 'L', true);
+      return m.isValid() ? m.toDate() : new Date(NaN);
+    };
+  })
+  .controller("AppCtrl", function($log) {
+    this.myDate = new Date();
+
+    this.onDateChanged = function() {
+      $log.log('Updated Date: ', this.myDate);
+    };
+  });
+})();
+</script>
+
+</body>
+</html>
+

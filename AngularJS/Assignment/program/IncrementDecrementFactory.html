@@ -32,7 +32,7 @@
         return cntObject;
     });
 
-    app.controller("add",function($scope,$rootScope,getCount){
+    app.controller("add",function($scope,$rootScope,getCount) {
         $scope.addition = function(){
             $rootScope.cnt = getCount.Increment();
         }

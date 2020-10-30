@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Custom Directives</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <script src="C:\swabhav\AngularJS\angular.min.js"> </script>
+</head>
+
+<body ng-app="myapp" ng-controller="cntrl">
+
+    <div ng-header></div>
+
+    
+<script>
+    var app = angular.module("myapp",[]);
+    
+    app.directive('ngHeader',function(){
+        return {
+            template: '<h2>Custom Directive - {{courseName}} </h2>'
+        }
+    });
+
+    app.controller("cntrl",function($scope){
+        $scope.courseName = "Angular JS" ;
+    });
+</script>
+
+</body>
+</html>
+
