@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Header Footer c-Directive</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+    <script src="C:\swabhav\AngularJS\angular.min.js"> </script>
+</head>
+
+<body ng-app="myapp" ng-controller="cntrl">
+
+    <nexsales-header> </nexsales-header>
+    <nexsales-footer> </nexsales-footer>
+    <nexsales-footer year="2020"> </nexsales-footer>
+    
+<script>
+    var app = angular.module("myapp",[]);
+    
+    app.directive("nexsalesHeader",function(){
+        return{
+            template : "<header><H1>NexSales - Header</H1></header>",
+            restrict:"E"
+        }
+    })
+
+    app.directive("nexsalesFooter",function(){
+        function footerFunc($scope,$element,$attr){
+            $scope.year = $attr.year
+        }
+
+        return{
+            link : footerFunc,
+            scope : true ,
+            template : "<footer><H5>NexSales-Footer {{year}}</H5></footer>"
+        }
+    })
+
+    app.controller("cntrl",function($scope){
+        //$scope. ;
+    });
+</script>
+
+</body>
+</html>
+

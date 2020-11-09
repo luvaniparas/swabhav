@@ -1,0 +1,41 @@
+<div>
+
+<div class="container p-3 my-3 border bg-light">
+    <h1 class="text-success">Students API</h1>
+    <button class="btn btn-primary" ng-click = "getStudentsData()"> Display Students </button>
+    <a href="#/addForm" class="btn btn-secondary">Add Students</a>   
+</div>
+
+<div class="container p-3 my-3 border" ng-show="searchBox"> 
+     Search : <input type="text" ng-model="search" placeholder="Enter some text to search" />
+</div>
+
+<div>
+    <table class="table table-striped"> 
+        <tr>  
+            <th>Id</th>
+            <th>Roll Number</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Date</th>
+            <th>Gender</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr> 
+        
+        <tr ng-repeat="s in students | filter : search">
+            <th>{{s.id}}</th>
+            <th>{{s.rollno}}</th>
+            <th>{{s.name}}</th>
+            <th>{{s.age}}</th>
+            <th>{{s.email}}</th>
+            <th>{{s.date}}</th>
+            <th>{{s.gender}}</th>
+            <th><button ng-click="updateData(s.id)" class="btn btn-warning"> Update </button></th>
+            <th><button ng-click="deleteData(s.id)" class="btn btn-danger"> Delete </button></th>
+        </tr>
+    </table>
+</div>
+
+</div>
