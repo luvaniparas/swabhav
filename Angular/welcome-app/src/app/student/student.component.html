@@ -1,0 +1,46 @@
+<section>
+
+    <h1 [innerHtml]='"Property Binding"' [style.color]='"red"'> </h1>
+
+    <div>
+        <h3>IStudent</h3>
+        <table  class="table table-striped">
+            <tr>
+                <th *ngFor = "let column of headers" >
+                    {{column}}
+                </th>
+            </tr>
+
+            <tr>
+                <td> <img [src] = profilePhotoUrl> </td>
+                <td> {{student.id}} </td>
+                <td> {{student.name}} </td>
+                <td> {{student.cgpa}} </td>
+            </tr>
+        </table>
+    </div>
+
+    <button (click) = "loadAllStudents()"> LoadStudent </button>
+
+    <div *ngIf="showTable">
+        <h3>IStudent[]</h3>
+        <table  class="table table-striped">
+            <tr>
+                <th *ngFor = "let column of headers" >
+                    {{column}}
+                </th>
+            </tr>
+
+            <tr *ngFor="let s of studentList">
+
+                <td> <img [src] = profilePhotoUrl> </td>
+                <td>{{s.id}}</td>
+                <td>{{s.name}}</td>
+                <td>{{s.cgpa}}</td>
+
+            </tr>
+        </table>
+    </div>
+
+</section>
+

@@ -1,7 +1,11 @@
 export class Employee { 
-         name:String 
-    
+         private name:String 
+
          constructor(name:String) { 
             this.name = name 
-         } 
+         }
+         
+         public get name() {
+            return this.name;
+        }
 } 

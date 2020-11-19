@@ -1,0 +1,22 @@
+<div class="container">
+
+    <header>
+        <h2 class="jumbotron">Two way binding</h2>
+    </header>
+    
+    <section>
+        <label>First Name: </label>
+        <input type="text" [ngModel]="firstName" (ngModelChange) = firstNamechange($event) placeholder="Enter here "/>
+        <br>
+
+        <label>Last Name : </label>
+        <input type="text" [(ngModel)]="lastName" />
+        <br>
+
+        <p>FirstName : {{firstName}}</p>
+        <p>LastName : {{lastName}}</p>
+
+        <h3>SnakeCase : {{firstName | snakeCase : lastName}}</h3>
+    </section>
+
+</div>
