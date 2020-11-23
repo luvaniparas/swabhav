@@ -29,5 +29,3 @@ export class StudentComponent implements OnInit {
     this.showTable = (this.showTable ? false: true);
   }
 }
-
-

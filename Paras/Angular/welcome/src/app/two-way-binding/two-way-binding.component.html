@@ -1,0 +1,16 @@
+<div class="container">
+
+    <label>First Name : </label>
+    <input type="text" [ngModel]="firstName" (ngModelChange)=firstNameChange($event)  placeholder="Enter First Name"/>
+    <br>
+    
+    <label>last Name : </label>
+    <input type="text" [(ngModel)] = "lastName" placeholder="Enter Last Name"/>
+    <br>
+
+    <p>firstName = {{firstName}} //OneWay Binding Using Event Binding & property Binding  </p>
+    <p>lastName = {{lastName}} // TwoWay Binding Using [()] </p>
+    
+    <p>snakCase = {{ firstName | snakCase : lastName}}</p>
+
+</div>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<head>
+    <title> Promise </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"> </script>
+</head>
+
+<body ng-app="myapp" ng-controller="cntrl">
+
+
+<script>
+    var app = angular.module("myapp",[]);
+    app.controller("cntrl",function($scope,$q){
+        console.log("Promise");
+        $scope.add = function(n1,n2) {
+            return n1+n2 ; 
+        }
+
+        $scope.addAsync = function(n1,n2){
+            let sum = n1+n2;
+            return $q(function(resolve, reject) {
+                if(sum){
+                    resolve(sum);
+                }else{
+                    reject(Error("Can't Add two numbers "));
+                }
+            })
+        }
+
+        $scope.display = function(){
+            console.log("End of Program");
+        }
+
+        setInterval(() => {
+            console.log("add() : "+$scope.add(1,1));
+        }, 2000);
+
+        $scope.addAsync(2,2)
+        .then(function(result) {
+            console.log("addAsync 1 : "+result);
+            return $scope.addAsync(result,result);
+        })
+        .then(function(result) {
+            console.log("addAsync 2 : "+result);
+            return $scope.addAsync(result,result);
+        })
+        .then(function(result) {
+            console.log("addAsync 3 : "+result);
+        });
+        $scope.display();
+   });
+</script>
+
+</body>
+</html>
+

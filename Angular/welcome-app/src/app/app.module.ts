@@ -6,8 +6,12 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { StudentComponent } from './student/student.component'
 import { TwoWayBindingComponent } from './two-way-binding/two-way-binding.component';
 import { SnakeCasePipe } from './snake-case.pipe';
-import { from } from 'rxjs';
 import { BlueBallGameComponent } from './blue-ball-game/blue-ball-game.component';
+import { ParentComponent } from './parent/parent.component';
+import { ToggleComponent } from './parent/toggle/toggle.component';
+import { StarRatingComponent } from './star-rating/star-rating.component';
+import { StarComponent } from './star-rating/star/star.component';
+import { ObservableComponent } from './observable/observable.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +19,12 @@ import { BlueBallGameComponent } from './blue-ball-game/blue-ball-game.component
     StudentComponent,
     TwoWayBindingComponent,
     SnakeCasePipe,
-    BlueBallGameComponent
+    BlueBallGameComponent,
+    ParentComponent,
+    ToggleComponent,
+    StarRatingComponent,
+    StarComponent,
+    ObservableComponent
   ],
   imports: [
     BrowserModule,

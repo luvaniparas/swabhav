@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WelcomeComponent implements OnInit {
   message : String ;
+  
   constructor() { 
     console.log("Constructor");
     this.message = "Welcome to Angular-10 Component"
