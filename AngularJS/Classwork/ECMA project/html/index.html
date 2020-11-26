@@ -11,6 +11,8 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28//angular-route.min.js"></script>
 
+    <script src="../js/app.js"></script>
+
     <style>
     .center {
         display: block;
@@ -26,38 +28,7 @@
 </head>
 
 <body ng-app="cntrl">    
-
-    <div class="container" id="Product List">
-        <div class="card">
-            <div class="card bg-primary text-white"> 
-                <div class="card-header" class="card-body">Product List</div>
-            </div>
-            
-            <div class="card-body"> 
-                Filter by  <input type="text" ng-model="search" placeholder="Search" id="searchBox"> 
-                <table class="table">
-                    <tr>
-                        <th><button class="btn btn-primary">Show Image</button></th>
-                        <th>Product</th>
-                        <th>Code</th>
-                        <th>Available</th>
-                        <th>Price</th>
-                        <th>5 star Rating</th>
-                    </tr>
-
-                    <tr ng-repeat="p in Product | filter : search">
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </table>
-            </div> 
-        </div>
-    </div>
-    
+ 
     <div ng-view> </div>
 
 </body>

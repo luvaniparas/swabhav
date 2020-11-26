@@ -1,0 +1,41 @@
+<div class="container">
+
+    <div  class="container p-3 my-3 border bg-light">
+        <h1 class="text-success">Students API</h1>
+        <button class="btn btn-primary" (click) = "getStudentsData()"> Display Students </button>
+    </div>
+
+    <div>
+        <div>
+            <table class="table table-striped"> 
+                <tr>  
+                    <th>Id</th>
+                    <th>Roll Number</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Email</th>
+                    <th>Date</th>
+                    <th>Gender</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+                
+                <tr [ngClass] = "{'highlight' : s.id == selectedId}" *ngFor ="let s of students">
+                    <td>{{s.id}}</td>
+                    <td>{{s.rollNo}}</td>
+                    <td>{{s.name}}</td>
+                    <td>{{s.age}}</td>
+                    <td>{{s.email}}</td>
+                    <td>{{s.date}}</td>
+                    <td>{{s.isMale}}</td>
+                    <td><button class="btn btn-warning" [routerLink]="['/updateStudent']" [state]= s> Update </button></td>
+                    <td><button class="btn btn-danger" (click) = "deleteStudents(s.id)"> Delete </button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+</div>
+
+

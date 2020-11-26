@@ -9,7 +9,7 @@ export class MathObservableService {
   constructor() { }
 
   getSquare(num): Observable<number> {
-    return Observable.create(observer => {
+    return new Observable((observer) => {
       if(num > 0 ) {
         observer.next(num * num);
         
@@ -18,5 +18,7 @@ export class MathObservableService {
       }
       observer.error(new Error("Can't square the number"));  
     })
+
   }
 }
+

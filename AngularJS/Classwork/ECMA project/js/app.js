@@ -13,6 +13,17 @@ app.config(function($routeProvider) {
   });
 
 app.controller("cntrl",function($scope){
-   // $scope. ;
+    $scope.btnValue = "Show Image";
+
+    $scope.changeButton = function(){
+        console.log("Button Clicked");
+        if($scope.btnValue == "Show Image"){
+            $scope.btnValue = "Hide Image";
+            console.log("Button : "+$scope.btnValue);
+        }else{
+            $scope.btnValue = "Show Image";
+            console.log("Button : "+$scope.btnValue);
+        }
+    }
 
 });

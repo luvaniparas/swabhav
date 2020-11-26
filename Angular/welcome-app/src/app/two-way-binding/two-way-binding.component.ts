@@ -18,8 +18,6 @@ export class TwoWayBindingComponent implements OnInit {
     console.log("Hello ngOnit");
     let result = this.math.cubes(3);
     console.log(result);
-
-    
   }
   
   firstNamechange(event) {

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { PipesComponent } from './pipes/pipes.component';
@@ -11,8 +11,9 @@ import { ParentComponent } from './parent/parent.component';
 import { ChildComponent } from './parent/child/child.component';
 import { MyParentComponent } from './my-parent/my-parent.component';
 import { MyChildComponent } from './my-parent/my-child/my-child.component';
-import { StarRatingsComponent } from './star-ratings/star-ratings.component';
-import { StarsComponent } from './star-ratings/stars/stars.component';
+import { FormsComponent } from './forms/forms.component';
+import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
+
 
 @NgModule({
   declarations: [
@@ -25,12 +26,13 @@ import { StarsComponent } from './star-ratings/stars/stars.component';
     ChildComponent,
     MyParentComponent,
     MyChildComponent,
-    StarRatingsComponent,
-    StarsComponent
+    FormsComponent,
+    ReactiveFormsComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

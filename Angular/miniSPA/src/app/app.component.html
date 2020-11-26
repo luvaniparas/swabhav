@@ -1,0 +1,39 @@
+<div class="container">
+
+  <div class="container p-3 my-3 border">
+      <h1>Single Page Application</h1>
+      <p>Angular Router</p>
+  </div>
+
+  <div>
+    <ul class="nav">
+      
+      <li class="nav-item">
+        <a [routerLink]="['/home']" class="nav-link" >Home</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/service']">Service</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/career']">Career</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/about']">About</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/department', 15]">Department</a>
+      </li>
+      
+    </ul>
+  </div>
+  
+</div>
+
+<div>
+  <router-outlet></router-outlet>
+</div>
+  

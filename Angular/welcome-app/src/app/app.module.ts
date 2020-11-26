@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClient } from "@angular/common/http";
 
 import { WelcomeComponent } from './welcome/welcome.component';
 import { StudentComponent } from './student/student.component'
@@ -12,6 +13,7 @@ import { ToggleComponent } from './parent/toggle/toggle.component';
 import { StarRatingComponent } from './star-rating/star-rating.component';
 import { StarComponent } from './star-rating/star/star.component';
 import { ObservableComponent } from './observable/observable.component';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { ObservableComponent } from './observable/observable.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClient
   ],
   providers: [],
   bootstrap: [WelcomeComponent,StudentComponent,TwoWayBindingComponent]
