@@ -1,0 +1,24 @@
+input[type=text], select {
+    width: 20%;
+    height: 30px;
+    padding: 10px 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  thead{
+      color : #1aa3ff;
+  }
+
+  img {
+    width: 75px;
+    height: 30px;
+  }
+
+  #filterProduct {
+    margin-left: 20px;
+    height: 2em;
+}

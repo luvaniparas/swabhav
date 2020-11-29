@@ -1,0 +1,37 @@
+<div class="container" id="productList">
+    <div class="card">
+        <div class="card bg-primary text-white"> 
+            <div class="card-header" class="card-body"> <h5> Product List </h5> </div>
+        </div>
+
+        <div class="card-body"> 
+            
+            Filter By :  <input type="text" id="filterProduct" placeholder="search here" (input)="searchProduct();" [(ngModel)]="searchValue" >
+
+            <table class="table">
+                <thead>
+                    <th><button class="btn btn-primary" (click)='changeButtonImage()'  [innerHtml]="ImageButtonvalue"></button></th>
+                    <th>Product</th>
+                    <th>Code</th>
+                    <th>Avalilable</th>
+                    <th>Price</th>
+                    <th>5 star rating</th>
+                </thead>
+                
+                <tbody>
+
+                <tr *ngFor="let p of products">
+                    <td><img [src]="p.imageUrl" [hidden]='showImage'></td>
+                    <td><a class="nav-link" href="/productDetails" (click)="clickedProductData(p)"> {{p.productName}} </a></td>
+                    <td>{{p.productCode}}</td>
+                    <td>{{p.releaseDate}}</td>    
+                    <td>{{p.price}}</td>
+                    <td> <app-star [rating] = 'p.starRating'> </app-star> </td>    
+                </tr>
+
+                </tbody>
+            </table>
+            
+        </div> 
+    </div>
+</div>

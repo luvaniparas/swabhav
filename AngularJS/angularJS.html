@@ -15,14 +15,28 @@
 
 <body ng-app="myapp" ng-controller="cntrl">
 
+    <div class="container" id="productList">
+        <div class="card">
+            <div class="card bg-primary text-white"> 
+                <div class="card-header" class="card-body"> <h5> Product Details : {{productName}} </h5> </div>
+            </div>
     
-<script>
-    var app = angular.module("myapp",[]);
-    app.controller("cntrl",function($scope){
-        $scope. ;
-    
-    });
-</script>
+            <div class="card-body"> 
+                <p>Name : </p>
+                <p>Code : </p>
+                <p>Description : </p>
+                <p>Avalilable : </p>
+                <p>price : </p>
+                <p>5 star rating : </p>
+            </div>
+            
+            <div class="card-footer"> 
+                  <button class="btn btn-light"> <b><</b>Back</button>      
+            </div>
+            
+        </div>
+    </div>    
+
 
 </body>
 </html>

@@ -1,0 +1,34 @@
+<div class="container" id="productList">
+
+    <div class="container" id="productList">
+        <div class="card">
+            <div class="card bg-primary text-white"> 
+                <div class="card-header" class="card-body"> <h5> Product Details : {{productName}}  </h5> </div>
+            </div>
+            
+            <div class="card-body">
+                <p>Name : {{productName}} </p>
+                <p>Code : {{productCode}} </p>
+                <p>Description :  {{description}} </p>
+                <p>Avalilable : {{releaseDate}} </p>
+                <p>price : {{price}} </p>
+                <p>5 star rating : </p> 
+                <p><app-star [rating] = 'starRating'> </app-star> </p>
+            </div>
+
+            <div class="container">
+                <img class="productImage" src="{{imageUrl}}" alt="Image Not Found">
+            </div>
+            
+            <div class="card-footer"> 
+                  <button class="btn btn-light" (click) ="backToPtoductList()"> <b>< Back </b></button>      
+            </div>
+            
+        </div>
+    </div> 
+</div>
+
+
+
+
+
