@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
+import { IProduct } from './IProduct';
 
 @Component({
   selector: 'app-product-list',
@@ -11,7 +12,7 @@ export class ProductListComponent implements OnInit {
   showImage = true;
   ImageButtonvalue : string = "Hide Image";
   searchValue : string ;
-  products  ;
+  products : IProduct;
   productName : string = "a";
   
   constructor(private productService : ProductService) { }

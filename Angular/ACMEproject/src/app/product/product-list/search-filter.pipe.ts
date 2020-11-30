@@ -6,13 +6,13 @@ import { IProduct } from './IProduct';
 })
 export class SearchFilterPipe implements PipeTransform {
 
-  transform(product: IProduct,searchValue:string): string {
-    return 
-    // if(searchValue != ""){
-    //   return this.products.filter(product => 
-    //     product.productName.toLocaleLowerCase().includes(this.searchValue.toLocaleLowerCase())
-    //   )
-    // }
-  }
+  transform(product: IProduct[],searchValue:string): any {
+    searchValue = searchValue.toLocaleLowerCase();
 
+    return product.filter(product => {
+      return product.productName.toLocaleLowerCase().includes(searchValue);
+    });
+  }
 }
+
+

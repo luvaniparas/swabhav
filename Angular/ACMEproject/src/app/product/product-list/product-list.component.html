@@ -20,7 +20,7 @@
                 
                 <tbody>
 
-                <tr *ngFor="let product of products">
+                <tr *ngFor="let product of products" >
                     <td><img [src]="product.imageUrl" [hidden]='showImage'></td>
                     <td><a class="nav-link" [routerLink]="['/productDetails']" [state] = product> {{product.productName}} </a></td>
                     <td>{{product.productCode}}</td>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { IProduct } from '../product-list/IProduct';
 
 @Component({
   selector: 'app-product-detail',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class ProductDetailComponent implements OnInit {
   
-  product ;
+  product : IProduct ;
 
   constructor(private router: Router) { 
     this.product = this.router.getCurrentNavigation().extras.state ;
