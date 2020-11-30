@@ -1,12 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { IProducts } from './IProducts';
+import { IProduct } from './IProduct';
 
 @Pipe({
   name: 'searchFilter'
 })
 export class SearchFilterPipe implements PipeTransform {
 
-  transform(product: IProducts,searchValue:string): string {
+  transform(product: IProduct,searchValue:string): string {
     return 
     // if(searchValue != ""){
     //   return this.products.filter(product => 

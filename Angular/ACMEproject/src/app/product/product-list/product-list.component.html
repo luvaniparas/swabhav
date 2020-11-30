@@ -20,18 +20,17 @@
                 
                 <tbody>
 
-                <tr *ngFor="let p of products">
-                    <td><img [src]="p.imageUrl" [hidden]='showImage'></td>
-                    <td><a class="nav-link" href="/productDetails" (click)="clickedProductData(p)"> {{p.productName}} </a></td>
-                    <td>{{p.productCode}}</td>
-                    <td>{{p.releaseDate}}</td>    
-                    <td>{{p.price}}</td>
-                    <td> <app-star [rating] = 'p.starRating'> </app-star> </td>    
+                <tr *ngFor="let product of products">
+                    <td><img [src]="product.imageUrl" [hidden]='showImage'></td>
+                    <td><a class="nav-link" [routerLink]="['/productDetails']" [state] = product> {{product.productName}} </a></td>
+                    <td>{{product.productCode}}</td>
+                    <td>{{product.releaseDate}}</td>    
+                    <td>{{product.price}}</td>
+                    <td> <app-star [rating]='product.starRating'> </app-star> </td>    
                 </tr>
-
+                
                 </tbody>
             </table>
-            
         </div> 
     </div>
 </div>

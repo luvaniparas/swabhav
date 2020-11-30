@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="card">
+        <h5 class="card-header" style="color:whitesmoke; background-color: #3a7eb5;">Product Details: <span></span></h5>
+        <div id="First" class="card-body">
+            <div class="container">
+
+                <p><span>Name:: </span><span class="Left"> {{product.productName}}</span></p>
+                <p><span>Code:: </span><span class="Left"> {{product.productCode}}</span></p>
+                <p><span>Description:: </span><span class="Right">{{product.description}}</span></p>
+                <p><span>Availability :: </span><span class="Right">{{product.releaseDate}}</span></p>
+                <p><span>Price:: </span><span class="Left">${{product.price}}</span></p>
+                <p><span>5 Star Rating:: </span><span class="Left">
+                    <div id="star" get-width row-height = product.starRating style="overflow: hidden;">
+                        <div style="width: 70px;">
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                        </div>
+                    </div>
+                </span></p>
+
+                
+            </div>
+
+            <div id="Second" class="container" >
+                <img class="productImage" src="{{product.imageUrl}}" alt="Image Not Found" width="auto" style="float: right;">
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <a class="btn btn-outline-secondary" href="#/productlist">&laquo; Back</a>
+        </div>
+    </div>
+</div>

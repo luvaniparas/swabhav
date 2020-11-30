@@ -12,8 +12,6 @@ export class StarComponent implements OnInit {
   
   constructor() { }
 
-  ngOnInit(): void {   
-   console.log("Rating : "+this.rating);
-  }
+  ngOnInit(): void { }
 
 }

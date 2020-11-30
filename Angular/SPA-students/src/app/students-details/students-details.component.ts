@@ -21,7 +21,6 @@ export class StudentsDetailsComponent implements OnInit {
 
     this.ss.getData().subscribe(
       result => {
-        //console.log("Result : "+JSON.stringify(result)+" type : "+typeof(result));
         this.students = result ;
         for (let i = 0; i < this.students.length; i++) {
           this.students[i].isMale = this.students[i].isMale == true? "Female":"Male";  

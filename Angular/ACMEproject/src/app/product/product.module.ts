@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { SearchFilterPipe } from './product-list/search-filter.pipe';
 import { SharedModule } from '../shared/shared.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [ProductListComponent, ProductDetailComponent, SearchFilterPipe],
@@ -13,7 +14,8 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     HttpClientModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    RouterModule
   ]
 })
 export class ProductModule { }

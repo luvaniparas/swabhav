@@ -11,16 +11,15 @@ export class ProductListComponent implements OnInit {
   showImage = true;
   ImageButtonvalue : string = "Hide Image";
   searchValue : string ;
-  products ;
+  products  ;
   productName : string = "a";
   
-  constructor(private pls : ProductService) { }
+  constructor(private productService : ProductService) { }
 
   ngOnInit(): void {
-    this.pls.getProductData().subscribe(
+    this.productService.getProductData().subscribe(
       result => {
         this.products = result ;
-        //console.log("Products : "+JSON.stringify(this.products)+" TypeOf : "+typeof(this.products));
       },error =>{console.log("Error : "+error.value)})
   }
 
@@ -38,11 +37,6 @@ export class ProductListComponent implements OnInit {
 
   searchProduct(){
     console.log("Inside SearchProduct() "+this.searchValue);
-  }
-
-  clickedProductData(p){
-    //console.log("clickedProductData(p)");
-    this.pls.sendMessage(p);
   }
 
 }
