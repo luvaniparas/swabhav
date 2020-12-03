@@ -1,14 +1,14 @@
-var readLine = require('readline-sync');
+const readLine = require('readline-sync');
 
 console.log("* Welcome to Guess Number game * ");
 
-var attempt = 0 ;
-var winner = false ;
-var randomNumber = Math.round(Math.random()*10) ;
+let attempt = 0 ;
+let winner = false ;
+let randomNumber = Math.round(Math.random()*10) ;
 
-var startGame = function(){
+let startGame = function(){
     do{
-        var enteredNumber = readLine.question("Guess the number : ");
+        let enteredNumber = readLine.question("Guess the number : ");
 
         if(enteredNumber == randomNumber){
             winner = true ;
@@ -18,7 +18,7 @@ var startGame = function(){
             console.log("Number of attempts = "+attempt);
             console.log("Random number is : "+randomNumber);
 
-            var restart = readLine.question("Do you want to play again ? 'Y'|'N'");
+            let restart = readLine.question("Do you want to play again ? 'Y'|'N' : ");
             if(restart == 'Y' || restart == 'y'){
                 attempt = 0;
                 winner =false;
@@ -34,7 +34,7 @@ var startGame = function(){
             console.log("Guess number is too high ! ");
         }
         else if(enteredNumber < randomNumber){
-            attempt++;
+            attempt++; 
             console.log("Guess number is too low ! ");
         }
     }while(!winner);
