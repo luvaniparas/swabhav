@@ -4,33 +4,43 @@ const account3 = require("./account3");
 
 var readLine = require('readline-sync');
 
-var withdrawAmout,depositeAmout ;
-var withdraw = function(){
+const accountObj = new account3();
+let withdrawAmout,depositeAmout;
+
+let withdraw = function(){
     withdrawAmout = readLine.questionInt("Enter amount to withdraw : ");
 }
 
-var deposite = function(){
+let deposite = function(){
     depositeAmout =  readLine.questionInt("Enter amount to deposite : ");
 }
 
-console.log("Modular approach =>  ");
-withdraw();
-console.log("Balance after withdraw : "+account1.withdraw(withdrawAmout));
-deposite();
-console.log("Balance after deposite : "+account1.deposite(depositeAmout));
+accountObj.on('balanceChange',sendSms);
+accountObj.on('balanceChange',sendEmail);
 
-console.log("Constructor approach => ");
-var account = new account2();
- withdraw();
- console.log("Balance after withdraw : "+account.withdraw(withdrawAmout));
- deposite();
- console.log("Balance after deposite : "+account.deposite(depositeAmout));
-
+function sendSms(balance){
+    console.log("Sending sms, updated balance: "+balance);
+}
+function sendEmail(balance){
+    console.log("Sending email, updated balance: "+balance);
+}
 
 console.log("Class approach => ");
-var account = new account3();
- withdraw();
- console.log("Balance after withdraw : "+account.withdraw(withdrawAmout));
  deposite();
- console.log("Balance after deposite : "+account.deposite(depositeAmout));
+ accountObj.deposite(depositeAmout);
 
+ withdraw();
+ accountObj.withdraw(withdrawAmout);
+
+ // console.log("Modular approach =>  ");
+// withdraw();
+// console.log("Balance after withdraw : "+account1.withdraw(withdrawAmout));
+// deposite();
+// console.log("Balance after deposite : "+account1.deposite(depositeAmout));
+
+// console.log("Constructor approach => ");
+// var account = new account2();
+//  withdraw();
+//  console.log("Balance after withdraw : "+account.withdraw(withdrawAmout));
+//  deposite();
+//  console.log("Balance after deposite : "+account.deposite(depositeAmout));

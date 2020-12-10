@@ -1,0 +1,15 @@
+p { 
+    color: navy;
+    text-indent: 30px;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 250%;
+}
+
+img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    height: 400px;
+}

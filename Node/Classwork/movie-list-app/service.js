@@ -42,9 +42,3 @@ module.exports = class movieService{
         return movieFound ;
     }
 }
-
-
-
-
-
-
