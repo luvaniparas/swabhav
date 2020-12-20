@@ -1,23 +1,51 @@
+// contactMernRepo = require("./contactMernRepo");
+// const contactMernRepoObj = new contactMernRepo();
+
+// ContactSqlRepo = require("./contactSqlRepo");
+// constContactMongoDBRepoObj = new ContactSqlRepo();
+
+ContactMongoDBRepo = require("./contactMongoDBrepo");
+const ContactMongoDBRepoObj = new ContactMongoDBRepo();
+
 module.exports = class ContactService {
     
-    constructor() {
-      this.contacts = require("./contactMernRepo");
-    }
+    constructor() { 
+      this.contacts = ContactMongoDBRepoObj.contact;
+     }
 
     getContacts() {
-      return this.contacts;
-    }
-
-    findContactWithID(id) {
-      return this.contacts.find((contact) => {
-        return contact.id == id;
+      return new Promise((resolve,reject) => {
+        if(this.contacts != null){
+          resolve(this.contacts);
+        }
+        else{
+          reject(new Error("Can't Find Contact "));  
+        }
       });
     }
-    
-    addContact(name, id) {
-      //console.log("Service ID : "+id+" Name : "+name);
-      this.contacts.push({ name, id });
+
+    getContactByID(id) {
+      return new Promise((resolve,reject) => {
+        
+        if(id != null){
+          resolve(ContactMongoDBRepoObj.getContactByIdRepo(id));  
+        }
+        else{
+          reject(new Error("Can't Find Contact with this ID "));  
+        }
+
+      });
     }
 
-  };
-  
+    addContact(name, id) {
+      return new Promise((resolve,reject) => {
+        if(id != null && name != null){
+         ContactMongoDBRepoObj.addContact({ name, id });
+          resolve("Contact Added ");
+        }
+        else{
+          reject(new Error("Can't post this Contact"));  
+        }
+      });
+    }    
+  };    

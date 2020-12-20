@@ -1,0 +1,22 @@
+let movieList = [
+  {
+    "id": 1,
+    "name": "Titanic",
+    "year": 1997,
+    "price": "4.40"
+  },
+  {
+    "id": 2,
+    "name": "Inception",
+    "year": 2010,
+    "price": "5.59"
+  },
+  {
+    "id": 3,
+    "name": "Blood Diamond",
+    "year": 2006,
+    "price": "3.50"
+  }
+]
+
+module.exports = movieList;

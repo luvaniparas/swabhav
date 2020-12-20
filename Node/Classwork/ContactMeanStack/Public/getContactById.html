@@ -1,0 +1,22 @@
+<div>
+
+    <div class="container p-3 my-3 border bg-light">
+        <h1 class="text-success">Contact App</h1>
+        <form>
+            Id : <input type="number" placeholder="Enter id" ng-model="id" required> 
+            <button type="submit" class="btn btn-primary" ng-click="getContactById()" > Search </button>
+        </form>
+         
+    </div>
+    
+    <div>
+        <label class="control-label col-sm-2">Contact : </label>
+        <p>{{contactById}}</p>
+        </br>
+        
+        <!-- <label class="control-label col-sm-2">Number : </label>
+        <p>{{contactId}}</p>
+        </br> -->
+    </div>
+
+</div>

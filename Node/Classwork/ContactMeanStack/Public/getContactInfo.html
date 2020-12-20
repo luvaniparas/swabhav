@@ -1,0 +1,23 @@
+<div>
+
+    <div class="container p-3 my-3 border bg-light">
+        <h1 class="text-success">Contact App</h1>
+        <h6>Contact Information : </h6>
+        <button class="btn btn-primary" ng-click="getContact()">Get Contacts</button>
+    </div>
+    
+    <div>
+        <table class="table table-striped"> 
+            <tr>  
+                <th>Name</th>
+                <th>id</th>
+            </tr> 
+            
+            <tr ng-repeat="c in contacts">
+                <th>{{c.name}}</th>
+                <th>{{c.id}}</th>
+            </tr>
+        </table>
+    </div>
+
+</div>

@@ -2,7 +2,31 @@ const express = require('express');
 const app = express();
 const contactService = require("./contactService");
 
-let contactServiceObj = new contactService();
+class contactController{
+
+    constructor(){    
+    this.contactServiceObj = new contactService();
+
+        /**
+         * @swagger
+         *
+         * definitions:
+         *   NewContact:
+         *     type: object
+         *     required:
+         *       - id
+         *       - name
+         *     properties:
+         *       id:
+         *         type: number
+         *       name:
+         *         type: string
+         *   Contact:
+         *     allOf:
+         *       - $ref: '#/definitions/NewContact'
+         */
+
+    }
 
     /**
      * @swagger
@@ -13,10 +37,14 @@ let contactServiceObj = new contactService();
      *      '200':
      *        description: A successful response
      */
-    app.get('/',function(req,res){
-        let contacts = contactServiceObj.getContacts()
-        res.status(200).json(contacts);
-    }); 
+    getContacts = (req, res) => {
+        this.contactServiceObj.getContacts().then( contactList =>{ 
+            contactList ? res.status(200).json(contactList) : res.status(404);
+        })
+        .catch(err => {
+            console.log(err);
+        })   
+    }
 
     /**
      * @swagger
@@ -33,31 +61,15 @@ let contactServiceObj = new contactService();
      *        description: A successful response
      */
 
-    app.get('/:id',function(req,res){
-
-        let contact = contactServiceObj.findContactWithID(req.params.id);
-        contact ? res.status(200).json(contact) : res.sendStatus(404);
-
-    }); 
-
-    /**
-     * @swagger
-     *
-     * definitions:
-     *   NewContact:
-     *     type: object
-     *     required:
-     *       - id
-     *       - name
-     *     properties:
-     *       id:
-     *         type: number
-     *       name:
-     *         type: string
-     *   Contact:
-     *     allOf:
-     *       - $ref: '#/definitions/NewContact'
-     */
+     getContactById = (req,res) => {
+        this.contactServiceObj.getContactByID(req.params.id).then( contact =>{
+            contact ? res.status(200).json(contact) : res.sendStatus(404);
+        })
+        .catch(err => {
+            console.log(err);
+        }) 
+     }
+    
 
     /**
      * @swagger
@@ -83,13 +95,16 @@ let contactServiceObj = new contactService();
      *           $ref: '#/definitions/Contact'
      */
 
-app.post("/", function (req, res) {
-    //console.log("Controller ID : "+req.body.id+" Name : "+req.body.name);
-    let contact = contactServiceObj.addContact(req.body.name, req.body.id);
-	res.status(201).json(contact);
-});
-
-    module.exports = app ;
+     addContact = (req,res) => {
+         let contact = { 
+             name : req.body.name,
+             id : req.body.id
+         }
+        this.contactServiceObj.addContact(req.body.name, req.body.id);
+	    res.status(201).json(contact);
+     }
+}
+    module.exports = contactController ;
 
   
   
