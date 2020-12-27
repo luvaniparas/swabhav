@@ -1,29 +1,43 @@
-// contactMernRepo = require("./contactMernRepo");
-// const contactMernRepoObj = new contactMernRepo();
-
-// ContactSqlRepo = require("./contactSqlRepo");
-// constContactMongoDBRepoObj = new ContactSqlRepo();
-
-ContactMongoDBRepo = require("../Repo/contactMongoDBrepo");
+ContactMongoDBRepo = require("../Repo/MongoDbContact");
 const ContactMongoDBRepoObj = new ContactMongoDBRepo();
 
 module.exports = class ContactService {
     
-    constructor() { 
-      this.contacts = ContactMongoDBRepoObj.contact;
-     }
+    constructor() { }
 
     getContacts() {
       return new Promise((resolve,reject) => {
-        if(this.contacts != null){
+          this.contacts = ContactMongoDBRepoObj.getContacts();
           resolve(this.contacts);
-        }
-        else{
-          reject(new Error("Can't Find Contact "));  
-        }
       });
     }
 
+    serachContact(attribute,value) {
+      return new Promise((resolve,reject) => {
+            
+        if( value != null){
+          resolve(ContactMongoDBRepoObj.searchContact({ [attribute] : value}));  
+        }
+        else{
+          reject(new Error("Can't Find Contact with entered value "));  
+        }
+
+      });
+    }
+
+    addContact(contact) {
+      return new Promise((resolve,reject) => {
+        if(contact != null){
+          
+          ContactMongoDBRepoObj.addContact(contact);
+          resolve("Contact Added ");
+        }
+        else{
+          reject(new Error("Can't post this Contact"));  
+        }
+      });
+    }
+    
     getContactByID(id) {
       return new Promise((resolve,reject) => {
         
@@ -37,15 +51,34 @@ module.exports = class ContactService {
       });
     }
 
-    addContact(name, id) {
+    deleteContact(id){
+
       return new Promise((resolve,reject) => {
-        if(id != null && name != null){
-         ContactMongoDBRepoObj.addContact({ name, id });
-          resolve("Contact Added ");
+
+        if(id != null){
+          resolve(ContactMongoDBRepoObj.deleteContact(id));  
         }
         else{
-          reject(new Error("Can't post this Contact"));  
+          reject(new Error("No Contact with this ID "));  
         }
+
       });
-    }    
+
+    }
+
+    updateContact(contact){
+
+      return new Promise((resolve,reject) => {
+
+        if( contact != null){
+          resolve(ContactMongoDBRepoObj.updateContact());  
+        }
+        else{
+          reject(new Error("Can't update contact "));  
+        }
+
+      });
+
+    }
+
   };    

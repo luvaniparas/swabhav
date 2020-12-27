@@ -1,6 +1,4 @@
 var MongoClient = require('mongodb').MongoClient;
-
-//Create a database named "mydb":
 var url = "mongodb+srv://root:root@cluster0.ny0yw.mongodb.net/test/swabhavDatabase";
 
 class ContactMongoDBRepo{
@@ -9,7 +7,7 @@ class ContactMongoDBRepo{
 
     get contact(){
         return new Promise((resolve,reject) => {
-            /* get Data from collection*/ 
+
             MongoClient.connect(url, function(err, db) {
                 if (err) throw err;
                 var dbo = db.db("swabhavDatabase");
@@ -23,6 +21,7 @@ class ContactMongoDBRepo{
                     }
                 });
             });
+        
         });
     }
 
@@ -41,6 +40,7 @@ class ContactMongoDBRepo{
                     }  
                 });
             });
+        
         });
     }
 
@@ -51,7 +51,8 @@ class ContactMongoDBRepo{
                 MongoClient.connect(url, function(err, db) {
                     if (err) throw err;
                     var dbo = db.db("swabhavDatabase");
-                    dbo.collection("Contacts").find(id).toArray(function(err,result){
+                    let find_Id = { id : parseInt(id) };
+                    dbo.collection("Contacts").find(find_Id).toArray(function(err,result){
                         if(err)
                             reject(new Error("Error result is undefined"));
                         else
@@ -66,12 +67,3 @@ class ContactMongoDBRepo{
 }
 
 module.exports = ContactMongoDBRepo;
-
-
-
-
- 
-
-
- 
- 

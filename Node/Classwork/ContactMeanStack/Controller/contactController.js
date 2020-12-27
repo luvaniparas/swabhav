@@ -30,7 +30,7 @@ class contactController{
 
     /**
      * @swagger
-     * /contact:
+     * /contacts:
      *  get:
      *    description: Use to request all contact
      *    responses:
@@ -48,7 +48,7 @@ class contactController{
 
     /**
      * @swagger
-     * /contact/{id}:
+     * /contact:
      *  get:
      *    description: Use to request  specific contact
      *    parameters:
@@ -61,8 +61,8 @@ class contactController{
      *        description: A successful response
      */
 
-     getContactById = (req,res) => {
-        this.contactServiceObj.getContactByID(req.params.id).then( contact =>{
+     searchContact = (req,res) => {
+        this.contactServiceObj.serachContact(req.query.selectedAttribute,req.query.searchValue).then( contact =>{
             contact ? res.status(200).json(contact) : res.sendStatus(404);
         })
         .catch(err => {
@@ -94,17 +94,90 @@ class contactController{
      *         schema:
      *           $ref: '#/definitions/Contact'
      */
-
      addContact = (req,res) => {
-         let contact = { 
-             name : req.body.name,
-             id : req.body.id
-         }
-        this.contactServiceObj.addContact(req.body.name, req.body.id);
-	    res.status(201).json(contact);
+        this.contactServiceObj.addContact(req.body);
+	    res.status(201).json(req.body);
      }
+
+
+    /**
+     * @swagger
+     * /contact/{id}:
+     *  get:
+     *    description: Use to request  specific contact
+     *    parameters:
+     *      - in : path
+     *        name : id
+     *        type : integer
+     *        required : true
+     *    responses:
+     *      '200':
+     *        description: A successful response
+     */
+    getContactById = (req,res) => {
+        this.contactServiceObj.getContactByID(req.params.id).then( contact =>{
+            contact ? res.status(200).json(contact) : res.sendStatus(404);
+        })
+        .catch(err => {
+            console.log(err);
+        }) 
+    }
+
+    /**
+     * @swagger
+     * /contact/{id}:
+     *  delete:
+     *    description: Use to delete specific contact
+     *    parameters:
+     *      - in : path
+     *        name : id
+     *        type : integer
+     *        required : true
+     *    responses:
+     *      '200':
+     *        description: A successful response
+     */
+    deleteContact = (req,res) => {
+        this.contactServiceObj.deleteContact(req.params.id)
+        res.status(201).json(req.body);
+    }
+
+     /**
+     * @swagger
+     *
+     * /contact:
+     *   put:
+     *     summary: Update a Contact
+     *     description: Update a Contact
+     *     produces:
+     *       - application/json
+     *     parameters:
+     *       - name: contact
+     *         description: contact object
+     *         in:  body
+     *         required: true
+     *         type: string
+     *         schema:
+     *           $ref: '#/definitions/NewContact'
+     *     responses:
+     *       200:
+     *         description: Contacts
+     *         schema:
+     *           $ref: '#/definitions/Contact'
+     */
+    updateContact = (res,req) => {
+        console.log("Inside Controller Update : ");
+        console.log("Body : "+req.body);
+        console.log("params : "+req.params.id);
+        console.log("query : "+req.query);
+        
+        //this.contactServiceObj.updateContact(req.body);
+        //res.status(201).json(req.body);
+    }
+
 }
-    module.exports = contactController ;
+
+module.exports = contactController ;
 
   
   

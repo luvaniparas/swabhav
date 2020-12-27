@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>  
+<body ng-app="">
+
+    <p>{{contact}}</p>
+
+<form name="addContactForm">
+    <p>First Name:
+        <input name="firstName" ng-model="contact.name.firstName" required>
+        <span ng-show="addContactForm.firstName.$touched && addContactForm.firstName.$invalid">The firstName is required.</span>
+    </p>
+
+    <p>Last Name:
+        <input name="lastName" ng-model="contact.name.lastName" required>
+        <span ng-show="addContactForm.lastName.$touched && addContactForm.lastName.$invalid">The lastName is required.</span>
+    </p>
+
+    <p>Number:
+        <input name="number" ng-model="contact.number" required>
+        <span ng-show="addContactForm.number.$touched && addContactForm.number.$invalid">The number is required.</span>
+    </p>
+
+    <h6>Address:</h6>
+
+    <p>PinCode : 
+        <input name="pinCode" ng-model="contact.pinCode" required>
+        <span ng-show="addContactForm.pinCode.$touched && addContactForm.pinCode.$invalid">The PinCode is required.</span>
+    </p>
+
+    <p>State : 
+        <input name="state" ng-model="contact.address.state" required>
+        <span ng-show="addContactForm.state.$touched && addContactForm.state.$invalid">The State is required.</span>
+    </p>
+
+    <p>City : 
+        <input name="city" ng-model="contact.address.city" required>
+        <span ng-show="addContactForm.city.$touched && addContactForm.city.$invalid">The City is required.</span>
+    </p>
+
+    <p>Room number : 
+        <input name="roomNumber" ng-model="contact.address.roomNumber" required>
+        <span ng-show="addContactForm.roomNumber.$touched && addContactForm.roomNumber.$invalid">The room number is required.</span>
+    </p>
+
+    <p>Building Name : 
+        <input name="buildingName" ng-model="contact.address.buildingName" required>
+        <span ng-show="addContactForm.buildingName.$touched && addContactForm.buildingName.$invalid">The Building Name is required.</span>
+    </p>
+
+    <p>Street : 
+        <input name="street" ng-model="contact.address.street" required>
+        <span ng-show="addContactForm.street.$touched && addContactForm.street.$invalid">The Street is required.</span>
+    </p>
+
+</form>
+
+</body>
+</html>

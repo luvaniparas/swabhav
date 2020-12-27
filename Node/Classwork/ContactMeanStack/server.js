@@ -35,9 +35,14 @@ const swaggerOptions = {
     res.sendFile(path.join(__dirname + "/public/index.html"));
   });
 
-  app.get('/contact', contactControllerObj.getContacts);
+  app.post('/api/contacts/add', upload.single('imageSrc'), contactCtrl.addContact);
+
+  app.get('/contacts', contactControllerObj.getContacts);
+  app.get('/contact', contactControllerObj.searchContact);
   app.get('/contact/:id', contactControllerObj.getContactById);
+  app.delete('/contact/:id', contactControllerObj.deleteContact);
   app.post('/contact', contactControllerObj.addContact);
+  app.put('/contact/:id', contactControllerObj.updateContact);
 
   app.listen(3000, function(req,res){
     console.log("Running ... ");

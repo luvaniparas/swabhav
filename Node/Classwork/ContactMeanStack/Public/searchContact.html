@@ -1,0 +1,36 @@
+ <!-- <div class="container p-3 my-3 border bg-light">
+        <h1 class="text-success">Contact App</h1> 
+    </div> -->
+
+    <div class="container">
+        <div class="card">
+          <div class="card-header bg-info text-white">Contact APP : SearchContact </div>
+          <div class="card-body">  
+
+            <div>
+                <form>
+                    <label for="searchBy" required> Search by :  </label>
+                    
+                    <select id="searchValue" name="Search" ng-model="searchContactObj.selectedAttribute" required>
+                      <option value="name">Name</option>
+                      <option value="number">Number</option>
+                    </select>
+        
+                    <input type="text" id="searchTextField"  placeholder="Search Here" ng-model="searchContactObj.searchValue" required>
+
+                    <button type="submit" id="searchButton" class="btn btn-light" ng-click="searchContact()" > Search </button>
+                </form>
+            </div>
+
+            <div>
+                <label>Contact : {{gotContact}}</label>
+            </div>
+
+          </div> 
+          
+          <div class="card-footer bg-info text-white">
+            <button class="btn btn-light" ng-click="redirectToHome()" > < Back </button>
+          </div>
+        </div>
+      </div>
+
