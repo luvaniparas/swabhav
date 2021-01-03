@@ -26,9 +26,7 @@ module.exports = class ContactService {
     }
 
     addContact(contact) {
-      
-      console.log("Service Contact Add ");
-      //return ContactMongoDBRepoObj.addContact(contact)
+            
       return new Promise((resolve,reject) => {
 
         if(contact != null){  

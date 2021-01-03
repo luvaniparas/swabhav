@@ -90,9 +90,6 @@ var app = angular.module('contactApp', ['ngRoute','contactModule']);
 angular.module('contactModule',[])
 .controller('contactApiController',['$rootScope','$scope','$http','$window','contactFactory',function($rootScope,$scope,$http,$window,contactFactory){
     
-    $rootScope.token;
-    console.log("Token : "+$rootScope.token);
-
     $scope.contacts =[];
     $scope.states =  [ "Andhra Pradesh",
     "Arunachal Pradesh",
@@ -171,15 +168,15 @@ angular.module('contactModule',[])
     
     $scope.deleteContact = function(id) {
 
-        $rootScope.token = localStorage.getItem("token");
+        let token = localStorage.getItem("token");
        
         var config = {
             headers: {
-              'Authorization': 'Bearer '+$rootScope.token 
+              'Authorization': 'Bearer '+token 
             }
           };
 
-        if($rootScope.token != null){
+        if(token != null){
             
             if(confirm("Are you sure you want to delete contact ")){
 
@@ -247,17 +244,6 @@ angular.module('contactModule',[])
         $window.location.href = '#/index.html';
     }
 
-    $scope.token = function(){
-        $rootScope.token = localStorage.getItem("token");
-        localStorage.removeItem("token");
-
-        var config = {
-            headers: {
-              'Authorization': 'Bearer '+$rootScope.token 
-            }
-          };
-        return config ;  
-    }
 }])
 
 .controller('userApiController',['$scope','$window','$http',function($scope,$window,$http){

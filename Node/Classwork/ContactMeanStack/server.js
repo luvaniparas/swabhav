@@ -7,13 +7,11 @@ const multer = require("multer");
 const checkAuth = require("./middleware/checkAuth");
 const contactController = require("./Controller/contactController");
 const userController = require("./Controller/userController");
-//const userRouter = require("./user")
 
 const contactControllerObj = new contactController();
 const userControllerObj = new userController();
 
 const app = express();
-
 
 app.use(bodyParser.urlencoded({ extended : false  }));
 app.use(bodyParser.json());
@@ -64,8 +62,6 @@ const swaggerOptions = {
   const swaggerDocs = swaggerJsDoc(swaggerOptions);
   app.use("/api-docs",swaggerUi.serve,swaggerUi.setup(swaggerDocs)); 
   app.use('/', express.static(path.join(__dirname, 'Public')));
-
-  //app.use("/user",userRouter);
 
   app.get("/", (req, res, next) => {
     res.sendFile(path.join(__dirname + "/public/index.html"));
