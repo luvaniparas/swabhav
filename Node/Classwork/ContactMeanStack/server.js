@@ -1,15 +1,50 @@
 const express = require('express');  
 const swaggerJsDoc = require("swagger-jsdoc");
-const swaggerUi = require("swagger-ui-express");
 const bodyParser = require("body-parser");
-const path = require("path")
+const swaggerUi = require("swagger-ui-express");
+const path = require("path");
+const multer = require("multer");
+const checkAuth = require("./middleware/checkAuth");
 const contactController = require("./Controller/contactController");
+const userController = require("./Controller/userController");
+//const userRouter = require("./user")
+
+const contactControllerObj = new contactController();
+const userControllerObj = new userController();
 
 const app = express();
-const contactControllerObj = new contactController();
 
-app.use(bodyParser.urlencoded({ extended : true  }));
+
+app.use(bodyParser.urlencoded({ extended : false  }));
 app.use(bodyParser.json());
+
+app.use(express.static(__dirname + 'Uploads'));
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './Uploads')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + path.extname(file.originalname));
+  }
+})
+
+const fileFilter = (req, file, cb) => {
+  // reject a file
+  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
+
+const upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 1024 * 1024 * 3 
+  },
+  fileFilter: fileFilter
+});
 
 const swaggerOptions = {
     swaggerDefinition: {
@@ -28,22 +63,25 @@ const swaggerOptions = {
 
   const swaggerDocs = swaggerJsDoc(swaggerOptions);
   app.use("/api-docs",swaggerUi.serve,swaggerUi.setup(swaggerDocs)); 
-
   app.use('/', express.static(path.join(__dirname, 'Public')));
+
+  //app.use("/user",userRouter);
 
   app.get("/", (req, res, next) => {
     res.sendFile(path.join(__dirname + "/public/index.html"));
   });
 
-  app.post('/api/contacts/add', upload.single('imageSrc'), contactCtrl.addContact);
-
   app.get('/contacts', contactControllerObj.getContacts);
   app.get('/contact', contactControllerObj.searchContact);
   app.get('/contact/:id', contactControllerObj.getContactById);
-  app.delete('/contact/:id', contactControllerObj.deleteContact);
-  app.post('/contact', contactControllerObj.addContact);
-  app.put('/contact/:id', contactControllerObj.updateContact);
+  app.delete('/contact/:id',checkAuth, contactControllerObj.deleteContact);
+  app.post('/contact', upload.single('image'),contactControllerObj.addContact);
+  app.post('/contact/update',upload.single("file"),checkAuth,contactControllerObj.processContact,contactControllerObj.processImage,contactControllerObj.updateContact);
+  
+  app.post('/user/signUp',userControllerObj.addUser);
+  app.post('/user/signIn',userControllerObj.findUser);
 
   app.listen(3000, function(req,res){
     console.log("Running ... ");
   });
+

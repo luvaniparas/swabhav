@@ -1,7 +1,3 @@
- <!-- <div class="container p-3 my-3 border bg-light">
-        <h1 class="text-success">Contact App</h1> 
-    </div> -->
-
     <div class="container">
         <div class="card">
           <div class="card-header bg-info text-white">Contact APP : SearchContact </div>
@@ -23,7 +19,16 @@
             </div>
 
             <div>
-                <label>Contact : {{gotContact}}</label>
+                <label>Name : {{gotContact.name}}</label></br>
+                <label>Number :  {{gotContact.number }} </label></br>
+                <label>PinCode : {{gotContact.pinCode }} </label></br>
+                <label>State : {{gotContact.address.state }} </label></br>
+                <label>City : {{gotContact.address.city }} </label></br>
+                <label>Room Number : {{gotContact.address.roomNumber }} </label></br>
+                <label>Building Name : {{gotContact.address.buildingName }} </label></br>
+                <label>Street : {{gotContact.address.street }} </label></br>
+                <img class="ribbon" ng-src="data:{{gotContact.image.contentType}};base64,{{ imgToString(gotContact.image.data.data) }}" 
+                  width="auto" style="float: right;" alt="Contact Image" >
             </div>
 
           </div> 

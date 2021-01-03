@@ -1,4 +1,4 @@
-ContactMongoDBRepo = require("../Repo/MongoDbContact");
+ContactMongoDBRepo = require("../Repo/ContactMongoDb");
 const ContactMongoDBRepoObj = new ContactMongoDBRepo();
 
 module.exports = class ContactService {
@@ -26,15 +26,19 @@ module.exports = class ContactService {
     }
 
     addContact(contact) {
+      
+      console.log("Service Contact Add ");
+      //return ContactMongoDBRepoObj.addContact(contact)
       return new Promise((resolve,reject) => {
-        if(contact != null){
-          
+
+        if(contact != null){  
           ContactMongoDBRepoObj.addContact(contact);
-          resolve("Contact Added ");
+          resolve("Contact Added");
         }
         else{
-          reject(new Error("Can't post this Contact"));  
+          reject(new Error("Can't add this Contact"));  
         }
+        
       });
     }
     
@@ -66,12 +70,12 @@ module.exports = class ContactService {
 
     }
 
-    updateContact(contact){
-
+    updateContact(id,contact){
+      
       return new Promise((resolve,reject) => {
 
         if( contact != null){
-          resolve(ContactMongoDBRepoObj.updateContact());  
+          resolve(ContactMongoDBRepoObj.updateContact(id,contact));  
         }
         else{
           reject(new Error("Can't update contact "));  

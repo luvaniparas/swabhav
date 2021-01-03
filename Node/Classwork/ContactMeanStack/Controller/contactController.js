@@ -1,5 +1,6 @@
 const express = require('express');  
 const app = express();
+var fs = require('fs');
 const contactService = require("../Service/contactService");
 
 class contactController{
@@ -70,7 +71,6 @@ class contactController{
         }) 
      }
     
-
     /**
      * @swagger
      *
@@ -95,10 +95,29 @@ class contactController{
      *           $ref: '#/definitions/Contact'
      */
      addContact = (req,res) => {
-        this.contactServiceObj.addContact(req.body);
-	    res.status(201).json(req.body);
-     }
 
+        console.log("Controller add ");
+
+        let contact = {
+            name: req.body.name,
+            number : req.body.number,
+            pinCode : req.body.pinCode,
+            address : {
+                state : req.body.state,
+                city : req.body.city,
+                roomNumber : req.body.roomNumber ,
+                buildingName : req.body.buildingName,
+                street : req.body.street
+            },
+            image : { 
+              data: new Buffer.from(fs.readFileSync(req.file.path).toString('base64'), 'base64'),
+              contentType: req.file.mimetype 
+           }
+          }
+        
+        this.contactServiceObj.addContact(contact);
+        res.redirect('#/index.html');
+     }
 
     /**
      * @swagger
@@ -123,62 +142,49 @@ class contactController{
         }) 
     }
 
-    /**
-     * @swagger
-     * /contact/{id}:
-     *  delete:
-     *    description: Use to delete specific contact
-     *    parameters:
-     *      - in : path
-     *        name : id
-     *        type : integer
-     *        required : true
-     *    responses:
-     *      '200':
-     *        description: A successful response
-     */
     deleteContact = (req,res) => {
         this.contactServiceObj.deleteContact(req.params.id)
         res.status(201).json(req.body);
     }
 
-     /**
-     * @swagger
-     *
-     * /contact:
-     *   put:
-     *     summary: Update a Contact
-     *     description: Update a Contact
-     *     produces:
-     *       - application/json
-     *     parameters:
-     *       - name: contact
-     *         description: contact object
-     *         in:  body
-     *         required: true
-     *         type: string
-     *         schema:
-     *           $ref: '#/definitions/NewContact'
-     *     responses:
-     *       200:
-     *         description: Contacts
-     *         schema:
-     *           $ref: '#/definitions/Contact'
-     */
-    updateContact = (res,req) => {
-        console.log("Inside Controller Update : ");
-        console.log("Body : "+req.body);
-        console.log("params : "+req.params.id);
-        console.log("query : "+req.query);
+    updateContact = (req,res) => {
+        let id = req.body._id;
         
-        //this.contactServiceObj.updateContact(req.body);
+        // delete req.body.file;
+        // delete req.body._id;
+
+        // for (let property in req.body) {
+		//   	req.body[property] = JSON.parse(req.body[property]);
+        // }
+        
+        this.contactServiceObj.updateContact(id,req.body);
+        res.redirect('#/index.html');
         //res.status(201).json(req.body);
     }
 
+    processContact = (req, res, next) => {
+        delete req.body.file;
+        delete req.body._id;
+
+		for (let property in req.body) {
+		  	req.body[property] = JSON.parse(req.body[property]);
+		}
+		delete req.body.$$hashKey;
+		next();
+	};
+	
+	processImage = (req, res, next) => {
+		if (req.file) {
+			req.body.imageSrc = {
+				imgData: new Buffer.from(fs.readFileSync(req.file.path).toString('base64'), 'base64'),
+				contentType: req.file.mimetype,
+			};
+		}
+		next();
+	};
+    
 }
 
-module.exports = contactController ;
 
-  
-  
- 
+
+module.exports = contactController ;
