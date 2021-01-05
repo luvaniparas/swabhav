@@ -84,6 +84,10 @@ var app = angular.module('contactApp', ['ngRoute','contactModule']);
             return $http.get('/contact/'+id)
         }
 
+        contactFactoryObj.deleteContact = function(id,config){
+            return $http.delete('/contact/'+id,config)
+        }
+
         return contactFactoryObj;
     }]);
 
@@ -168,7 +172,7 @@ angular.module('contactModule',[])
     
     $scope.deleteContact = function(id) {
 
-        let token = localStorage.getItem("token");
+        let token = sessionStorage.getItem("token");
        
         var config = {
             headers: {
@@ -180,10 +184,11 @@ angular.module('contactModule',[])
             
             if(confirm("Are you sure you want to delete contact ")){
 
-                $http.delete('/contact/'+id,config)
-                .then(function(response){
-                    $window.location.href = '/index.html';
-                })
+                //$http.delete('/contact/'+id,config)
+                contactFactory.deleteContact(id,config)
+                    .then(function(response){
+                        $window.location.href = '/index.html';
+                    })
                 
             }
         }else{
@@ -198,7 +203,7 @@ angular.module('contactModule',[])
     
     $scope.updateContact = function(){
 
-        let token = localStorage.getItem("token");
+        let token = sessionStorage.getItem("token");
        
         var config = {
             headers: {
@@ -252,7 +257,7 @@ angular.module('contactModule',[])
         
         $http.post('/user/signIn',$scope.user)
             .then(function (response){
-                    localStorage.setItem("token",response.data.token);
+                    sessionStorage.setItem("token",response.data.token);
                     $window.location.href = '#/index.html';
                 },function(error){
                     $scope.status = 'Unable to load Conatct data: ' + error.message;

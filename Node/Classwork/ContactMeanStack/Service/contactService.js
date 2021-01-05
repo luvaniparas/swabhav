@@ -30,8 +30,7 @@ module.exports = class ContactService {
       return new Promise((resolve,reject) => {
 
         if(contact != null){  
-          ContactMongoDBRepoObj.addContact(contact);
-          resolve("Contact Added");
+          resolve(ContactMongoDBRepoObj.addContact(contact));
         }
         else{
           reject(new Error("Can't add this Contact"));  
