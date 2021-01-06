@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="en" dir="ltr">
+  
     <head>
+        <meta charset="utf-8" />
+        <title>Web Socket Demo</title>
+
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
     </head>
-
+  
     <body>
         <div class="container">
             
@@ -16,22 +19,18 @@
                 <h1 class="display-4"> Chit-Chat App </h1>
             </div>
             
-            <!-- message form -->
-            <form name="publish">
-                <input class="form-control" type="text" name="message" placeholder="Enter Message" >
-                <input class="btn btn-primary" type="submit" value="Send" >
-            </form>
-
-            <!-- div with messages -->
-            <div id="messages">
-
+            <div>
+                <form>
+                    <input class="form-control" type="text"  id="message" placeholder="Enter message">
+                    <br/>
+                    <button class="btn btn-primary" type="submit">Send</button>
+                </form>
             </div>
-
-        </div>   
-        
-        <div class="container" id="chatBox">
-
+            
+            <div class="container" id="chatBox">
+                <ul id="chat"></ul>                
+            </div>
         </div>
-        <script src="chat.js"> </script>
+        <script src="main.js"></script>
     </body>
 </html>

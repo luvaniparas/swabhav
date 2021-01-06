@@ -61,7 +61,6 @@ class contactController{
      *      '200':
      *        description: A successful response
      */
-
      searchContact = (req,res) => {
         this.contactServiceObj.serachContact(req.query.selectedAttribute,req.query.searchValue).then( contact =>{
             contact ? res.status(200).json(contact) : res.sendStatus(404);
@@ -96,8 +95,6 @@ class contactController{
      */
      addContact = (req,res) => {
 
-        console.log("Controller add ");
-
         let contact = {
             name: req.body.name,
             number : req.body.number,
@@ -116,7 +113,7 @@ class contactController{
           }
         
         this.contactServiceObj.addContact(contact);
-        res.redirect('#/index.html');
+        res.redirect('/index.html');
      }
 
     /**
@@ -149,27 +146,26 @@ class contactController{
 
     updateContact = (req,res) => {
         let id = req.body._id;
-        
-        // delete req.body.file;
-        // delete req.body._id;
+        console.log(" body : "+JSON.stringify(req.body));
 
-        // for (let property in req.body) {
-		//   	req.body[property] = JSON.parse(req.body[property]);
-        // }
+        delete req.body._id;
+        for (let property in req.body) {
+		  	req.body[property] = JSON.parse(req.body[property]);
+        }
+        // req.body.push(); 
         
         this.contactServiceObj.updateContact(id,req.body);
-        res.redirect('#/index.html');
-        //res.status(201).json(req.body);
+        res.redirect('/index.html');
     }
 
     processContact = (req, res, next) => {
         delete req.body.file;
-        delete req.body._id;
 
+        //console.log("Inside before proceeContact _id : "+req.body._id);
 		for (let property in req.body) {
 		  	req.body[property] = JSON.parse(req.body[property]);
-		}
-		delete req.body.$$hashKey;
+        }
+        //console.log("Inside after proceeContact _id : "+req.body._id);
 		next();
 	};
 	
@@ -184,7 +180,4 @@ class contactController{
 	};
     
 }
-
-
-
 module.exports = contactController ;

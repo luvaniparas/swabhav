@@ -184,10 +184,10 @@ angular.module('contactModule',[])
             
             if(confirm("Are you sure you want to delete contact ")){
 
-                //$http.delete('/contact/'+id,config)
                 contactFactory.deleteContact(id,config)
                     .then(function(response){
-                        $window.location.href = '/index.html';
+                        //$window.location.href = '/index.html';
+                        $window.location.reload();
                     })
                 
             }
@@ -211,8 +211,6 @@ angular.module('contactModule',[])
             }
           };
         
-          console.log("Token :"+token +" config : "+ config);
-
         if(token !=null){
             
             let contact = $scope.updatedContact;
@@ -223,7 +221,8 @@ angular.module('contactModule',[])
             }
             form.append("file", contact.file);
             form.append("_id", $rootScope.contactToEdit._id);
-    
+            // console.log("AJS _id : "+$rootScope.contactToEdit._id);
+
             $http.post("/contact/update",form,config)
                 .then(
                     function (response) {
