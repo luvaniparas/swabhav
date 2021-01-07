@@ -145,27 +145,20 @@ class contactController{
     }
 
     updateContact = (req,res) => {
-        let id = req.body._id;
-        console.log(" body : "+JSON.stringify(req.body));
-
-        delete req.body._id;
-        for (let property in req.body) {
-		  	req.body[property] = JSON.parse(req.body[property]);
-        }
-        // req.body.push(); 
-        
-        this.contactServiceObj.updateContact(id,req.body);
+        this.contactServiceObj.updateContact(req._id,req.body);
         res.redirect('/index.html');
     }
 
     processContact = (req, res, next) => {
-        delete req.body.file;
+        req._id = req.body._id;
 
-        //console.log("Inside before proceeContact _id : "+req.body._id);
+        delete req.body.file;
+        delete req.body._id;
+
 		for (let property in req.body) {
 		  	req.body[property] = JSON.parse(req.body[property]);
         }
-        //console.log("Inside after proceeContact _id : "+req.body._id);
+
 		next();
 	};
 	
@@ -175,7 +168,7 @@ class contactController{
 				imgData: new Buffer.from(fs.readFileSync(req.file.path).toString('base64'), 'base64'),
 				contentType: req.file.mimetype,
 			};
-		}
+        }
 		next();
 	};
     

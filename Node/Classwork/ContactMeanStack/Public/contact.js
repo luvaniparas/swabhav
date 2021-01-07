@@ -207,8 +207,10 @@ angular.module('contactModule',[])
        
         var config = {
             headers: {
+              "Content-Type": undefined , 
               'Authorization': 'Bearer '+token 
-            }
+            },
+           transformRequest: angular.identity,    
           };
         
         if(token !=null){
@@ -221,12 +223,10 @@ angular.module('contactModule',[])
             }
             form.append("file", contact.file);
             form.append("_id", $rootScope.contactToEdit._id);
-            // console.log("AJS _id : "+$rootScope.contactToEdit._id);
 
             $http.post("/contact/update",form,config)
                 .then(
                     function (response) {
-                      console.log(response.data);
                       $scope.redirectToHome();
                     },
                     function (error) {
