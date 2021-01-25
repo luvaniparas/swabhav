@@ -13,7 +13,8 @@ connection.onerror = error => {
 };
 
 connection.onmessage = event => {
-  console.log('received', event.data);
+  //console.log('received', event.data);
+  
   let li = document.createElement('li');
   li.innerText = event.data;
   document.querySelector('#chat').append(li);

@@ -261,6 +261,8 @@ angular.module('contactModule',[])
                 },function(error){
                     $scope.status = 'Unable to load Conatct data: ' + error.message;
                 })
-        }
+    }
+
+    
 
 }])

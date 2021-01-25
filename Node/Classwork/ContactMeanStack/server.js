@@ -78,6 +78,6 @@ const swaggerOptions = {
   app.post('/user/signIn',userControllerObj.findUser);
 
   app.listen(3000, function(req,res){
-    console.log("Running ... ");
+    console.log("App listening at http://localhost:3000/");
   });
 

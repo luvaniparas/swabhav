@@ -32,9 +32,6 @@ module.exports = class userController{
     }
 
     findUser = (req,res) => {
-
-        console.log("Inside UserController findUser");
-
         let user = {
             email : req.body.email,
             password : req.body.password
@@ -74,7 +71,6 @@ module.exports = class userController{
     }
 
     deleteUser = (req,res) => {
-        let userId = "5fef205d3134c40fb4037ecc";
-        userServiceObj.deleteUser(userId); 
+        userServiceObj.deleteUser(req.Id); 
     }
 }
