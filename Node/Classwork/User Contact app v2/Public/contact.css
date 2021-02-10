@@ -1,0 +1,18 @@
+#searchTextField{
+    margin-left: 10px;
+}
+
+#searchButton{
+    margin-left: 10px;
+}
+
+.ribbon {
+    margin-top: -15rem;
+    margin-right: 15rem;
+    width: 15rem;
+ }
+
+ #addButton{
+     float: right;
+ }
+   

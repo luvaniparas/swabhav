@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="card">
+      <div class="card-header bg-info text-white">Contact APP : Contact Details </div>
+
+      <div class="card-body">
+        <div>   
+        <label>Name : {{contactById[0].name }} </label></br>
+        <label>Number :  {{contactById[0].number }} </label></br>
+        <label>PinCode : {{contactById[0].pinCode }} </label></br>
+        <label>State : {{contactById[0].address.state }} </label></br>
+        <label>City : {{contactById[0].address.city }} </label></br>
+        <label>Room Number : {{contactById[0].address.roomNumber }} </label></br>
+        <label>Building Name : {{contactById[0].address.buildingName }} </label></br>
+        <label>Street : {{contactById[0].address.street }} </label></br>
+        <img class="ribbon" ng-src="data:{{contactById[0].image.contentType}};base64,{{ imgToString(contactById[0].image.data.data) }}" 
+          width="auto" style="float: right;" >
+        </div>
+      </div> 
+      
+      <div class="card-footer bg-info text-white">
+        <button class="btn btn-light" ng-click="redirectToHome()" > Home </button>
+      </div>
+    </div>
+</div>
