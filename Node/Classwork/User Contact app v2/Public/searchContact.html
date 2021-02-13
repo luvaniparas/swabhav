@@ -19,16 +19,14 @@
             </div>
 
             <div>
-                <label>Name : {{gotContact.name}}</label></br>
-                <label>Number :  {{gotContact.number }} </label></br>
-                <label>PinCode : {{gotContact.pinCode }} </label></br>
-                <label>State : {{gotContact.address.state }} </label></br>
-                <label>City : {{gotContact.address.city }} </label></br>
-                <label>Room Number : {{gotContact.address.roomNumber }} </label></br>
-                <label>Building Name : {{gotContact.address.buildingName }} </label></br>
-                <label>Street : {{gotContact.address.street }} </label></br>
-                <img class="ribbon" ng-src="data:{{gotContact.image.contentType}};base64,{{ imgToString(gotContact.image.data.data) }}" 
-                  width="auto" style="float: right;" alt="Contact Image" >
+              <label>Name : {{gotContact[0].name}} </label></br>
+              <label>Number :  {{gotContact[0].number }} </label></br>
+              <label>City : {{gotContact[0].city}} </label></br>
+              <label>State : {{gotContact[0].state}} </label></br>
+              <label>Zip : {{gotContact[0].zip }} </label></br> 
+              <label>Address : {{gotContact[0].address }} </label></br>
+              <img class="ribbon" ng-src="data:{{gotContact[0].image.contentType}};base64,{{ imgToString(gotContact[0].image.data.data) }}" 
+                width="auto" style="float: right;" >
             </div>
 
           </div> 

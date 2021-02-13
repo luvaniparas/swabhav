@@ -1,3 +1,4 @@
+const { RSA_PKCS1_OAEP_PADDING } = require('constants');
 var fs = require('fs');
 const contactService = require("../Service/contactService");
 
@@ -36,8 +37,10 @@ class contactController{
      *      '200':
      *        description: A successful response
      */
-    getContacts = (req, res) => {
-        this.contactServiceObj.getContacts().then( contactList =>{ 
+    getContacts = async (req, res) => {
+        let id = req.query.contactListId;
+        
+        this.contactServiceObj.getContacts(id).then( contactList =>{ 
             contactList ? res.status(200).json(contactList) : res.status(404);
         })
         .catch(err => {
@@ -60,7 +63,12 @@ class contactController{
      *        description: A successful response
      */
      searchContact = (req,res) => {
-        this.contactServiceObj.serachContact(req.query.selectedAttribute,req.query.searchValue).then( contact =>{
+         
+        let id = req.query.contactListId;
+        let object = req.query.searchContactObj;
+        let searchObject = JSON.parse(object);
+
+        this.contactServiceObj.serachContact(id,searchObject.selectedAttribute,searchObject.searchValue).then( contact =>{
             contact ? res.status(200).json(contact) : res.sendStatus(404);
         })
         .catch(err => {
@@ -91,11 +99,11 @@ class contactController{
      *         schema:
      *           $ref: '#/definitions/Contact'
      */
-    addContact = async (req,res) => { 
-        console.log("Inisde Controller");   
-        // let  id = "602225c5a05e611718049915"; 
-        // await this.contactServiceObj.addContact(id,req.body);
-        // res.redirect('/index.html');
+    addContact = async (req,res) => {   
+        let id = req.query.contactListId;
+
+        await this.contactServiceObj.addContact(id,req.body);
+        res.redirect('/index.html');
      }
 
     /**
@@ -122,30 +130,30 @@ class contactController{
     }
 
     deleteContact = (req,res) => {
-        this.contactServiceObj.deleteContact(req.params.id)
+        this.contactServiceObj.deleteContact(req.query.id,req.params.id);
         res.status(201).json(req.body);
     }
 
     updateContact = (req,res) => {
-        this.contactServiceObj.updateContact(req._id,req.body);
+       
+        this.contactServiceObj.updateContact(req.query.contactListId,req.query.contactId,req.body);
         res.redirect('/index.html');
     }
 
     processContact = (req, res, next) => {
+        delete req.body.file;
+
         for (let property in req.body) {
-            req.body[property] = JSON.parse(req.body[property]);
+           req.body[property] = JSON.parse(req.body[property]);
         } 
         next();
 	};
 	
 	processImage = (req, res, next) => {
-
-        console.log("Inside processImage : ");
-        console.log("Body : "+JSON.stringify(req.body));
-
+      
 		if (req.file) {
 			req.body.image = {
-				imgData: new Buffer.from(fs.readFileSync(req.file.path).toString('base64'), 'base64'),
+				data: new Buffer.from(fs.readFileSync(req.file.path).toString('base64'), 'base64'),
 				contentType: req.file.mimetype,
 			};
         }

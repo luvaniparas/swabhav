@@ -71,7 +71,7 @@ const swaggerOptions = {
   app.get('/contact', contactControllerObj.searchContact);
   app.get('/contact/:id', contactControllerObj.getContactById);
   app.delete('/contact/:id',checkAuth, contactControllerObj.deleteContact);
-  app.post('/contact',checkAuth,upload.single('image'),contactControllerObj.processImage,contactControllerObj.addContact);
+  app.post('/contact',upload.single("file"),checkAuth,contactControllerObj.processContact,contactControllerObj.processImage,contactControllerObj.addContact);
   app.post('/contact/update',upload.single("file"),checkAuth,contactControllerObj.processContact,contactControllerObj.processImage,contactControllerObj.updateContact);
   
   app.post('/user/signUp',userControllerObj.addUser);

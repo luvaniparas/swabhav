@@ -4,16 +4,14 @@
 
       <div class="card-body">
         <div>   
-        <label>Name : {{contactById[0].name }} </label></br>
-        <label>Number :  {{contactById[0].number }} </label></br>
-        <label>PinCode : {{contactById[0].pinCode }} </label></br>
-        <label>State : {{contactById[0].address.state }} </label></br>
-        <label>City : {{contactById[0].address.city }} </label></br>
-        <label>Room Number : {{contactById[0].address.roomNumber }} </label></br>
-        <label>Building Name : {{contactById[0].address.buildingName }} </label></br>
-        <label>Street : {{contactById[0].address.street }} </label></br>
-        <img class="ribbon" ng-src="data:{{contactById[0].image.contentType}};base64,{{ imgToString(contactById[0].image.data.data) }}" 
-          width="auto" style="float: right;" >
+          <label>Name : {{displayContact.name }} </label></br>
+          <label>Number :  {{displayContact.number }} </label></br>
+          <label>City : {{displayContact.city}} </label></br>
+          <label>State : {{displayContact.state}} </label></br>
+          <label>Zip : {{displayContact.zip }} </label></br> 
+          <label>Address : {{displayContact.address }} </label></br>
+          <img class="ribbon" ng-src="data:{{displayContact.image.contentType}};base64,{{ imgToString(displayContact.image.data.data) }}" 
+            width="auto" style="float: right;" >
         </div>
       </div> 
       

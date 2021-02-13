@@ -5,28 +5,15 @@ module.exports = class ContactService {
     
     constructor() { }
 
-    getContacts() {
-      return new Promise((resolve,reject) => {
-          this.contacts = contactMongoDBRepository.getContacts();
-          resolve(this.contacts);
-      });
+    async getContacts(id) {
+      return await contactMongoDBRepository.getContacts(id);
     }
 
-    serachContact(attribute,value) {
-      return new Promise((resolve,reject) => {
-            
-        if( value != null){
-          resolve(contactMongoDBRepository.searchContact({ [attribute] : value}));  
-        }
-        else{
-          reject(new Error("Can't Find Contact with entered value "));  
-        }
-
-      });
+   async serachContact(contactListId,attribute,value) {
+      return await contactMongoDBRepository.searchContact( contactListId,attribute,value) ;
     }
 
     async addContact(id,body) { 
-      console.log("Inside Service");
       return await contactMongoDBRepository.addContact(id,body);
     }
     
@@ -43,34 +30,13 @@ module.exports = class ContactService {
       });
     }
 
-    deleteContact(id){
-
-      return new Promise((resolve,reject) => {
-
-        if(id != null){
-          resolve(contactMongoDBRepository.deleteContact(id));  
-        }
-        else{
-          reject(new Error("No Contact with this ID "));  
-        }
-
-      });
-
+    async deleteContact(contactListId,contactId){
+      return await contactMongoDBRepository.deleteContact(contactListId,contactId) ;
     }
 
-    updateContact(id,contact){
-      
-      return new Promise((resolve,reject) => {
-
-        if( contact != null){
-          resolve(contactMongoDBRepository.updateContact(id,contact));  
-        }
-        else{
-          reject(new Error("Can't update contact "));  
-        }
-
-      });
-
+    async updateContact(contactListId,contactId,contact){
+      //console.log("Service contact : "+JSON.stringify(contact));
+      return await contactMongoDBRepository.updateContact(contactListId,contactId,contact);
     }
 
     async createContactList(){  

@@ -8,7 +8,7 @@ var contactSchema = new mongoose.Schema({
         city : String,
         state : String,
         zip : String,
-        address : String,
+        address :[String],
         image : { 
           data : Buffer, 
           contentType : String 

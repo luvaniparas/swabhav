@@ -17,10 +17,10 @@
                         <th>Delete</th>
                     </tr> 
                     
-                    <tr ng-repeat="contact in contacts">
-                        <td> <a href="#/contactDetails" ng-click="contactDetails(contact._id)"> {{contact.name}} </a> </td>
+                    <tr ng-repeat="contact in allContacts track by $index">
+                        <td> <a href="#/contactDetails" ng-click="contactDetails(contact)"> {{contact.name}} </a> </td>
                         <td>{{contact.number}}</td>
-                        <td> <a href="#/updateForm" ng-click="editContactDetails(contact)" class="btn btn-warning">Edit</a> </td>
+                        <td> <a href="#/updateForm" ng-click="editContactDetail(contact)" class="btn btn-warning">Edit</a> </td>
                         <td> <button type="button" class="btn btn-danger" ng-click="deleteContact(contact._id)" >Delete </button> </td>
                     </tr>
                 </table>

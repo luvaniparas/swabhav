@@ -38,23 +38,43 @@ module.exports = class Mongoose {
      )
   };
 
-  async getContacts() {
-    return await Contact.find({}, "-address._id");
+  async getContacts(id) {
+    return await Contact.find({"_id" : id});
   }
 
-  async searchContact(searchObj) {
-    return await Contact.find(searchObj);
+  async searchContact(contactListId,attribute,value) {
+    return await Contact.find(
+      {_id : contactListId},
+      { contactList : { $elemMatch : { [attribute] : value }} }
+    );
+  }
+
+  async deleteContact(contactListId,contactId,attribute,value){
+    return await Contact.updateOne(
+      {_id : contactListId},
+      {$pull : { contactList : { _id : contactId}}}
+   )
+  }
+
+  async updateContact(contactListId,contactId,contact){
+    console.log("contactListId : "+contactListId);
+    console.log("contactId : "+contactId);
+    console.log("contact : "+JSON.stringify(contact));
+
+    // return await Contact.updateOne({
+    //   _id : contactListId,
+    //   contactList : { $elemMatch : { _id : contactId }}},
+    //   {$set : { contactList : {contact} }} 
+    // )
+
+    return await Contact.updateOne({
+      _id : contactListId,
+      contactList : { $elemMatch : { _id : contactId }}},
+      {$set : { "contactList.$.name" : "updated" }} 
+   )
   }
 
   async getContactByIdRepo(id){
     return await Contact.find({ _id : id });
-  }
-  
-  async deleteContact(id){
-    return await Contact.deleteOne({ _id : id }); 
-  }
-
-  async updateContact(contactId, contactUpdate){
-    return await Contact.findByIdAndUpdate( contactId , contactUpdate);
   }
 };

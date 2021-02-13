@@ -71,16 +71,20 @@ var app = angular.module('contactApp', ['ngRoute','contactModule']);
 
     app.factory("contactFactory",['$http', function($http) {
         var contactFactoryObj = {};
-
-        contactFactoryObj.getContact = function(){
-             return $http.get('/contacts') 
+        
+        contactFactoryObj.addContact = function(form,config){
+            return $http.post("/contact",form,config)
+        }
+        
+        contactFactoryObj.getContact = function(config){
+             return $http.get('/contacts',config) 
         } 
 
         contactFactoryObj.searchContact = function(config){
             return $http.get('/contact', config)
         }
 
-        contactFactoryObj.contactDetails = function(id){
+        contactFactoryObj.contactDetail = function(id){
             return $http.get('/contact/'+id)
         }
 
@@ -94,10 +98,9 @@ var app = angular.module('contactApp', ['ngRoute','contactModule']);
 angular.module('contactModule',[])
 .controller('contactApiController',['$rootScope','$scope','$http','$window','contactFactory',function($rootScope,$scope,$http,$window,contactFactory){
     $scope.today = new Date();
-    $scope.contacts =[];
-
-    $rootScope.counterAddress = 1 ;
-    $rootScope.address = [];
+    $scope.contact = {};
+    $scope.contact.address = [] ;
+    $scope.allContacts = [];
 
     $scope.states =  [ "Andhra Pradesh",
     "Arunachal Pradesh",
@@ -136,11 +139,72 @@ angular.module('contactModule',[])
     "Lakshadweep",
     "Puducherry"]
 
+    $scope.addContact = function(){
+        let token = sessionStorage.getItem("token");
+        let id = { contactListId : sessionStorage.getItem("contactListId") };
+
+        var config = {
+            params: id,
+            headers: {
+                "Content-Type": undefined , 
+                'Authorization': 'Bearer '+token
+            },
+           transformRequest: angular.identity,    
+          };
+        
+        if(token !=null){
+            let contact = $scope.contact;
+            let form = new FormData();
+
+            for (property in contact) {
+                form.append(property, JSON.stringify(contact[property]));
+            }
+            form.append("file", contact.file);
+            
+            contactFactory.addContact(form,config)
+                .then(
+                    function (response) {
+                        alert("Contact Added successfully");
+                        setTimeout(function(){   
+                            $scope.redirectToHome();       
+                        }, 1000);  
+                    },
+                    function (error) {
+                      console.log(error);
+                    }
+                  );
+
+        }else{
+            $window.location.href = '#/user/signIn'; 
+        }
+    }
+
+    $scope.addMoreAddress = function(){
+        let blankAddress = "";
+        if ($scope.contact.address){
+            let addressArray = $scope.contact.address;
+            addressArray.push(blankAddress);
+          }else {
+            $scope.contact.address = blankAddress;
+          }
+    }
+
+    $scope.removeAddress = function(index){
+        $scope.contact.address.splice(index,1);
+    }
+
     $scope.getContact = function(){
-      
-        contactFactory.getContact()
+        
+        let id = { contactListId : sessionStorage.getItem("contactListId") };
+
+        var config = {
+            params: id,
+            headers : {'Accept' : 'application/json'}
+        };
+
+        contactFactory.getContact(config)
             .then(function(response) {
-                $scope.contacts = response.data;
+                $scope.allContacts = response.data[0].contactList;
             },function(error){
                 $scope.status = 'Unable to load Conatct data: ' + error.message;
             });
@@ -150,14 +214,19 @@ angular.module('contactModule',[])
     $scope.searchContact = function(){ 
         if($scope.searchContact != undefined){
 
+            let id = sessionStorage.getItem("contactListId") ;
+            let searchContactObj = $scope.searchContactObj ;
+            let seachContactWithId = { contactListId : id , searchContactObj};
+            
             var config = {
-                params: $scope.searchContactObj,
+                params: seachContactWithId,
                 headers : {'Accept' : 'application/json'}
             };
             
             contactFactory.searchContact(config)
                 .then(function(response) {
-                    $scope.gotContact = response.data[0];
+                    $scope.gotContact = response.data[0].contactList;
+                    console.log("$scope.gotContact : "+JSON.stringify($scope.gotContact));
                 },function(error){
                     $scope.status = 'Unable to load Conatct data: ' + error.message;
                 });
@@ -165,20 +234,17 @@ angular.module('contactModule',[])
         }
     }
 
-    $scope.contactDetails = function(id){
-        contactFactory.contactDetails(id)
-            .then(function(response) {
-                $rootScope.contactById = response.data;
-            },function(error){
-                $scope.status = 'Unable to load Conatct data: ' + error.message;
-            });
+    $scope.contactDetails = function(contact){
+        $rootScope.displayContact = contact ; 
     }
     
     $scope.deleteContact = function(id) {
 
         let token = sessionStorage.getItem("token");
-       
+        let contactListId = { id : sessionStorage.getItem("contactListId") };
+
         var config = {
+            params: contactListId,
             headers: {
               'Authorization': 'Bearer '+token 
             }
@@ -190,7 +256,6 @@ angular.module('contactModule',[])
 
                 contactFactory.deleteContact(id,config)
                     .then(function(response){
-                        //$window.location.href = '/index.html';
                         $window.location.reload();
                     })
                 
@@ -199,16 +264,20 @@ angular.module('contactModule',[])
             $window.location.href = '#/user/signIn';
         }
     }
-
-    $scope.editContactDetails = function(contact){
-        $rootScope.contactToEdit = contact ;  
+    
+    $scope.editContactDetail = function(contact){
+        $rootScope.contactToEdit = contact ; 
     }   
     
     $scope.updateContact = function(){
 
         let token = sessionStorage.getItem("token");
+        let id = {  contactListId : sessionStorage.getItem("contactListId"), 
+                    contactId : $rootScope.contactToEdit._id
+                    }
        
         var config = {
+            params: id,
             headers: {
               "Content-Type": undefined , 
               'Authorization': 'Bearer '+token 
@@ -217,16 +286,15 @@ angular.module('contactModule',[])
           };
         
         if(token !=null){
-            
-            let contact = $scope.updatedContact;
 
+            let contact =  $scope.updatedContact;            
             let form = new FormData();
+            
             for (property in contact) {
                 form.append(property, JSON.stringify(contact[property]));
             }
             form.append("file", contact.file);
-            form.append("_id", $rootScope.contactToEdit._id);
-
+            
             $http.post("/contact/update",form,config)
                 .then(
                     function (response) {
@@ -242,69 +310,12 @@ angular.module('contactModule',[])
         }
     }
 
-    $scope.imgToString = function(imgSrc){
-        return btoa(String.fromCharCode.apply(null, (new Uint8Array(imgSrc))));
+    $scope.imgToString = function(image){
+        return btoa(String.fromCharCode.apply(null, (new Uint8Array(image))));
     }
 
     $scope.redirectToHome = function(){
         $window.location.href = '#/index.html';
-    }
-
-    $scope.addMoreAddress = function(){
-        console.log("Inside addMoreAddress()");
-        $rootScope.counterAddress++ ;
-        $rootScope.address.push({
-            'id' : $rootScope.counterAddress
-        });
-        console.log("$scope.counterAddress : "+$scope.counterAddress);
-        console.log("$scope.address : "+JSON.stringify($scope.address));
-    }
-
-    $scope.removeAddress = function(id){
-        console.log("Inside removeAddress() : "+id);
-       
-        $rootScope.counterAddress-- ;
-        $rootScope.address.splice(id,1);
-        console.log("$scope.counterAddress : "+$scope.counterAddress);
-        console.log("$scope.address : "+JSON.stringify($scope.address));
-    }
-
-    $scope.addContact = function(){
-
-        let token = sessionStorage.getItem("token");
-       
-        var config = {
-            headers: {
-              "Content-Type": undefined , 
-              'Authorization': 'Bearer '+token 
-            },
-           transformRequest: angular.identity,    
-          };
-        
-        if(token !=null){
-            
-            let contact = $scope.addContact;
-            let contactListId = sessionStorage.getItem("contactListId"); 
-
-            let form = new FormData();
-            for (property in contact) {
-                form.append(property, JSON.stringify(contact[property]));
-            }
-            form.append("file", contact.file);
-
-            $http.post("/contact/update",contactListId,form,config)
-                .then(
-                    function (response) {
-                      $scope.redirectToHome();
-                    },
-                    function (error) {
-                      console.log(error);
-                    }
-                  );
-
-        }else{
-            $window.location.href = '#/user/signIn'; 
-        }
     }
 
 }])
