@@ -57,20 +57,12 @@ module.exports = class Mongoose {
   }
 
   async updateContact(contactListId,contactId,contact){
-    console.log("contactListId : "+contactListId);
-    console.log("contactId : "+contactId);
-    console.log("contact : "+JSON.stringify(contact));
-
-    // return await Contact.updateOne({
-    //   _id : contactListId,
-    //   contactList : { $elemMatch : { _id : contactId }}},
-    //   {$set : { contactList : {contact} }} 
-    // )
-
+    let value = contact.name ;
+    
     return await Contact.updateOne({
       _id : contactListId,
       contactList : { $elemMatch : { _id : contactId }}},
-      {$set : { "contactList.$.name" : "updated" }} 
+      {$set : { "contactList.$.name" : value }} 
    )
   }
 

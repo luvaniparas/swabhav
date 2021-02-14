@@ -346,7 +346,7 @@ angular.module('contactModule',[])
             .then(function (response){     
                 sessionStorage.setItem("contactListId",response.data);
                 alert("User created Successfully ! ");
-                $window.location.href = '#/index.html';
+                $window.location.href = '#/user/signIn';
             },function(error){
                 $scope.status = 'Unable to load Conatct data: ' + error.message;
             })
