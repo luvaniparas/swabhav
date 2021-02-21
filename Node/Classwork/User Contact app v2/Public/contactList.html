@@ -6,8 +6,8 @@
           <div class="card-header bg-info text-white">Contact APP : 
               <button class="btn btn-light" ng-click="getContact()">Get Contacts</button>
           </div>
-
-          <div class="card-body">  
+          
+        <div class="card-body">  
             <div>
                 <table class="table table-striped"> 
                     <tr>
@@ -17,13 +17,15 @@
                         <th>Delete</th>
                     </tr> 
                     
-                    <tr ng-repeat="contact in allContacts track by $index">
+                    <tr ng-repeat="contact in allContacts | startFrom : (currentPage - 1) * pageSize | limitTo : pageSize">
                         <td> <a href="#/contactDetails" ng-click="contactDetails(contact)"> {{contact.name}} </a> </td>
                         <td>{{contact.number}}</td>
                         <td> <a href="#/updateForm" ng-click="editContactDetail(contact)" class="btn btn-warning">Edit</a> </td>
                         <td> <button type="button" class="btn btn-danger" ng-click="deleteContact(contact._id)" >Delete </button> </td>
                     </tr>
                 </table>
+
+                <pagination page="currentPage" max-size="allContacts.length" total-items="allContacts.length" items-per-page="pageSize"></pagination>
             </div>
           </div> 
 

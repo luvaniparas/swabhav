@@ -1,4 +1,10 @@
-var app = angular.module('contactApp', ['ngRoute','contactModule']);
+var app = angular.module('contactApp',['ngRoute','ui.bootstrap','contactModule']);
+
+    app.filter('startFrom', function () {
+        return function (data, start) {
+            return data.slice(start);
+        };
+    });
 
     app.directive("fileModel", [
         "$parse",
@@ -19,7 +25,7 @@ var app = angular.module('contactApp', ['ngRoute','contactModule']);
         },
     ]);
 
-    app.config(['$routeProvider',function($routeProvider) {
+    app.config(['$routeProvider',function($routeProvider) { 
         $routeProvider
     
         .when("/home", {
@@ -59,7 +65,7 @@ var app = angular.module('contactApp', ['ngRoute','contactModule']);
         })
     }]);
 
-    app.factory("userFactory",['$http','$scope',function($http,$scope) {
+    app.factory("userFactory",['$http','$scope',function($http) {
         var userFactoryObj = {};
 
         userFactoryObj.usersignIn = function(user){
@@ -101,6 +107,8 @@ angular.module('contactModule',[])
     $scope.contact = {};
     $scope.contact.address = [] ;
     $scope.allContacts = [];
+    $scope.pageSize=3;
+    $scope.currentPage = 1;
 
     $scope.states =  [ "Andhra Pradesh",
     "Arunachal Pradesh",
@@ -138,6 +146,24 @@ angular.module('contactModule',[])
     "Delhi",
     "Lakshadweep",
     "Puducherry"]
+
+    $scope.$on("$viewContentLoaded", function () {
+        console.log("Inside allContacts : ");
+        let id = { contactListId : sessionStorage.getItem("contactListId") };
+
+        var config = {
+            params: id,
+            headers : {'Accept' : 'application/json'}
+        };
+
+        contactFactory.getContact(config)
+            .then(function(response) {
+                $scope.allContacts = response.data[0].contactList;
+                console.log(JSON.stringify($scope.allContacts));
+            },function(error){
+                $scope.status = 'Unable to load Conatct data: ' + error.message;
+            });
+    });
 
     $scope.addContact = function(){
         let token = sessionStorage.getItem("token");
@@ -193,24 +219,6 @@ angular.module('contactModule',[])
         $scope.contact.address.splice(index,1);
     }
 
-    $scope.getContact = function(){
-        
-        let id = { contactListId : sessionStorage.getItem("contactListId") };
-
-        var config = {
-            params: id,
-            headers : {'Accept' : 'application/json'}
-        };
-
-        contactFactory.getContact(config)
-            .then(function(response) {
-                $scope.allContacts = response.data[0].contactList;
-            },function(error){
-                $scope.status = 'Unable to load Conatct data: ' + error.message;
-            });
-    
-    }
-    
     $scope.searchContact = function(){ 
         if($scope.searchContact != undefined){
 
@@ -318,6 +326,24 @@ angular.module('contactModule',[])
         $window.location.href = '#/index.html';
     }
 
+     // $scope.getContact = function(){
+    //     console.log("Inside allContacts : ");
+    //     let id = { contactListId : sessionStorage.getItem("contactListId") };
+
+    //     var config = {
+    //         params: id,
+    //         headers : {'Accept' : 'application/json'}
+    //     };
+
+    //     contactFactory.getContact(config)
+    //         .then(function(response) {
+    //             $scope.allContacts = response.data[0].contactList;
+    //             console.log(JSON.stringify($scope.allContacts));
+    //         },function(error){
+    //             $scope.status = 'Unable to load Conatct data: ' + error.message;
+    //         });
+    
+    // }
 }])
 
 .controller('userApiController',['$scope','$rootScope','$window','$http',function($scope,$rootScope,$window,$http){
