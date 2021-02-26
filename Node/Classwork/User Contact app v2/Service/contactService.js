@@ -5,8 +5,8 @@ module.exports = class ContactService {
     
     constructor() { }
 
-    async getContacts(id) {
-      return await contactMongoDBRepository.getContacts(id);
+    async getContacts(id,pageNumber,pageSize) {
+      return await contactMongoDBRepository.getContacts(id,pageNumber,pageSize);
     }
 
    async serachContact(contactListId,attribute,value) {

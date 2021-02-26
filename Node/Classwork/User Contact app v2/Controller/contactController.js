@@ -39,8 +39,10 @@ class contactController{
      */
     getContacts = async (req, res) => {
         let id = req.query.contactListId;
-        
-        this.contactServiceObj.getContacts(id).then( contactList =>{ 
+        let pageNumber = (JSON.parse(req.query.pageNumber) - 1)*JSON.parse(req.query.pageSize);
+        let pageSize = JSON.parse(req.query.pageSize);
+
+        this.contactServiceObj.getContacts(id,pageNumber,pageSize).then( contactList =>{ 
             contactList ? res.status(200).json(contactList) : res.status(404);
         })
         .catch(err => {

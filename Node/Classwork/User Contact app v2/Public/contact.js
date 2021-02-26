@@ -107,8 +107,20 @@ angular.module('contactModule',[])
     $scope.contact = {};
     $scope.contact.address = [] ;
     $scope.allContacts = [];
-    $scope.pageSize=3;
-    $scope.currentPage = 1;
+    $scope.pageSize = 3;
+    $scope.pageNumber = 1;
+    
+    $scope.incrementPageNumber = function() {
+        $scope.pageNumber++;
+        $scope.getContact();
+    };
+
+    $scope.decrementPageNumber = function() {
+          if(1 < $scope.pageNumber){
+            $scope.pageNumber--;
+            $scope.getContact();
+          }
+    };
 
     $scope.states =  [ "Andhra Pradesh",
     "Arunachal Pradesh",
@@ -148,21 +160,7 @@ angular.module('contactModule',[])
     "Puducherry"]
 
     $scope.$on("$viewContentLoaded", function () {
-        console.log("Inside allContacts : ");
-        let id = { contactListId : sessionStorage.getItem("contactListId") };
-
-        var config = {
-            params: id,
-            headers : {'Accept' : 'application/json'}
-        };
-
-        contactFactory.getContact(config)
-            .then(function(response) {
-                $scope.allContacts = response.data[0].contactList;
-                console.log(JSON.stringify($scope.allContacts));
-            },function(error){
-                $scope.status = 'Unable to load Conatct data: ' + error.message;
-            });
+        $scope.getContact();
     });
 
     $scope.addContact = function(){
@@ -326,24 +324,26 @@ angular.module('contactModule',[])
         $window.location.href = '#/index.html';
     }
 
-     // $scope.getContact = function(){
-    //     console.log("Inside allContacts : ");
-    //     let id = { contactListId : sessionStorage.getItem("contactListId") };
+    $scope.getContact = function(){
+        let id = { 
+            contactListId : sessionStorage.getItem("contactListId"),
+            pageNumber :  $scope.pageNumber,
+            pageSize : $scope.pageSize  
+        };
 
-    //     var config = {
-    //         params: id,
-    //         headers : {'Accept' : 'application/json'}
-    //     };
+        var config = {
+            params: id,
+            headers : {'Accept' : 'application/json'}
+        };
 
-    //     contactFactory.getContact(config)
-    //         .then(function(response) {
-    //             $scope.allContacts = response.data[0].contactList;
-    //             console.log(JSON.stringify($scope.allContacts));
-    //         },function(error){
-    //             $scope.status = 'Unable to load Conatct data: ' + error.message;
-    //         });
+        contactFactory.getContact(config)
+            .then(function(response) {
+                $scope.allContacts = response.data[0].contactList;
+            },function(error){
+                $scope.status = 'Unable to load Conatct data: ' + error.message;
+            });
     
-    // }
+    }
 }])
 
 .controller('userApiController',['$scope','$rootScope','$window','$http',function($scope,$rootScope,$window,$http){

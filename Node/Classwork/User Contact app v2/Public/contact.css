@@ -15,7 +15,14 @@
  #addButton{
      float: right;
  }
+
+ #next{
+    float: right;
+ }
  
+ #pageNumber{
+    margin-left:425px;
+ }
 
 
 

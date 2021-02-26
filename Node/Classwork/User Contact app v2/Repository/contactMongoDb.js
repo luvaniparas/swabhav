@@ -38,8 +38,11 @@ module.exports = class Mongoose {
      )
   };
 
-  async getContacts(id) {
-    return await Contact.find({"_id" : id});
+  async getContacts(id,numberToSkip,numberToReturn) {
+    return await Contact.find(
+      {_id : id},
+      { contactList : { $slice : [numberToSkip,numberToReturn]}} 
+    )
   }
 
   async searchContact(contactListId,attribute,value) {
@@ -49,7 +52,7 @@ module.exports = class Mongoose {
     );
   }
 
-  async deleteContact(contactListId,contactId,attribute,value){
+  async deleteContact(contactListId,contactId){
     return await Contact.updateOne(
       {_id : contactListId},
       {$pull : { contactList : { _id : contactId}}}
@@ -64,6 +67,12 @@ module.exports = class Mongoose {
       contactList : { $elemMatch : { _id : contactId }}},
       {$set : { "contactList.$.name" : value }} 
    )
+  }
+
+  async getContactListSize(contactListId){
+    return await Contact.findOne(
+      {_id : contactListId}),
+      {contactList : {$size}};
   }
 
   async getContactByIdRepo(id){
