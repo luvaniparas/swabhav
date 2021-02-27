@@ -1,0 +1,34 @@
+<div>
+    <div class="container">
+        
+        <div class="card">
+          <div class="card-header bg-info text-white">Contact APP : 
+              <label class="text-light">Contact List</label>
+              <button ng-click="getHistory()">Call History</button>
+          </div>
+          
+        <div class="card-body">  
+            <div>
+                <table class="table table-striped"> 
+                    <tr>
+                       <td>From</td>
+                       <td>To</td>
+                       <td>Date</td>
+                    </tr> 
+                    
+                    <tr ng-repeat="call in callList track by $index">
+                        <td>{{call.from}}</td>
+                        <td>{{call.to}}</td>
+                        <td>{{call.dateCreated}}</td>
+                    </tr>
+                </table>    
+            </div>
+          </div> 
+
+          <div class="card-footer bg-info text-white">
+            <button class="btn btn-light" ng-click="redirectToHome()" > < Back </button>
+          </div>
+        
+        </div>
+    </div>
+</div>

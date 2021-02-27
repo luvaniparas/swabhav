@@ -60,6 +60,10 @@ var app = angular.module('contactApp',['ngRoute','ui.bootstrap','contactModule']
             templateUrl : "./signin.html",
             controller : "userApiController"
         })
+        .when("/callHistory", {
+            templateUrl : "./twilioCallHistory.html",
+            controller : "twilioController"
+        })
         .otherwise({
             redirectTo: '/home'
         })
@@ -103,25 +107,7 @@ var app = angular.module('contactApp',['ngRoute','ui.bootstrap','contactModule']
 
 angular.module('contactModule',[])
 .controller('contactApiController',['$rootScope','$scope','$http','$window','contactFactory',function($rootScope,$scope,$http,$window,contactFactory){
-    $scope.today = new Date();
-    $scope.contact = {};
-    $scope.contact.address = [] ;
-    $scope.allContacts = [];
-    $scope.pageSize = 3;
-    $scope.pageNumber = 1;
     
-    $scope.incrementPageNumber = function() {
-        $scope.pageNumber++;
-        $scope.getContact();
-    };
-
-    $scope.decrementPageNumber = function() {
-          if(1 < $scope.pageNumber){
-            $scope.pageNumber--;
-            $scope.getContact();
-          }
-    };
-
     $scope.states =  [ "Andhra Pradesh",
     "Arunachal Pradesh",
     "Assam",
@@ -158,6 +144,64 @@ angular.module('contactModule',[])
     "Delhi",
     "Lakshadweep",
     "Puducherry"]
+
+    $scope.today = new Date();
+    $scope.contact = {};
+    $scope.contact.address = [] ;
+    $scope.allContacts = [];
+    $scope.pageSize = 3;
+    $scope.pageNumber = 1;
+    
+    $rootScope.hangUpSid ;
+
+    $scope.initiateCall = function(number){
+        $http.post("/call/"+number)
+            .then(function(response){
+                $scope.callDetails = response.data; 
+                $rootScope.hangUpSid = $scope.callDetails.sid;
+                console.log("inisde initiateCall sid : "+$rootScope.hangUpSid);
+                //console.log("$scope : "+JSON.stringify($scope.callDetails));
+                //console.log("status : "+$scope.callDetails.sid);
+            },function (error){
+                console.log("error : "+JSON.stringify(error));
+            })
+    }
+
+    $scope.callStatus = function(number){
+        //let number ="9699290770";
+        $http.get("/calldetails/"+number)
+        .then(function(response){
+            $scope.callDetails = response.data; 
+            console.log("$scope : "+JSON.stringify($scope.callDetails));
+            console.log("status : "+$scope.callDetails.status);
+        },function (error){
+            console.log("error : "+JSON.stringify(error));
+        })
+    }
+
+    $scope.hangUpCall = function(){
+        console.log("Inside hangUpCall() "+$rootScope.hangUpSid);
+
+        $http.post("/hangUpCall/"+$rootScope.hangUpSid)
+            .then(function(response){
+                let data = response.data; 
+                console.log("inside hangUp Call() "+JSON.stringify(data));
+            },function (error){
+                console.log("error : "+JSON.stringify(error));
+            })
+    }
+
+    $scope.incrementPageNumber = function() {
+        $scope.pageNumber++;
+        $scope.getContact();
+    };
+
+    $scope.decrementPageNumber = function() {
+          if(1 < $scope.pageNumber){
+            $scope.pageNumber--;
+            $scope.getContact();
+          }
+    };
 
     $scope.$on("$viewContentLoaded", function () {
         $scope.getContact();
@@ -375,6 +419,23 @@ angular.module('contactModule',[])
                 $window.location.href = '#/user/signIn';
             },function(error){
                 $scope.status = 'Unable to load Conatct data: ' + error.message;
+            })
+    }
+}])
+
+.controller("twilioController",['$scope','$rootScope','$window','$http',function($scope,$rootScope,$window,$http){
+
+    console.log("Twilio Controller");
+    $scope.callList ;
+
+    $scope.getHistory = function(){
+        $http.get("/callHistory")
+            .then(function(response){
+                console.log("response : "+JSON.stringify(response));
+                $scope.callList = response.data;
+                console.log(response.data); 
+            },function (error){
+                console.log("error : "+JSON.stringify(error));
             })
     }
 }])

@@ -1,15 +1,17 @@
 const express = require('express');  
 const swaggerJsDoc = require("swagger-jsdoc");
 const bodyParser = require("body-parser");
+const multer = require("multer");
 const swaggerUi = require("swagger-ui-express");
 const path = require("path");
-const multer = require("multer");
 const checkAuth = require("./middleware/checkAuth");
 const contactController = require("./Controller/contactController");
 const userController = require("./Controller/userController");
+const callController = require("./Controller/callController");
 
 const contactControllerObj = new contactController();
 const userControllerObj = new userController();
+const callControllerObj = new callController();
 
 const app = express();
 
@@ -67,6 +69,15 @@ const swaggerOptions = {
     res.sendFile(path.join(__dirname + "/public/index.html"));
   });
 
+  app.post('/getCalls',(req,res) => {
+    console.log(req.body);
+  })
+
+  app.post('/call/:number',callControllerObj.connectCall);
+  app.get('/callHistory',callControllerObj.callHistory);
+  app.post('/hangUpCall/:sid',callControllerObj.hangUpCall);
+  app.get('/calldetails/:number',callControllerObj.callDetails);
+
   app.get('/contacts', contactControllerObj.getContacts);
   app.get('/contact', contactControllerObj.searchContact);
   app.get('/contact/:id', contactControllerObj.getContactById);
@@ -77,6 +88,7 @@ const swaggerOptions = {
   app.post('/user/signUp',userControllerObj.addUser);
   app.post('/user/signIn',userControllerObj.findUser);
 
+  
   app.listen(3000, function(req,res){
     console.log("App listening at http://localhost:3000/");
   });

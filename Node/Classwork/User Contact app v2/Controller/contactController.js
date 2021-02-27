@@ -1,4 +1,3 @@
-const { RSA_PKCS1_OAEP_PADDING } = require('constants');
 var fs = require('fs');
 const contactService = require("../Service/contactService");
 

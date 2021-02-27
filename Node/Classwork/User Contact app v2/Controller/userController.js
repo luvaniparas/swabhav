@@ -68,9 +68,7 @@ module.exports = class userController{
                             contactListId : userFound[0].contactListId,
                             token : token
                         })
-                        
                     }
-
                 })
             })
             .catch(err => {
