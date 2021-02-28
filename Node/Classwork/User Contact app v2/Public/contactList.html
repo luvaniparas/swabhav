@@ -13,7 +13,7 @@
                     <tr>
                         <th>Name</th>
                         <th>Number</th>
-                        <th>Status</th>
+                        <th>Call Status</th>
                         <th>Hang Up</th>
                         <th>Edit</th>
                         <th>Delete</th>
@@ -22,8 +22,8 @@
                     <tr ng-repeat="contact in allContacts">
                         <td> <a href="#/contactDetails" ng-click="contactDetails(contact)"> {{contact.name}} </a> </td>
                         <td><a ng-click="initiateCall(contact.number)"> {{contact.number}} </a> </td>
-                        <td><button ng-click="callStatus(contact.number)">Status </button>{{$scope.callDetails.status}}</td>
-                        <td> <button ng-click="hangUpCall()">Reject </button> </td>
+                        <td> {{$scope.call.status}}</td>
+                        <td> <button class="btn btn-danger" ng-click="hangUpCall()">Reject </button> </td>
                         <td> <a href="#/updateForm" ng-click="editContactDetail(contact)" class="btn btn-warning">Edit</a> </td>
                         <td> <button type="button" class="btn btn-danger" ng-click="deleteContact(contact._id)" >Delete </button> </td>
                     </tr>

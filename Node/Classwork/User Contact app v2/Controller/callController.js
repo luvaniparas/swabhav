@@ -18,8 +18,7 @@ class callController{
              statusCallbackMethod : 'POST',
              statusCallbackEvent : ['initiated','riniging','answered','completed']  
            }).then(call => 
-                    console.log("call : "+call)
-                    //res.send(call)
+                    res.send(call)
                 );
     }
 
@@ -28,7 +27,7 @@ class callController{
             .then(calls => 
                 res.send(calls)
             );
-    }
+        }
 
     callDetails = async(req,res) => {
 
@@ -47,14 +46,13 @@ class callController{
     } 
 
     hangUpCall = (req,res) => {
-        console.log("Inside controller hangUpCall() ");
-        let sid = JSON.stringify(req.params.sid);
-        console.log("SID : "+sid);
-        console.log("type : "+typeof(sid));
-
+        let sid = req.params.sid ;
+        
         client.calls(sid)
             .update({status: 'completed'})
-            .then(call => console.log(call.to));
+            .then(call => 
+                console.log(call.to)
+            );
     }
 }
 module.exports = callController;

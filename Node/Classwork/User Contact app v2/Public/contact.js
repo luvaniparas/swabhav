@@ -62,7 +62,7 @@ var app = angular.module('contactApp',['ngRoute','ui.bootstrap','contactModule']
         })
         .when("/callHistory", {
             templateUrl : "./twilioCallHistory.html",
-            controller : "twilioController"
+            controller : "contactApiController"
         })
         .otherwise({
             redirectTo: '/home'
@@ -149,34 +149,32 @@ angular.module('contactModule',[])
     $scope.contact = {};
     $scope.contact.address = [] ;
     $scope.allContacts = [];
-    $scope.pageSize = 3;
+    $scope.callList = [] ;
     $scope.pageNumber = 1;
-    
+    $scope.pageSize = 3;
+    $scope.currentPage = 1;
+    $scope.maxSize = 5 ;
     $rootScope.hangUpSid ;
+
+    $scope.getHistory = function(){
+        $http.get("/callHistory")
+            .then(function(response){
+                $scope.callList = response.data;
+            },function (error){
+                console.log("error : "+JSON.stringify(error));
+            })
+    }
 
     $scope.initiateCall = function(number){
         $http.post("/call/"+number)
             .then(function(response){
                 $scope.callDetails = response.data; 
                 $rootScope.hangUpSid = $scope.callDetails.sid;
-                console.log("inisde initiateCall sid : "+$rootScope.hangUpSid);
-                //console.log("$scope : "+JSON.stringify($scope.callDetails));
-                //console.log("status : "+$scope.callDetails.sid);
+                console.log("Inisde initiateCall sid : "+$rootScope.hangUpSid);
+                console.log("Inisde initiateCall status : "+$scope.callDetails.status);
             },function (error){
                 console.log("error : "+JSON.stringify(error));
             })
-    }
-
-    $scope.callStatus = function(number){
-        //let number ="9699290770";
-        $http.get("/calldetails/"+number)
-        .then(function(response){
-            $scope.callDetails = response.data; 
-            console.log("$scope : "+JSON.stringify($scope.callDetails));
-            console.log("status : "+$scope.callDetails.status);
-        },function (error){
-            console.log("error : "+JSON.stringify(error));
-        })
     }
 
     $scope.hangUpCall = function(){
@@ -205,6 +203,7 @@ angular.module('contactModule',[])
 
     $scope.$on("$viewContentLoaded", function () {
         $scope.getContact();
+        $scope.getHistory();
     });
 
     $scope.addContact = function(){
@@ -423,19 +422,26 @@ angular.module('contactModule',[])
     }
 }])
 
-.controller("twilioController",['$scope','$rootScope','$window','$http',function($scope,$rootScope,$window,$http){
+// .controller("twilioController",['$scope','$rootScope','$window','$http',function($scope,$rootScope,$window,$http){
 
-    console.log("Twilio Controller");
-    $scope.callList ;
+//     $scope.callList;
+//     $scope.pageSize = 10;
+//     $scope.currentPage = 1;
 
-    $scope.getHistory = function(){
-        $http.get("/callHistory")
-            .then(function(response){
-                console.log("response : "+JSON.stringify(response));
-                $scope.callList = response.data;
-                console.log(response.data); 
-            },function (error){
-                console.log("error : "+JSON.stringify(error));
-            })
-    }
-}])
+//     $scope.$on("$viewContentLoaded", function () {
+//         $scope.getHistory();
+//     });
+
+//     $scope.getHistory = function(){
+//         $http.get("/callHistory")
+//             .then(function(response){
+//                 $scope.callList = response.data;
+//             },function (error){
+//                 console.log("error : "+JSON.stringify(error));
+//             })
+//     }
+
+//     $scope.redirectToHome = function(){
+//         $window.location.href = '#/index.html';
+//     }
+// }])

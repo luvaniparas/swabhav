@@ -3,8 +3,8 @@
         
         <div class="card">
           <div class="card-header bg-info text-white">Contact APP : 
-              <label class="text-light">Contact List</label>
-              <button ng-click="getHistory()">Call History</button>
+              <label class="text-light">Call List</label>
+              <!-- <button ng-click="getHistory()">Call History</button> -->
           </div>
           
         <div class="card-body">  
@@ -15,13 +15,15 @@
                        <td>To</td>
                        <td>Date</td>
                     </tr> 
-                    
-                    <tr ng-repeat="call in callList track by $index">
+                   
+                    <tr ng-repeat="call in callList | startFrom : (currentPage-1)*pageSize | limitTo : pageSize">
                         <td>{{call.from}}</td>
                         <td>{{call.to}}</td>
                         <td>{{call.dateCreated}}</td>
                     </tr>
                 </table>    
+                
+                <pagination total-items="callList.length" ng-model="currentPage" items-per-page="pageSize"  max-size="maxSize"> </pagination>
             </div>
           </div> 
 

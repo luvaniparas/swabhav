@@ -2,7 +2,7 @@
     "env": {
         "JWT_KEY": "secret",
         "TWILIO_ACCOUNT_SID":"AC1a875b8066f2d016f546803115d78492",
-        "TWILIO_AUTH_TOKEN":"f0b6ec95ba87c9d0dfe7c988acf166e6",
+        "TWILIO_AUTH_TOKEN":"3d9df5c4b47787c0207db460fa9405fe",
         "TWILIO_PHONE_NUMBER":"+14024137605",
         "MY_PHONE_NUMBER":"+919699290770"
     }
