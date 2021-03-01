@@ -11,39 +11,23 @@ class callController{
         
         client.calls
           .create({
-             url : 'http://demo.twilio.com/docs/voice.xml',
+             url : 'http://ece49723d68a.ngrok.io/call',
              to : numberToConnect,
              from : process.env.TWILIO_PHONE_NUMBER,
-             statusCallback : 'https://coffee-elk-4472.twil.io/status-callback',
+             statusCallback : 'http://ece49723d68a.ngrok.io/callStatus',
              statusCallbackMethod : 'POST',
              statusCallbackEvent : ['initiated','riniging','answered','completed']  
            }).then(call => 
-                    res.send(call)
-                );
-    }
+                res.send(call)
+            )
+    };
 
     callHistory = async(req,res) => {
         client.calls.list({limit: 20})
             .then(calls => 
                 res.send(calls)
             );
-        }
-
-    callDetails = async(req,res) => {
-
-        let numberToConnect = indiaCountryCode + JSON.stringify(req.params.number);
-
-        client.calls
-            .create({
-                method: 'GET',
-                statusCallback: 'https://www.myapp.com/events',
-                statusCallbackMethod: 'POST',
-                url: 'http://demo.twilio.com/docs/voice.xml',
-                to: numberToConnect,
-                from: process.env.TWILIO_PHONE_NUMBER
-            })
-            .then(call => console.log(call));
-    } 
+    }
 
     hangUpCall = (req,res) => {
         let sid = req.params.sid ;
@@ -51,8 +35,16 @@ class callController{
         client.calls(sid)
             .update({status: 'completed'})
             .then(call => 
-                console.log(call.to)
+                res.send(call)
             );
+    }
+
+    callStatus =async(req,res) => {
+        let callStatus = req.body.CallStatus;
+    
+        console.log("status : "+callStatus);
+        //res.render(__dirname + "/Public/contactList.html", {status:callStatus});
+        res.send(callStatus);
     }
 }
 module.exports = callController;

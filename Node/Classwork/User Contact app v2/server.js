@@ -76,8 +76,8 @@ const swaggerOptions = {
   app.post('/call/:number',callControllerObj.connectCall);
   app.get('/callHistory',callControllerObj.callHistory);
   app.post('/hangUpCall/:sid',callControllerObj.hangUpCall);
-  app.get('/calldetails/:number',callControllerObj.callDetails);
-
+  app.post('/callStatus',callControllerObj.callStatus);
+ 
   app.get('/contacts', contactControllerObj.getContacts);
   app.get('/contact', contactControllerObj.searchContact);
   app.get('/contact/:id', contactControllerObj.getContactById);
@@ -88,7 +88,6 @@ const swaggerOptions = {
   app.post('/user/signUp',userControllerObj.addUser);
   app.post('/user/signIn',userControllerObj.findUser);
 
-  
   app.listen(3000, function(req,res){
     console.log("App listening at http://localhost:3000/");
   });

@@ -166,24 +166,41 @@ angular.module('contactModule',[])
     }
 
     $scope.initiateCall = function(number){
+        
         $http.post("/call/"+number)
             .then(function(response){
                 $scope.callDetails = response.data; 
                 $rootScope.hangUpSid = $scope.callDetails.sid;
-                console.log("Inisde initiateCall sid : "+$rootScope.hangUpSid);
-                console.log("Inisde initiateCall status : "+$scope.callDetails.status);
+                
+                if(response){
+                    alert("call initialized")
+                }
+
+                $scope.callStatus();
             },function (error){
                 console.log("error : "+JSON.stringify(error));
             })
     }
 
-    $scope.hangUpCall = function(){
-        console.log("Inside hangUpCall() "+$rootScope.hangUpSid);
-
-        $http.post("/hangUpCall/"+$rootScope.hangUpSid)
+    $scope.callStatus = function(){
+        //console.log("inside callStatus AJS");
+        $http.post("/callStatus")
             .then(function(response){
-                let data = response.data; 
-                console.log("inside hangUp Call() "+JSON.stringify(data));
+                //console.log("inside callStatus then");
+                console.log("response : "+JSON.stringify(response));
+                console.log("response.data : "+response.data);
+                $scope.status = response.status;
+            })
+    }
+
+    $scope.hangUpCall = function(){
+        $http.post("/hangUpCall/"+$rootScope.hangUpSid)
+            .then(function(response){ 
+                let canceled ="canceled" ;
+
+                if(canceled = response.data.status){
+                    alert("call canceled");
+                }
             },function (error){
                 console.log("error : "+JSON.stringify(error));
             })
